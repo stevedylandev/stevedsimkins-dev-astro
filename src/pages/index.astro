@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/Base";
+import PostPreview from "@/components/blog/PostPreview";
+import SocialList from "@/components/SocialList";
+import { sortMDByDate } from "@/utils";
+
+const MAX_POSTS = 10;
+const allPosts = await getCollection("post");
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+---
+
+<PageLayout meta={{ title: "Home" }}>
+	<section>
+		<h1 class="title mb-6">Hey there!</h1>
+		<p class="mb-4">
+			My name is Steve, and I'm a technical writer, developer, and creator with a desire to help
+			build the future of the web. Stay a while to see what I'm working on!
+		</p>
+		<SocialList />
+	</section>
+	<section aria-label="Blog post list" class="mt-16">
+		<h2 class="title mb-4 text-xl">Posts</h2>
+		<ul class="space-y-4 sm:space-y-2">
+			{
+				allPostsByDate.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Extras</h2>
+		<ul class="space-y-4 sm:space-y-2">
+			<li>
+				<a
+          href="https://stevedylanphoto.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>stevedylanphoto
+				</a>:
+				<p class="inline-block sm:mt-2">My personal photography portfolio</p>
+			</li>
+			<li>
+				<a
+          href="https://pinata.cloud"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>Pinata
+				</a>:
+				<p class="inline-block sm:mt-2">Where I'm currently working as Head of Community</p>
+			</li>
+			<li>
+				<a
+          href="https://medium.com/@stevedsimkins"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>Medium
+				</a>:
+				<p class="inline-block sm:mt-2">More of my technical blog posts</p>
+			</li>
+			<li>
+				<a
+					href="https://www.markdownguide.org/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>Markdown
+				</a>:
+				<p class="inline-block sm:mt-2">Simple and easy-to-use markup language.</p>
+			</li>
+			<li>
+				<a
+					href="https://mdxjs.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>MDX
+				</a>:
+				<p class="inline-block sm:mt-2">Markdown for the component era.</p>
+			</li>
+			<li>
+				<a
+					href="https://github.com/vercel/satori"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="cactus-link inline-block"
+					>Satori
+				</a>:
+				<p class="inline-block sm:mt-2">Generating png Open Graph images for blog posts</p>
+			</li>
+		</ul>
+	</section>
+</PageLayout>
