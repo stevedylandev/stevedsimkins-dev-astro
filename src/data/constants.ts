@@ -17,5 +17,6 @@ export const MENU_LINKS = [
 export const SOCIAL_LINKS = {
 	github: "https://github.com/stevedsimkins",
 	twitter: "https://twitter.com/stevedsimkins",
+  medium: "https://medium.com/@stevedsimkins",
 	email: "stevedsimkins@gmail.com",
 };
