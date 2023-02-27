@@ -16,6 +16,7 @@ specifiers:
   '@types/sharp': ^0.31.1
   '@typescript-eslint/eslint-plugin': ^5.48.0
   '@typescript-eslint/parser': ^5.48.0
+  '@vercel/analytics': ^0.1.10
   astro: 2.0.2
   astro-eslint-parser: ^0.11.0
   autoprefixer: ^10.4.13
@@ -43,6 +44,7 @@ specifiers:
 dependencies:
   '@astrojs/prefetch': 0.1.1
   '@astrojs/rss': 2.1.0
+  '@vercel/analytics': 0.1.10
   astro: 2.0.2
   satori: 0.1.2
   satori-html: 0.3.2
@@ -1248,6 +1250,12 @@ packages:
       '@typescript-eslint/types': 5.49.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@vercel/analytics/0.1.10:
+    resolution: {integrity: sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dev: false
 
   /@vscode/emmet-helper/2.8.6:
     resolution: {integrity: sha512-IIB8jbiKy37zN8bAIHx59YmnIelY78CGHtThnibD/d3tQOKRY83bYVi9blwmZVUZh6l9nfkYH3tvReaiNxY9EQ==}
