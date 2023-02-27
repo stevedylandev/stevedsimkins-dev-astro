@@ -8,9 +8,6 @@ import { sortMDByDate } from "@/utils";
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
-import { inject } from '@vercel/analytics';
-
-inject();
 
 ---
 
