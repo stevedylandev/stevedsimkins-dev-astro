@@ -4,13 +4,14 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
+import nordTheme from "./nord.json";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://stevedsimkins-dev-astro.vercel.app/",
 	markdown: {
 		shikiConfig: {
-			theme: "nord",
+			theme: nordTheme,
 			wrap: true,
 		},
 	},
