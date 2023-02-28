@@ -18,5 +18,5 @@ export const SOCIAL_LINKS = {
 	github: "https://github.com/stevedsimkins",
 	twitter: "https://twitter.com/stevedsimkins",
   medium: "https://medium.com/@stevedsimkins",
-	linkedin: "https://linkedin.com/in/steve-simkins",
+  linkedin: "https://linkedin.com/in/steve-simkins",
 };
