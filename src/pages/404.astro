@@ -1,7 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base";
 import { Image } from "@astrojs/image/components";
-import aboutImg from "../assets/about-astro.png";
+import img from "../assets/512x512.png";
 
 const meta = {
 	title: "Oops! You found a missing page!",
@@ -14,8 +14,7 @@ const meta = {
 	<p class="mb-8">Please use the navigation to find your way back</p>
 	<div class="my-4 grid justify-center">
 		<Image
-			class="rotate-180"
-			src={aboutImg}
+			src={img}
 			alt="A cartoon cactus looking at the 'Astro.build' logo"
 			loading="eager"
 		/>
