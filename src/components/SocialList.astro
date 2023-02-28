@@ -92,12 +92,12 @@ import { SOCIAL_LINKS } from "@/data/constants";
 			</a>
 		</li>
 		<li>
-			<a class="inline-block p-2 sm:hover:text-link" href={`mailto:${SOCIAL_LINKS.email}`}>
+			<a class="inline-block p-2 sm:hover:text-link" href={`mailto:${SOCIAL_LINKS.linkedin}`}>
 				<svg
-					class="h-6 w-6"
-					aria-hidden="true"
-					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6"
+					width="44"
+					height="44"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
@@ -106,10 +106,13 @@ import { SOCIAL_LINKS } from "@/data/constants";
 					stroke-linejoin="round"
 				>
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-					<rect x="3" y="5" width="18" height="14" rx="2"></rect>
-					<polyline points="3 7 12 13 21 7"></polyline>
+					<rect x="4" y="4" width="16" height="16" rx="2"></rect>
+					<line x1="8" y1="11" x2="8" y2="16"></line>
+					<line x1="8" y1="8" x2="8" y2="8.01"></line>
+					<line x1="12" y1="16" x2="12" y2="11"></line>
+					<path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
 				</svg>
-				<span class="sr-only">Email</span>
+				<span class="sr-only">LinkedIn</span>
 			</a>
 		</li>
 	</ul>
