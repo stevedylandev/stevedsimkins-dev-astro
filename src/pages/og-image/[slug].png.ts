@@ -50,9 +50,8 @@ const markup = (title: string, pubDate: string) => html`<div
 <path d="M151.291 221.053L20.1465 448.094H479L350.926 226.37M151.291 221.053L249.573 50.9053L350.926 226.37M151.291 221.053L193.185 258.273L215.528 232.751L249.573 258.273L275.108 232.751L311.281 258.273L350.926 226.37" stroke="black" stroke-width="7"/>
 <line x1="265.341" y1="167.541" x2="294.587" y2="218.169" stroke="black" stroke-width="5"/>
 			</svg>
-			<p tw="ml-3 font-semibold">${siteConfig.title}</p>
+			<p tw="ml-3 font-semibold text-3xl">${siteConfig.title}</p>
 		</div>
-		<p>by ${siteConfig.author}</p>
 	</div>
 </div>`;
 
