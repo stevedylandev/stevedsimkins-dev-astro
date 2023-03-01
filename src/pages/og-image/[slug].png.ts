@@ -41,7 +41,7 @@ const markup = (title: string, pubDate: string, description: string) => html`<di
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>
 		<h1 tw="text-6xl font-bold leading-snug text-white">${title}</h1>
-		<h1 tw="text-2xl font-bold leading-snug text-white">${description}</h1>
+		<h2 tw="text-2xl font-bold leading-snug text-white">${description}</h2>
 	</div>
 	<div tw="flex items-center justify-between w-full p-10 border-t border-[#a3be8c] text-xl">
 		<div tw="flex items-center">
@@ -62,7 +62,8 @@ export async function get({ params: { slug } }: APIContext) {
   const postDate = getFormattedDate(post?.data.publishDate ?? Date.now(), {
     weekday: "long",
   });
-  const svg = await satori(markup(title, postDate), ogOptions);
+  const description = post?.data.description ?? siteConfig.title;
+  const svg = await satori(markup(title, postDate, description), ogOptions);
   const png = new Resvg(svg).render().asPng();
   return {
     body: png,
