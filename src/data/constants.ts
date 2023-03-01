@@ -19,4 +19,5 @@ export const SOCIAL_LINKS = {
 	twitter: "https://twitter.com/stevedsimkins",
   medium: "https://medium.com/@stevedsimkins",
   linkedin: "https://linkedin.com/in/steve-simkins",
+  ethereum: "https://rainbow.me/stevedsimkins.eth",
 };

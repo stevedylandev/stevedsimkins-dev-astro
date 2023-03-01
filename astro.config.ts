@@ -8,7 +8,7 @@ import nordTheme from "./nord.json";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://stevedsimkins-dev-astro.vercel.app/",
+	site: "https://stevedsimkins.dev",
 	markdown: {
 		shikiConfig: {
 			theme: nordTheme,
