@@ -1,6 +1,6 @@
 ---
 title: "My Developer Journey"
-publishDate: "27 Feb 2023"
+publishDate: "28 Feb 2023"
 description: "Learn about how I transition into the tech and Web3 and learned web development"
 tags: ["web development", "bio", "personal", "web3"]
 ---
