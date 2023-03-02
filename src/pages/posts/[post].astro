@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PostLayout from "@/layouts/BlogPost";
 import MailForm from "@/components/blog/MailForm";
+import MailForm2 from "@/components/blog/MailForm2";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 	const posts: CollectionEntry<"post">[] = await getCollection("post");
@@ -24,5 +25,5 @@ const { Content } = await post.render();
 
 <PostLayout post={post}>
 	<Content />
-  <MailForm />
+  <MailForm2 />
 </PostLayout>
