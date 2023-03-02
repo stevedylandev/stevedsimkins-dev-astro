@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/SkipLink";
 import siteConfig from "@/site-config";
-import { GoogleAnalytics } from "astro-google-analytics"
+import { GoogleAnalytics } from "astro-google-analytics";
 
 interface Props {
 	meta: SiteMeta;
@@ -18,7 +18,10 @@ const {
 
 <html lang={siteConfig.lang}>
 	<head>
-		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} /> <GoogleAnalytics id="G-QT67QEFLTG" /> <script define:vars={{ siteConfig }}> const root = document.documentElement;
+    <GoogleAnalytics id="G-QT67QEFLTG" />
+		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} />
+		<script define:vars={{ siteConfig }}>
+			const root = document.documentElement;
 			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
 
 			// get user preference of dark mode, 1st local storage, 2nd browser
