@@ -11,7 +11,7 @@
 		"format": "prettier -w ./src ./src/**/*.astro"
 	},
 	"devDependencies": {
-		"@astrojs/image": "0.13.0",
+		"@astrojs/image": "^0.13.0",
 		"@astrojs/mdx": "^0.15.1",
 		"@astrojs/sitemap": "^1.0.0",
 		"@astrojs/tailwind": "3.0.0",
@@ -49,7 +49,7 @@
 		"@astrojs/prefetch": "^0.1.1",
 		"@astrojs/rss": "^2.0.0",
 		"@vercel/analytics": "^0.1.10",
-		"astro": "2.0.2",
+		"astro": "^2.1.0",
 		"astro-google-analytics": "^1.0.3",
 		"satori": "0.1.2",
 		"satori-html": "^0.3.2",

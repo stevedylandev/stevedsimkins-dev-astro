@@ -10,6 +10,8 @@ import nordTheme from "./nord.json";
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://stevedsimkins.dev",
   markdown: {
@@ -25,10 +27,10 @@ export default defineConfig({
   }), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   }), sitemap(), prefetch(), partytown({
-      config: {
-        forward: ["dataLayer.push"]
-      }
-    })],
+    config: {
+      forward: ["dataLayer.push"]
+    }
+  })],
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
