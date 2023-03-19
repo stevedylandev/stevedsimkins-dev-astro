@@ -1,11 +1,9 @@
 ---
-title: "How to Create 3D Solana NFTs"
+title: "How to Create 3D NFTs on Solana"
 publishDate: "18 May 2022"
-description: "Learn how to scan real life objects with Polycam then mint them as NFTs on Solana"
+description: "Learn how to scan and mint real life objects on Solana"
 tags: ["web3", "nfts", "tutorials"]
-ogImage: "https://miro.medium.com/v2/resize:fit:360/format:webp/1*5vzpNGiQSZqe1EX6ghDINg.png"
 ---
-
 
 The growth and evolution of NFTs has come a long way from the early days. Some of the early NFT projects were simple .png files or a link to a YouTube video, but now they are an entire industry that consumes brand, utility, even augmented reality. Metaverses, 3D objects, and other virtual reality experiences are all the rage, and I firmly believe we will see more of this in the near future.
 
@@ -14,13 +12,14 @@ One unique tool that I stumbled upon was Polycam. Polycam is a mobile iOS app th
 In this tutorial we’ll cover how to use Polycam to scan and create a 3D models and environments, and then we’ll cover how to make them into NFTs using Pinata and Solana.
 
 ## Scanning with Polycam
+
 To get started you’ll want to download the Polycam app on the App Store. Be aware that this is only for iPhones, and scanning environments will be more effective if you have a LiDAR scanner on your iPhone. Having a LiDAR scanner is not necessary though! Once you download it you will need to make an account with them and start their 14 day free trial.
 
 Once you do that Polycam will take you to the “captures” page where you can see all your scans. To learn how the scan process works, I would highly recommend their well done tutorials on their website and in the app.
 
-Using LiDAR Mode to Capture Large Spaces
+[Using LiDAR Mode to Capture Large Spaces](https://learn.poly.cam/capturing-large-spaces)
 
-Using Photo Mode to Capture 3D Objects
+[Using Photo Mode to Capture 3D Objects](https://learn.poly.cam/building-a-studio-for-photo-mode-captures)
 
 In short, you will want to use the LiDAR mode when you are trying to scan environments or large spaces, and for 3D objects you will want to use the photo mode!
 
@@ -28,33 +27,33 @@ For this tutorial I’m going to scan my desk space using the LiDAR method, and 
 
 With the video below you can get glimpse of how the LiDAR scanner maps over surfaces. Taking it real slow and covering every angle really helps with scanning environments.
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/703877466?h=9659ba4952" width="360" height="780" frameborder="0" allowfullscreen></iframe>
+>>INSERT VIMEO
 
 After you’re done scanning there will be a processing step that will take all the data and map it into a 3D environment!
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/703880632?h=52b5f574b7" width="360" height="780" frameborder="0"    allowfullscreen></iframe>
+>>INSERT VIMEO
 
 Once it’s processed you can go ahead and view the 3D model/environment! Polycam really is first class; you can create videos, you can view the model in Augmented Reality, it just has so many awesome features! My model isn’t the cleanest since I have so many small detailed objects on my desk, but for something a bit simpler this feature is amazing.
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/703884780?h=de95c5de7a" width="360" height="780" frameborder="0"    allowfullscreen></iframe>
+>>INSERT VIMEO
 
 Now that we got our model, we can upload it to the cloud and look at it through our web browser! Just click on the little cloud icon on the top of the screen when viewing your model and it will be uploaded to your cloud storage with Polycam.
 
 Once viewing it in the web browser, we can download the model by clicking “export.”
 
-![room screenshot](https://miro.medium.com/v2/resize:fit:360/format:webp/1*Olex5OAd3sMaugwF_iWGig.png)
+>>SCREENSHOT
 
 From there we want to select the GLTF format and start the download!
 
-![model export](https://miro.medium.com/v2/resize:fit:360/format:webp/1*0z9cGRbGbAWoflqk7rU0yw.png)
+>>SCREENSHOT
 
 Ok so we got our 3D file for our environment, now lets do some 3D objects as well! The process is pretty similar, except for 3D objects we’ll switch to the “photo” mode instead of the LiDAR mode. The photo mode will take a bunch of different pictures and put them together to make a 3D model! In the video below you can see what the process looks like as I scan one of my prized possessions, a 1930's edition of Moby Dick illustrated by Rockwell Kent.
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/704181596?h=92cada3864" width="360" height="780" frameborder="0"    allowfullscreen></iframe>
+>>INSERT VIMEO
 
 Once we finish scanning the book, I like to select the higher end of the quality allowance, and I like to use the object masking to get all the fine details. These photo mode objects are a bit more work, so when you take one Polycam sends it off to a server for higher powered processing. Due to how intense the work is, you can only take 150 of these a month, but I don’t think that will be an issue for most people. Once they finish processing it, the model looks like this!
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/704185926?h=2a929c3d73" width="360" height="780" frameborder="0"    allowfullscreen></iframe>
+>>INSERT VIMEO
 
 The download process looks exactly the same as we did the desk, very easy! Also while you’re still in Polycam, you can edit, adjust, crop, etc. your model all inside their app or website, so that way when the model is exported it’s ready to be turned into an NFT!
 
@@ -72,7 +71,7 @@ There’s a lot of great benefits of using IPFS for NFTs, such as [content addre
 
 Let’s log into Pinata and upload our file. Really simple, just click on the upload button in the top left, give it a name, and upload!
 
-![Pinata page screenshot](https://miro.medium.com/v2/resize:fit:360/format:webp/1*v-x8ltZQ0ep6vlmqoPn2WA.png)
+>>SCREENSHOT
 
 Then we just need to choose a subdomain and make sure its available. If it is, click next!
 
@@ -89,6 +88,7 @@ https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7oz
 ```
 
 Ok our 3D file is on IPFS, the next step is to create a metadata file that will point to that 3D file. Open up your terminal and run:
+
 ```bash
 mkdir 3d-nfts && cd 3d-nfts && touch pinnie.json
 ```
@@ -138,11 +138,15 @@ Couple of things you’ll want to take note here. We could use an image URL if y
   "type": "vr/glb"
 }
 ```
+
 The uri is the link to our content, and the type defines the kind of file we want to use, which in this case is virtual reality (vr) and the file format (glb). Once you get familiar with the metadata standard it’s pretty straight forward. Now that we created this metadata file, save it and upload it to Pinata as well. Once it’s uploaded take note of the CID and save the link to it, should look something like this:
+
 ```
 https://pinnieblog.mypinata.cloud/ipfs/QmYTQDE2ur5Lo4z76cNjwMAq6H3oNyDb1xuCQfdxMBnmon
 ```
+
 We’re really close to minting this NFT! [Solana](https://solana.com/) is an up and coming blockchain that is capable of incredible speeds and low transactions fees. Before we go any further you’ll want to make sure you have a couple of things installed on your computer:
+
 - [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
 - [Metaboss](https://github.com/samuelvanderwaal/metaboss)
 
@@ -202,7 +206,8 @@ Ok but we want to see it right? All we gotta do is open our ~/.config/solana/dev
 
 Then using a wallet like Phantom, click on “Add / Connect wallet, select “import private key,” then paste in our keypair from earlier. Once it’s in your wallet you will want to click on the settings icon in the bottom right, scroll down to “change network” and set it to “Devnet.” Once you do that, go back to your NFTs page and you should see it!!
 
-![wallet gif](https://miro.medium.com/v2/resize:fit:360/1*V-onKvcCU830IvHxNWHbEg.gif)
+>>SCREENSHOT
 
 ## Conclusion
+
 Polycam really introduces a whole new way of how content can be created using modern tech. You can imagine how this might be used for journalism, where instead of just looking at a photo of a story, you can view it as a 3D object with augmented reality. Someone who explores caves can share their experience as a 3D environment! Paired with Solana as a much faster and affordable layer one solution, and [Pinata](https://pinata.cloud) to deliver IPFS content quickly, the possibilities are endless!
