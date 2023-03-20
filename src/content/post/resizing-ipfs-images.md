@@ -5,6 +5,7 @@ description: "Learn how to use Pinata's Dedicated Gateway image optimization too
 tags: ["web3", "ipfs", "tutorials"]
 ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Tp42Ey9Uvdb6njsaXHBOTA.jpeg"
 ---
+
 If you’re a developer in the NFT space, you have probably had to fetch IPFS content before, and depending what tools you use the experience is varied. Using a local IPFS node is not very practical or fast, and using a public gateway can be risky due to congestion. Dedicated Gateways on the other hand are much faster, and are great for app development. But what if you have to fetch an entire NFT project through IPFS? That could be 10,000 images at 5Mb each, awful for web page optimization, and you have to load every. single. one. How is that gonna work? And then what happens when you have another NFT project?
 
 Pinata’s [Dedicated Gateways](https://docs.pinata.cloud/gateways/dedicated-gateways) already have a blazing fast global CDN (content delivery network) that caches content on the first load, so already you’re off to a good start, but that’s still a lot of data to pull through a webpage. With the rollout of our new pricing plan and features, we’ve released a new tool for everyone: **Pinata Image Optimization.**

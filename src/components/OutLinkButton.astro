@@ -1,0 +1,9 @@
+---
+const { link, site, image } = Astro.props
+import { Image } from "@astrojs/image/components";
+---
+
+<a class="flex justify-start items-center gap-2" href={link} target="_blank">
+  <Image src={image} width={30} height={30} alt={`Link to ${site}`} />
+  Read this post on {site}
+</a>

@@ -6,6 +6,12 @@ tags: ["web3", "ipfs", "tech philosophy"]
 ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*4xA96GrA9iLYMp5vorcjyQ.jpeg"
 ---
 
+import medium from "../../assets/medium.png"
+import OutLinkButton from "../../components/OutLinkButton.astro"
+
+<OutLinkButton link="https://medium.com/pinata/a-case-for-ipfs-on-layer-1-blockchains-like-solana-aptos-and-sui-165a9732c214" site="Medium" image={medium} />
+
+
 There has been a Cambrian explosion of new layer 1 blockchains — all with brand new technologies that make them faster and more efficient. However there is one problem that no blockchain has managed to overcome: asset storage.
 
 Blockchains are great for keeping a ledger of transactions, but storing large amounts of data on-chain is expensive and doesn’t scale well. Worse, most of the centralized off chain storage methods have a bad reputation of enabling rug pulls and bad actors in the NFT space. Even though Pinata solves these problems, giving creators and developers easy access to the heaven-sent distributed file system known as IPFS, many of these new layer 1 chains still don’t understand why IPFS is the solution to their problems. Let’s break it down.
