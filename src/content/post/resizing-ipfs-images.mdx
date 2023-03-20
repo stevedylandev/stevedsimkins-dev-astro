@@ -6,6 +6,12 @@ tags: ["web3", "ipfs", "tutorials"]
 ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Tp42Ey9Uvdb6njsaXHBOTA.jpeg"
 ---
 
+import medium from "../../assets/medium.png"
+import OutLinkButton from "../../components/OutLinkButton.astro"
+
+<OutLinkButton link="https://medium.com/pinata/resizing-ipfs-images-with-pinatas-image-optimization-tools-fb381bee58aa" site="Medium" image={medium} />
+
+
 If you’re a developer in the NFT space, you have probably had to fetch IPFS content before, and depending what tools you use the experience is varied. Using a local IPFS node is not very practical or fast, and using a public gateway can be risky due to congestion. Dedicated Gateways on the other hand are much faster, and are great for app development. But what if you have to fetch an entire NFT project through IPFS? That could be 10,000 images at 5Mb each, awful for web page optimization, and you have to load every. single. one. How is that gonna work? And then what happens when you have another NFT project?
 
 Pinata’s [Dedicated Gateways](https://docs.pinata.cloud/gateways/dedicated-gateways) already have a blazing fast global CDN (content delivery network) that caches content on the first load, so already you’re off to a good start, but that’s still a lot of data to pull through a webpage. With the rollout of our new pricing plan and features, we’ve released a new tool for everyone: **Pinata Image Optimization.**
@@ -105,7 +111,7 @@ https://stevedsimkins.mypinata.cloud/ipfs/QmTwDNr6LyRzW8H3XorFDArfKEH3GRV1SkF6bA
 
 Let’s break this down again so we know what’s going on.
 
-We have our gateway url (https://stevedsimkins.mypinata.cloud/ipfs/), then we have our CID (QmTwDNr6LyRzW8H3XorFDArfKEH3GRV1SkF6bAEBF3P4GJ), then our dynamic image id (${id}.jpg) and finally our image optimization (?img-width=1080&img-height=1080). Of course not all PFP projects are this simple, but with this formatting you can pass in multiple parameters with objects to adjust to your needs.
+We have our gateway url ```https://stevedsimkins.mypinata.cloud/ipfs/```, then we have our CID ```QmTwDNr6LyRzW8H3XorFDArfKEH3GRV1SkF6bAEBF3P4GJ```, then our dynamic image id ```${id}.jpg``` and finally our image optimization ```?img-width=1080&img-height=1080```. Of course not all PFP projects are this simple, but with this formatting you can pass in multiple parameters with objects to adjust to your needs.
 
 Our image folder only has 8 images, therefore we just need a simple for loop to generate an array that will hold the numbers 1 through 8. That way we can access it later to generate our image components. Just start with an empty array, then push the numbers into it with the for loop.
 
