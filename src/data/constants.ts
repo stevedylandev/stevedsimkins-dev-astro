@@ -11,6 +11,10 @@ export const MENU_LINKS = [
 		title: "Blog",
 		path: "/posts",
 	},
+  {
+    title: "Videos",
+    path: "/videos",
+  },
 ];
 
 // ! Remember to add your own socials
