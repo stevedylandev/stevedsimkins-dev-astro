@@ -3,11 +3,11 @@
 	:root {
 		color-scheme: light;
 		--theme-bg: #eff1f5;
-		--theme-link: #e64553;
+		--theme-link: #df8e1d;
 		--theme-text: #4c4f69;
-		--theme-accent: #40a02b;
-		--theme-accent-2: #179299;
-		--theme-quote: #40a02b;
+		--theme-accent: #7287fd;
+		--theme-accent-2: #7287fd;
+		--theme-quote: #7287fd;
 		--theme-menu-bg: rgb(250 250 250 / 0.85);
 	}
 
