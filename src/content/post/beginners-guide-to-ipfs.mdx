@@ -7,8 +7,8 @@ ogImage: "https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fd1
 ---
 
 import { Image } from "@astrojs/image/components";
-import bueno from "../../assets/bueno.png"
-import OutLinkButton from "../../components/OutLinkButton.astro"
+import bueno from "../../assets/bueno.png";
+import OutLinkButton from "../../components/OutLinkButton.astro";
 
 <OutLinkButton link="https://bueno.art/blog/pinata-ipfs-guide" site="Bueno" image={bueno} />
 
@@ -20,10 +20,10 @@ If you’re familiar with Ethereum, you know that it costs gas fees to mint, tra
 
 To avoid having to store all of that data on-chain, most NFTs are stored as metadata that points to an image off the blockchain where the actual file lives. It’s like when you share a Dropbox link. The link you share isn’t the actual thing, it just points you to where the actual thing is stored. That's why most early NFT projects were actually stored on Dropbox or a similar cloud service like AWS or Google Drive. While a full PNG of an NFT might be 4 mb, its metadata is only about 800 bytes. Definitely a step in the right direction, but this solution caused another problem: people started getting rugged.
 
-Let’s say an influencer decides to launch a new NFT project called “Ceramic Cars." Sounds cool. She uploads an image of the first drop of cars to a storage provider and each car is named “crazycar1.png.” Luckily you snag one. She put a link to that image in your NFT metadata that looks something like this: 
+Let’s say an influencer decides to launch a new NFT project called “Ceramic Cars." Sounds cool. She uploads an image of the first drop of cars to a storage provider and each car is named “crazycar1.png.” Luckily you snag one. She put a link to that image in your NFT metadata that looks something like this:
 
 ```
-https://storageservice.com/friend/crazycar1.png 
+https://storageservice.com/friend/crazycar1.png
 ```
 
 Looks fine at first. But here’s the kicker: at any time, that influencer or the storage provider can simply remove that image. Suddenly the NFT is useless. And if she really wanted to be a jerk, she could replace it with a poop emoji with the same name. And since there is no regulation or laws around this, you would basically be screwed with no way of getting what you paid for. And that’s exactly what was happening in those early days: people were getting rugged left and right. These problems begged for a solution. That solution was [IPFS](https://ipfs.io) - the InterPlanetary File System.
@@ -35,22 +35,22 @@ To understand how IPFS works, you need to understand how file sharing has always
 The traditional way of sharing files over the internet is through centralized servers. For example, if you write up and send a Tweet, the data is sent to Twitter’s servers. Then when other users want to see that Tweet, the servers pass that information to them. It’s a direct up and down motion.
 
 <Image
-src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4cfc48a5e05d952dd2c2_IPFS.png"
-alt="bueno graphic"
-width={1920}
-aspectRatio={9/16}
+	src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4cfc48a5e05d952dd2c2_IPFS.png"
+	alt="bueno graphic"
+	width={1920}
+	aspectRatio={9 / 16}
 />
 
 Rather than straight up and down, IPFS is up, down, and side to side. IPFS is a decentralized network of nodes that share content with each other. If we imagine a Twitter run on IPFS, every user would have their own IPFS node that would upload data to the network, and as it is requested by other users, the data is passed from node to node. Rather than one company holding and owning that data, everyone owns that data. IPFS gives users the ability to own their data.
 
 <Image
-src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4d182d482c2b9c29f199_IPFS-1.png"
-alt="ipfs node graphic"
-width={1920}
-aspectRatio={16/9}
+	src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4d182d482c2b9c29f199_IPFS-1.png"
+	alt="ipfs node graphic"
+	width={1920}
+	aspectRatio={16 / 9}
 />
 
-## How does IPFS protect your NFTs? 
+## How does IPFS protect your NFTs?
 
 When you share a file through IPFS, the file is run through a cryptographic algorithm that gives you something called the Content Identifier, or “CID” for short. This CID plays a huge part in how IPFS works and operates, and it looks something like this:
 
@@ -58,7 +58,7 @@ When you share a file through IPFS, the file is run through a cryptographic algo
 QmRAuxeMnsjPsbwW8LkKtk6Nh6MoqTvyKwP3zwuwJnB2yP
 ```
 
-Every CID is determined by the content of the file, making it completely unique. If you change a picture by even one pixel, it would give you a different CID. This unique identifier makes content verifiable. In our example of an image being swapped out for a poop emoji, it wouldn’t be possible since the two images would have completely different CIDs. Combine this power with blockchain, and you get a reference to an image that is verified and cannot be changed. 
+Every CID is determined by the content of the file, making it completely unique. If you change a picture by even one pixel, it would give you a different CID. This unique identifier makes content verifiable. In our example of an image being swapped out for a poop emoji, it wouldn’t be possible since the two images would have completely different CIDs. Combine this power with blockchain, and you get a reference to an image that is verified and cannot be changed.
 
 As an NFT creator, this is a huge benefit that you can use to reassure your audience. Any NFT that they collect from your collection will be 100% verifiable. Beyond that, the CID makes content portable and addressable.
 

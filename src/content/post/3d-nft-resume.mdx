@@ -5,11 +5,12 @@ description: "Level up your job search with a dynamic app NFT resume that will w
 tags: ["web3", "nfts", "tutorials", "web development"]
 ogImage: "https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/6410b6848afd85df8fe0a193_2023-01-10_How-to-Create_blog-img-tiny.png"
 ---
+
 import { Image } from "@astrojs/image/components";
 import pinnie from "../../assets/pinnie.png";
-import OutLinkButton from "../../components/OutLinkButton.astro"
+import OutLinkButton from "../../components/OutLinkButton.astro";
 
-<OutLinkButton link="https://www.pinata.cloud/blog/resume-app-nft" site="Pinata" image={pinnie} /> 
+<OutLinkButton link="https://www.pinata.cloud/blog/resume-app-nft" site="Pinata" image={pinnie} />{" "}
 
 Despite the current market conditions, web3 jobs are still on the rise. But competition is at an all-time high. Sure you can build a portfolio of projects to help display your skills, but that’s what everyone else is doing too. What can you do to stand out among the crowds of developers out there like yourself? How are you thinking outside the box?
 
@@ -35,13 +36,19 @@ After the design was finished, it was time to build the app. Steve followed Just
 
 As said in Justin’s tutorial, you can use a free Pinata account to do all of this, but to truly harness the full user experience of this app, using a paid account with a Dedicated Gateway will make this app much faster than if you used a public gateway or depended on external sources. Here is an example of the application through Steve’s Dedicated Gateway:
 
-<iframe src="https://stevedsimkins.mypinata.cloud/ipfs/QmdKYQpczE7giv15Yx2tkk1pkbRe862eaLhTR5e7FjhJ8F/index.html" frameborder="0" height="500px" width="100%" class="hidden sm:block" />
+<iframe
+	src="https://stevedsimkins.mypinata.cloud/ipfs/QmdKYQpczE7giv15Yx2tkk1pkbRe862eaLhTR5e7FjhJ8F/index.html"
+	frameborder="0"
+	height="500px"
+	width="100%"
+	class="hidden sm:block"
+/>
 <Image
-src="https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/63bd95503c654e14fc1b3b00_Slide%2016_9%20-%203.png"
-alt="Screenshot of web app"
-width={1920}
-aspectRatio={1/1}
-class="sm:hidden"
+	src="https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/63bd95503c654e14fc1b3b00_Slide%2016_9%20-%203.png"
+	alt="Screenshot of web app"
+	width={1920}
+	aspectRatio={1 / 1}
+	class="sm:hidden"
 />
 
 Awesome! Resume app is done, time to turn it into an NFT. Following the guide, Steve created a simple smart contract to deploy the App NFT in a way that he could keep updating it with new versions, very handy if you ever have an update in experience or education. Also keep in mind you can do your own smart contract customization here to do cool stuff, like mass airdrop your NFT to a list of wallets or ENS addresses!
@@ -50,17 +57,17 @@ With the smart contract tested and ready to go, it was time to prep the metadata
 
 ```json
 {
-  "name": "Steve's App NFT Resume",
-  "description": "A dynamic NFT resume by Steve",
-  "image": "ipfs://QmTa46bKHxcQCBoNt887X2zNJwAHpAZ93hTXDi9KeJeM4W",
-  "animation_url": "https://stevedsimkins.mypinata.cloud/ipfs/QmdKYQpczE7giv15Yx2tkk1pkbRe862eaLhTR5e7FjhJ8F/index.html"
+	"name": "Steve's App NFT Resume",
+	"description": "A dynamic NFT resume by Steve",
+	"image": "ipfs://QmTa46bKHxcQCBoNt887X2zNJwAHpAZ93hTXDi9KeJeM4W",
+	"animation_url": "https://stevedsimkins.mypinata.cloud/ipfs/QmdKYQpczE7giv15Yx2tkk1pkbRe862eaLhTR5e7FjhJ8F/index.html"
 }
 ```
 
 With the metadata.json file complete, Steve uploaded that file to Pinata as well and used the CID as the token URI like so:
 
 ```javascript
-const URI = "ipfs://QmU85vmit8ShrUpnJFg3wEAMA61GcQB2X5KcgabchDV1kt"
+const URI = "ipfs://QmU85vmit8ShrUpnJFg3wEAMA61GcQB2X5KcgabchDV1kt";
 ```
 
 That’s it! After Steve ran the deployment command with Hardhat, the NFT had been minted in his wallet where we could see it on OpenSea! [Check it out](https://testnets.opensea.io/assets/goerli/0x45602432657d8100119e8633b677043b9022c22b/1) 😎

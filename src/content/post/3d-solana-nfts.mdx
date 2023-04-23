@@ -7,10 +7,14 @@ ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*5vzpNGiQSZqe1
 ---
 
 import { Image } from "@astrojs/image/components";
-import medium from "../../assets/medium.png"
-import OutLinkButton from "../../components/OutLinkButton.astro"
+import medium from "../../assets/medium.png";
+import OutLinkButton from "../../components/OutLinkButton.astro";
 
-<OutLinkButton link="https://medium.com/pinata/how-to-scan-and-create-1-1-3d-nfts-on-solana-using-polycam-and-pinata-df513dd87937" site="Medium" image={medium} />
+<OutLinkButton
+	link="https://medium.com/pinata/how-to-scan-and-create-1-1-3d-nfts-on-solana-using-polycam-and-pinata-df513dd87937"
+	site="Medium"
+	image={medium}
+/>
 
 The growth and evolution of NFTs has come a long way from the early days. Some of the early NFT projects were simple .png files or a link to a YouTube video, but now they are an entire industry that consumes brand, utility, even augmented reality. Metaverses, 3D objects, and other virtual reality experiences are all the rage, and I firmly believe we will see more of this in the near future.
 
@@ -34,43 +38,88 @@ For this tutorial I’m going to scan my desk space using the LiDAR method, and 
 
 With the video below you can get glimpse of how the LiDAR scanner maps over surfaces. Taking it real slow and covering every angle really helps with scanning environments.
 
-<div style="padding:216.22% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/703877466?h=9659ba4952" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:216.22% 0 0 0;position:relative;">
+	<iframe
+		src="https://player.vimeo.com/video/703877466?h=9659ba4952"
+		style="position:absolute;top:0;left:0;width:100%;height:100%;"
+		frameborder="0"
+		allow="autoplay; fullscreen; picture-in-picture"
+		allowfullscreen
+	></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 After you’re done scanning there will be a processing step that will take all the data and map it into a 3D environment!
 
-<div style="padding:216.22% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/703880632?h=52b5f574b7" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:216.22% 0 0 0;position:relative;">
+	<iframe
+		src="https://player.vimeo.com/video/703880632?h=52b5f574b7"
+		style="position:absolute;top:0;left:0;width:100%;height:100%;"
+		frameborder="0"
+		allow="autoplay; fullscreen; picture-in-picture"
+		allowfullscreen
+	></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 Once it’s processed you can go ahead and view the 3D model/environment! Polycam really is first class; you can create videos, you can view the model in Augmented Reality, it just has so many awesome features! My model isn’t the cleanest since I have so many small detailed objects on my desk, but for something a bit simpler this feature is amazing.
 
-<div style="padding:216.22% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/703884780?h=de95c5de7a" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:216.22% 0 0 0;position:relative;">
+	<iframe
+		src="https://player.vimeo.com/video/703884780?h=de95c5de7a"
+		style="position:absolute;top:0;left:0;width:100%;height:100%;"
+		frameborder="0"
+		allow="autoplay; fullscreen; picture-in-picture"
+		allowfullscreen
+	></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 Now that we got our model, we can upload it to the cloud and look at it through our web browser! Just click on the little cloud icon on the top of the screen when viewing your model and it will be uploaded to your cloud storage with Polycam.
 
 Once viewing it in the web browser, we can download the model by clicking “export.”
 
 <Image
-src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Olex5OAd3sMaugwF_iWGig.png"
-alt="screenshot of room capture"
-width={1920}
-aspectRatio={16/9}
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Olex5OAd3sMaugwF_iWGig.png"
+	alt="screenshot of room capture"
+	width={1920}
+	aspectRatio={16 / 9}
 />
 
 From there we want to select the GLTF format and start the download!
 
 <Image
-src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*0z9cGRbGbAWoflqk7rU0yw.png"
-alt="screenshot of aerial export screen"
-width={1920}
-aspectRatio={16/9}
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*0z9cGRbGbAWoflqk7rU0yw.png"
+	alt="screenshot of aerial export screen"
+	width={1920}
+	aspectRatio={16 / 9}
 />
 
 Ok so we got our 3D file for our environment, now lets do some 3D objects as well! The process is pretty similar, except for 3D objects we’ll switch to the “photo” mode instead of the LiDAR mode. The photo mode will take a bunch of different pictures and put them together to make a 3D model! In the video below you can see what the process looks like as I scan one of my prized possessions, a 1930's edition of Moby Dick illustrated by Rockwell Kent.
 
-<div style="padding:216.22% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/704181596?h=92cada3864" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:216.22% 0 0 0;position:relative;">
+	<iframe
+		src="https://player.vimeo.com/video/704181596?h=92cada3864"
+		style="position:absolute;top:0;left:0;width:100%;height:100%;"
+		frameborder="0"
+		allow="autoplay; fullscreen; picture-in-picture"
+		allowfullscreen
+	></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 Once we finish scanning the book, I like to select the higher end of the quality allowance, and I like to use the object masking to get all the fine details. These photo mode objects are a bit more work, so when you take one Polycam sends it off to a server for higher powered processing. Due to how intense the work is, you can only take 150 of these a month, but I don’t think that will be an issue for most people. Once they finish processing it, the model looks like this!
 
-<div style="padding:216.22% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/704185926?h=2a929c3d73" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:216.22% 0 0 0;position:relative;">
+	<iframe
+		src="https://player.vimeo.com/video/704185926?h=2a929c3d73"
+		style="position:absolute;top:0;left:0;width:100%;height:100%;"
+		frameborder="0"
+		allow="autoplay; fullscreen; picture-in-picture"
+		allowfullscreen
+	></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 The download process looks exactly the same as we did the desk, very easy! Also while you’re still in Polycam, you can edit, adjust, crop, etc. your model all inside their app or website, so that way when the model is exported it’s ready to be turned into an NFT!
 
@@ -89,10 +138,10 @@ There’s a lot of great benefits of using IPFS for NFTs, such as [content addre
 Let’s log into Pinata and upload our file. Really simple, just click on the upload button in the top left, give it a name, and upload!
 
 <Image
-src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*v-x8ltZQ0ep6vlmqoPn2WA.png"
-alt="uploading screen at pinata"
-width={1920}
-aspectRatio={16/9}
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*v-x8ltZQ0ep6vlmqoPn2WA.png"
+	alt="uploading screen at pinata"
+	width={1920}
+	aspectRatio={16 / 9}
 />
 
 Then we just need to choose a subdomain and make sure its available. If it is, click next!
@@ -119,36 +168,36 @@ Then open up that pinnie.json file in your text editor of choice. Since we’re 
 
 ```json
 {
-  "name": "3D Pinnie",
-  "symbol": "PIN",
-  "description": "A 3D scan of Pinnie taken with Polycam",
-  "seller_fee_basis_points": 0,
-  "image": "null",
-  "animation_url": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
-  "external_url": "https://pinata.cloud",
-  "collection": {
-     "name": "Pinnie's 3D NFTs",
-     "family": "3D NFTs"
-  },
-  "properties": {
-    "files": [
-      {
-        "uri": "null",
-        "type": "image/png"
-      },
-      {
-        "uri": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
-        "type": "vr/glb"
-      }
-    ],
-    "category": "3D",
-    "creators": [
-      {
-        "address": "D8KLFUfnRwGsMt6n56FzkyRYmVUQXiRnJWFV7rZYCYdd",
-        "share": 100
-      }
-    ]
-  }
+	"name": "3D Pinnie",
+	"symbol": "PIN",
+	"description": "A 3D scan of Pinnie taken with Polycam",
+	"seller_fee_basis_points": 0,
+	"image": "null",
+	"animation_url": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
+	"external_url": "https://pinata.cloud",
+	"collection": {
+		"name": "Pinnie's 3D NFTs",
+		"family": "3D NFTs"
+	},
+	"properties": {
+		"files": [
+			{
+				"uri": "null",
+				"type": "image/png"
+			},
+			{
+				"uri": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
+				"type": "vr/glb"
+			}
+		],
+		"category": "3D",
+		"creators": [
+			{
+				"address": "D8KLFUfnRwGsMt6n56FzkyRYmVUQXiRnJWFV7rZYCYdd",
+				"share": 100
+			}
+		]
+	}
 }
 ```
 
@@ -156,8 +205,8 @@ Couple of things you’ll want to take note here. We could use an image URL if y
 
 ```json
 {
-  "uri": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
-  "type": "vr/glb"
+	"uri": "https://pinnieblog.mypinata.cloud/ipfs/QmWmcX9ikvNTJtCmuX9oWiUvTABQZ6tC6UARqa7ozBh2Ry?filename=Pinnie.glb",
+	"type": "vr/glb"
 }
 ```
 

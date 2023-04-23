@@ -6,20 +6,25 @@ tags: ["web3", "ipfs", "nfts", "tech philosophy"]
 ogImage: "https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/6410b46677b05b001afa5ff4_2022-02-10_The-Power-of_blog-img-tiny.png"
 ---
 
-import pinnie from "../../assets/pinnie.png"
-import OutLinkButton from "../../components/OutLinkButton.astro"
+import pinnie from "../../assets/pinnie.png";
+import OutLinkButton from "../../components/OutLinkButton.astro";
 
-<OutLinkButton link="https://www.pinata.cloud/blog/the-power-of-dedicated-gateways" site="Pinata" image={pinnie} />
-
+<OutLinkButton
+	link="https://www.pinata.cloud/blog/the-power-of-dedicated-gateways"
+	site="Pinata"
+	image={pinnie}
+/>
 
 ## What are IPFS Gateways?
 
 f you're in the business of creating NFTs then you are probably familiar with the InterPlanetary File System also known as IPFS. It's an incredibly powerful protocol that allows creators to host content too large for blockchains on a decentralized peer-to-peer network, leveraging cryptography to ensure content is immutable. This is ideal for NFT projects that want to decentralize their NFT media and make sure it does not change over time. IPFS also allows creators to take ownership of their content and how they share it. What most people don't understand is how IPFS and HTTP communicate to each other.
 
-For instance, I have a cool html page that uses 3D libraries and creates a spinning cube. I pinned it to IPFS using Pinata which gave me a content identifier: ```QmTz8mgtvkf8fG8es5i6vr4LX7dd9vnk1XVtB6ScVuCepr```. A content identifier, or CID for short, is how we can reference content on IPFS. The direct link to that file via IPFS is 
+For instance, I have a cool html page that uses 3D libraries and creates a spinning cube. I pinned it to IPFS using Pinata which gave me a content identifier: `QmTz8mgtvkf8fG8es5i6vr4LX7dd9vnk1XVtB6ScVuCepr`. A content identifier, or CID for short, is how we can reference content on IPFS. The direct link to that file via IPFS is
+
 ```
 ipfs://QmTz8mgtvkf8fG8es5i6vr4LX7dd9vnk1XVtB6ScVuCepr
 ```
+
 If you paste that link into your browser, chances are you are not going to pull anything up or you'll get a random google search. However, if you have an IPFS node running or you’re using a browser with built-in native IPFS support, then you would actually see something. Why is this?
 
 n order to see content on the IPFS protocol, you have to participate. By running a local IPFS node you can be part of the network, receiving and sending blocks of data that are hosted on the network. In turn you can view and pin your own files, too.
@@ -36,7 +41,7 @@ https://pinnieblog.mypinata.cloud/ipfs/QmTz8mgtvkf8fG8es5i6vr4LX7dd9vnk1XVtB6ScV
 
 You got the cube right? I took the CID that was already hosted on IPFS and then fed it through a Dedicated Gateway to see the file!
 
-Notice that I said "Dedicated Gateway." There are two types of gateways, private (dedicated) and public. Public gateways are convenient since they are available to everyone, and even built into Pinata's file manager so you can see your content without an IPFS node. However, it's important to note that IPFS is a public network, which means that it can be viewed or used by anyone.  This can become a problem because gateways are still managed on traditional servers. Too much traffic without the right infrastructure could cause a failure, so most public gateways will not serve too much content at once by utilizing rate limits. Public gateways are also not very fast and can take a while to load content. These public gateways can be a good service for testing IPFS content, but not ideal for serving large amounts of data.
+Notice that I said "Dedicated Gateway." There are two types of gateways, private (dedicated) and public. Public gateways are convenient since they are available to everyone, and even built into Pinata's file manager so you can see your content without an IPFS node. However, it's important to note that IPFS is a public network, which means that it can be viewed or used by anyone. This can become a problem because gateways are still managed on traditional servers. Too much traffic without the right infrastructure could cause a failure, so most public gateways will not serve too much content at once by utilizing rate limits. Public gateways are also not very fast and can take a while to load content. These public gateways can be a good service for testing IPFS content, but not ideal for serving large amounts of data.
 
 This is where Dedicated Gateways step in! At Pinata, we want to provide blazing fast delivery of your content, and so our engineering team has developed an infrastructure which allows us to do exactly that.
 
