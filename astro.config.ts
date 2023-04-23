@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
-import nordTheme from "./nord.json";
+import catppuccinTheme from "./catppuccin.json";
 
 // https://astro.build/config
 import partytown from "@astrojs/partytown";
@@ -16,7 +16,7 @@ export default defineConfig({
   site: "https://stevedsimkins.dev",
   markdown: {
     shikiConfig: {
-      theme: nordTheme,
+      theme: catppuccinTheme,
       wrap: true
     }
   },
