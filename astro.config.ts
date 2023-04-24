@@ -6,10 +6,12 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import catppuccinTheme from "./catppuccin.json";
 
-// https://astro.build/config
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+
+// https://astro.build/config
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,5 +37,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
     }
-  }
+  },
+  output: "server",
+  adapter: vercel({
+    analytics: true
+  })
 });
