@@ -11,7 +11,7 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,7 +38,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"]
     }
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     analytics: true
   })
