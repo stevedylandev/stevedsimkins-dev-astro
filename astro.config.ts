@@ -6,8 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import catppuccinTheme from "./catppuccin.json";
 
-import partytown from "@astrojs/partytown";
-
 // https://astro.build/config
 
 // https://astro.build/config
@@ -28,11 +26,7 @@ export default defineConfig({
     }
   }), image({
     serviceEntryPoint: "@astrojs/image/sharp"
-  }), sitemap(), prefetch(), partytown({
-    config: {
-      forward: ["dataLayer.push"]
-    }
-  })],
+  }), sitemap(), prefetch()],
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
