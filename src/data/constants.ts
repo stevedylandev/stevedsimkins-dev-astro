@@ -21,7 +21,7 @@ export const MENU_LINKS = [
 export const SOCIAL_LINKS = {
 	github: "https://github.com/stevedylandev",
 	twitter: "https://twitter.com/stevedylandev",
+	youtube: "https://youtube.com/@stevedylandev",
+	twitch: "https://twitch.tv/stevedylandev",
 	medium: "https://medium.com/@stevedylandev",
-	linkedin: "https://linkedin.com/in/steve-simkins",
-	ethereum: "https://rainbow.me/stevedsimkins.eth",
 };
