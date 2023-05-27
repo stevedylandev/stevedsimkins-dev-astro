@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
-import catppuccinTheme from "./catppuccin.json";
+import gruvboxMaterial from "./gruvbox-material.json";
 
 // https://astro.build/config
 
@@ -13,10 +13,10 @@ import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://stevedsimkins.dev",
+  site: "https://stevedylan.dev",
   markdown: {
     shikiConfig: {
-      theme: catppuccinTheme,
+      theme: gruvboxMaterial,
       wrap: true
     }
   },

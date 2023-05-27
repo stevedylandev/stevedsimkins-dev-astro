@@ -36,23 +36,23 @@ const ogOptions: SatoriOptions = {
 };
 
 const markup = (title: string, pubDate: string, description: string) => html`<div
-	tw="flex flex-col w-full h-full bg-[#000000] text-[#FFFFFF]"
+	tw="flex flex-col w-full h-full bg-[#141617] text-[#ddc7a1]"
 >
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>
 		<h1 tw="text-6xl font-bold leading-snug text-white">${title}</h1>
 		<h2 tw="text-2xl font-bold leading-snug text-white">${description}</h2>
 	</div>
-	<div tw="flex items-center justify-between w-full p-10 border-t border-[#74c7ec] text-xl">
+	<div tw="flex items-center justify-between w-full p-10 border-t border-[#7c6f64] text-xl">
 		<div tw="flex items-center">
 			<svg height="60" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
 				<path
 					d="M20.1465 448.094H479L350.926 226.37L311.281 258.273L275.108 232.751L249.573 258.273L215.528 232.751L193.185 258.273L151.291 221.053L20.1465 448.094Z"
-					fill="#74c7ec"
+					fill="#7c6f64"
 				/>
 				<path
 					d="M249.573 50.9053L151.291 221.053L193.185 258.273L215.528 232.751L249.573 258.273L275.108 232.751L311.281 258.273L350.926 226.37L249.573 50.9053Z"
-					fill="#FFFFFF"
+					fill="#a89984"
 				/>
 				<path
 					d="M151.291 221.053L20.1465 448.094H479L350.926 226.37M151.291 221.053L249.573 50.9053L350.926 226.37M151.291 221.053L193.185 258.273L215.528 232.751L249.573 258.273L275.108 232.751L311.281 258.273L350.926 226.37"

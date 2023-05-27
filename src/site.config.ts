@@ -6,7 +6,7 @@ const siteMeta = {
 	ogLocale: "en_GB",
 	githubUrl: "https://github.com/stevedsimkins/stevedsimkins-dev-astro",
 	themeColorLight: "#edeff3",
-	themeColorDark: "#2e3440",
+	themeColorDark: "#1e2021",
 };
 
 export default siteMeta;
