@@ -11,6 +11,7 @@
 		"format": "prettier -w ./src ./src/**/*.astro"
 	},
 	"devDependencies": {
+		"@astro-community/astro-embed-youtube": "^0.2.2",
 		"@astrojs/image": "^0.13.0",
 		"@astrojs/mdx": "^0.15.1",
 		"@astrojs/sitemap": "^1.0.0",

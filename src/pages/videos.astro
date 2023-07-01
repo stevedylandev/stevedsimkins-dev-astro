@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/Base";
+import { YouTube } from "@astro-community/astro-embed-youtube";
 
 const meta = {
 	title: "Videos",
@@ -11,12 +12,12 @@ const meta = {
 	<div class="space-y-6">
 		<h1 class="title">Videos</h1>
 		<p>Here are some samples of video content I've produced to help users!</p>
-		<iframe
-			class="h-full w-full md:h-96"
-			src="https://www.youtube.com/embed/YQMktd0llOo"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen></iframe>
+		<YouTube id="lhJwEckGi4U" />
+		<YouTube id="f3G9qY_zZq4"/>
+		<YouTube id="aBaDnCecFRA" />
+		<YouTube id="cD0cPt8BXQw" />
+		<YouTube id="xsmx29Htw8o" />
+		<YouTube id="3_5jdgiCrXI" />
+		<YouTube id="YQMktd0llOo" />
 	</div>
 </PageLayout>
