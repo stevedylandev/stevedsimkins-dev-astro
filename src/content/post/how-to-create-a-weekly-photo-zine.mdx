@@ -1,0 +1,157 @@
+---
+title: "How To Create a Weekly Photo Zine"
+publishDate: "08 June 2023"
+description: "Learn how to use ChatGPT and Pinata to make a custom web photo zine with zero developer experience"
+tags: ["web development", "ai", "chatgpt"]
+ogImage: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2Ym-4FvWAD65UiaTVZ67uA@2x.png"
+---
+
+import { Image } from "@astrojs/image/components";
+import medium from "../../assets/medium.png";
+import OutLinkButton from "../../components/OutLinkButton.astro";
+import { YouTube } from "@astro-community/astro-embed-youtube";
+
+<OutLinkButton
+	link="https://medium.com/pinata/how-to-create-a-weekly-photo-zine-9f592e7a5ae2"
+	site="Medium"
+	image={medium}
+/>
+
+It’s no secret that AI has revolutionized the tech space, and we’ve already seen some incredible things made with it. ChatGPT was one that immediately proved valuable to everyday people, being capable of answering any kind of question, have an ongoing conversation, and do things you never could before. Beyond that, AI is quickly becoming a tool to democratize the creation of web content.
+
+<YouTube id="3_5jdgiCrXI" />
+
+Typically, if you want a custom web experience you would either need to hire a professional agency, perhaps get half way with a website builder, or learn to code yourself. But, that may not be the case soon. With AI the average person can ask the right questions and create elementary web content for their brand. In this guide, I’ll show you how to create a simple photo zine using ChatGPT and Pinata and how to update it on a weekly basis. Or, watch the video tutorial above.
+
+## Pinata
+
+First, you’ll want to sign up for an account with Pinata. I would recommend choosing the Picnic plan for this project as we will utilize its speed and flexibility for hosting our content. Once you have an account, you’ll want to start uploading all your images to be used for the zine. In this demo I’ve selected some of my favorite images from a trip I took a few years ago.
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*DIwVzCaXQliVmZNmaBmlDQ@2x.png"
+	alt="Pinata Add Files"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+Once you have your content uploaded, you can click on the preview button to see your photo. Copy the URL for that image and paste it somewhere for later and repeat the process for however much content you want to put in your zine.
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*fOoOKMn_texWENXvLbyUwg@2x.png"
+	alt="Pinata Preview"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+## ChatGPT
+
+After you have done this it’s time to visit [ChatGPT](https://chat.openai.com). I would recommend starting with a prompt that tells ChatGPT who it is and what it will help you with, and ask if it has any questions. This will help set you up to make sure you have all the ground covered. Here is an example of what I said to start:
+
+```
+You are a mobile web developer. You have complete understanding of being able to prompt
+ChatGPT. You will guide me through building a webpage. What questions do you have?
+```
+
+It will respond with several questions, so simply provide the answers like you see below.
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*al2t7LEUktAmcd2qKSDikA@2x.png"
+	alt="ChatGPT Response"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+Below my last answer I went ahead and gave ChatGPT the content of text and image links, and just like that it generated the html content to start with. If it doesn’t finish generating all the code at once, you can click “continue generating” and it will keep going where it left off. Also be sure it includes all your content, make sure it knows you have zero programming knowledge and it needs to write everything on its own. Once it does this there should be a copy button at the top of the code box, so go ahead and click that:
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*vWdVJTZgck3BBA5oqHF0-g@2x.png"
+	alt="ChatGPT Response"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+## Replit
+
+Now to actually paste our code and see what it does, we will be using an online code editor called [Replit](https://replit.com). Just sign up for a free account, and in the top right corner you will want to click “Create Repl.”
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*d6dOx50styHgfdzVUSkPcQ@2x.png"
+	alt="New Repl"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+After that you will want to select the HTML, CSS, and Javascript template and give your project a name.
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*6DZYT_oYQ-3ejp4rmRa_ZA@2x.png"
+	alt="Choose repl template"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+Once you’re in your repl project, delete out the starter HTML and paste in your own code from ChatGPT, then hit CMD/CTR + S to save it. After that you should see on the right side your project:
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Ve3BV5meR4oHFcPhKmaBuw@2x.png"
+	alt="Repl screen"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+You can also change the size of your webview by clicking and dragging the pane to shrink it more towards a mobile view if that’s what you’re after.
+
+Now your project will likely not be perfect right out of the gate, and you will want to make some changes. Since ChatGPT keeps that conversation history, you can go back and forth with it for the changes you want.
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*kJwlNIUnxBRselpxW8f-ig@2x.png"
+	alt="ChatGPT Adjustments"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+The key is to make sure you are precise in what changes you want, and that ChatGPT gives you the updated code afterwards. Once you’ve gotten your zine looking the way you want it, click on the little dropdown arrow next to the index.html file and click “Download.”
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*29kNYSjhvijup06Mi6OeOA@2x.png"
+	alt="Download HTML"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+After you have download the file, go ahead and upload it to Pinata just like you did for your image files. Then just click on that file to see your zine. You can view mine with this link:
+
+[A Venture to the North East](https://stevedylanphoto.mypinata.cloud/ipfs/QmWAUQfKhJ19kZqcJLP6nPbHFRToiaFquGJ71gJEA4cRVT)
+
+![Gif of zine](https://miro.medium.com/v2/resize:fit:1124/1*3XuUbuzy-CZAB-78TR-tTQ.gif)
+
+## Gateway tip
+
+Now here’s the bonus info: if you wanted to make this a weekly update, Pinata provides a pretty neat way to do that. First you would of course need to give ChatGPT your code and the update content and it could swap it out for you (or you could even take your hand at changing it in Replit!), and once you have uploaded the new index.html to Pinata, you can click on the “more” button next to the file and select “Set gateway as a root”
+
+<Image
+	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*kZZWMcyP0tjhGDU_pCZj-w@2x.png"
+	alt="Set gateway as root"
+	width={1920}
+	aspectRatio={16 / 9}
+/>
+
+What this will do is redirect my base url “https://stevedylanphoto.mypinata.cloud” to the new index.html file that was uploaded. I could keep updating it with each new file every week with a new photo zine, as well as improve it over time. Of course if you don’t like the “mypinata.cloud” domain for your zine, you could very easily use your own domain like “stevephotozine.com” and it would work exactly the same. My personal photography website is stevedylanphoto.com, so I just used “zine.stevedylanphoto.com” as a dedicated domain for this zine. Check it out:
+
+[zine.stevedylanphoto.com](https://zine.stevedylanphoto.com)
+
+We’re excited to see what you’ll make using these tools.
+
+## Pinata Links:
+
+[Explore our plans and start building today!](https://www.pinata.cloud/pricing?utm_source=medium&utm_medium=referral&utm_campaign=photo_zine_blog)
+
+[Twitter](https://twitter.com/pinatacloud)
+
+[Instagram](https://www.linkedin.com/company/pinatacloud)
+
+[YouTube](https://www.youtube.com/c/Pinatacloud)
+
+[Website](https://www.pinata.cloud/)
+
+[Discord](https://discord.gg/pinata)
