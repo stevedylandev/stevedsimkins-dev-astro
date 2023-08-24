@@ -30,10 +30,16 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
-    }
+    },
+    define: {
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+    },
   },
   output: "static",
   adapter: vercel({
     analytics: true
-  })
+  }),
+  experimental: {
+    viewTransitions: true,
+  },
 });
