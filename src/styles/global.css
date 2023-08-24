@@ -2,23 +2,23 @@
 @layer base {
 	:root {
 		color-scheme: light;
-		--theme-bg: #f9f5d7;
-		--theme-link: #6c782e;
-		--theme-text: #4f3829;
-		--theme-accent: #a96b2c;
-		--theme-accent-2: #4f3829;
-		--theme-quote: #a96b2c;
+		--theme-bg: #fffaf3;
+		--theme-link: #286983;
+		--theme-text: #575279;
+		--theme-accent: #286983;
+		--theme-accent-2: #575279;
+		--theme-quote: #286983;
 		--theme-menu-bg: rgb(250 250 250 / 0.85);
 	}
 
 	:root.dark {
 		color-scheme: dark;
-		--theme-bg: #141617;
-		--theme-link: #ea6962;
-		--theme-text: #ddc7a1;
-		--theme-accent: #d8a658;
-		--theme-accent-2: #ddc7a1;
-		--theme-quote: #d8a658;
+		--theme-bg: #191724;
+		--theme-link: #31748f;
+		--theme-text: #e0def4;
+		--theme-accent: #c4a7e7;
+		--theme-accent-2: #e0def4;
+		--theme-quote: #c4a7e7;
 		--theme-menu-bg: rgb(40, 40, 40 / 0.85);
 	}
 

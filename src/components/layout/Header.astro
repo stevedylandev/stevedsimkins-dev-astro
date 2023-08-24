@@ -27,37 +27,12 @@ const url = new URL(Astro.request.url);
 			href="/"
 			class="inline-flex items-center sm:relative sm:inline-block"
 			aria-current={url.pathname === "/" ? "page" : false}
-		>
-			<svg
-				class="mr-3 h-10 w-6 sm:absolute sm:left-[-4.5rem] sm:mr-0 sm:h-20 sm:w-12"
-				aria-hidden="true"
-				focusable="false"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 400 400"
-			>
-				<title>Logo</title>
-				<svg
-					width="387"
-					height="334"
-					viewBox="0 0 387 334"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M6.80859 330H379.955L275.803 149.691L243.564 175.635L214.147 154.88L193.382 175.635L165.695 154.88L147.526 175.635L113.457 145.367L6.80859 330Z"
-						fill="#7c6f64"></path>
-					<path
-						d="M193.382 7L113.457 145.367L147.526 175.635L165.695 154.88L193.382 175.635L214.147 154.88L243.564 175.635L275.803 149.691L193.382 7Z"
-						fill="#a89984"></path>
-					<path
-						d="M113.457 145.367L6.80859 330H379.955L275.803 149.691M113.457 145.367L193.382 7L275.803 149.691M113.457 145.367L147.526 175.635L165.695 154.88L193.382 175.635L214.147 154.88L243.564 175.635L275.803 149.691"
-						stroke="black"
-						stroke-width="7"></path>
-					<line x1="206.608" y1="101.617" x2="230.392" y2="142.787" stroke="black" stroke-width="5"
-					></line>
-				</svg>
-			</svg>
+      >
+
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-3 h-10 w-6 sm:absolute sm:left-[-4.5rem] sm:mr-0 sm:h-20 sm:w-12">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+      </svg>
+
 			<span class="text-xl font-bold sm:text-2xl">Steve Simkins</span>
 		</a>
 		<nav

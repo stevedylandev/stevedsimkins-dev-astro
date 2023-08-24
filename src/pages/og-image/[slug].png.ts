@@ -7,36 +7,36 @@ import siteConfig from "@/site-config";
 import { getFormattedDate } from "@/utils";
 
 const monoFontReg = await fetch(
-	"https://api.fontsource.org/v1/fonts/roboto-mono/latin-400-normal.ttf"
+  "https://api.fontsource.org/v1/fonts/roboto-mono/latin-400-normal.ttf"
 );
 
 const monoFontBold = await fetch(
-	"https://api.fontsource.org/v1/fonts/roboto-mono/latin-700-normal.ttf"
+  "https://api.fontsource.org/v1/fonts/roboto-mono/latin-700-normal.ttf"
 );
 
 const ogOptions: SatoriOptions = {
-	width: 1200,
-	height: 630,
-	// debug: true,
-	embedFont: true,
-	fonts: [
-		{
-			name: "Roboto Mono",
-			data: await monoFontReg.arrayBuffer(),
-			weight: 400,
-			style: "normal",
-		},
-		{
-			name: "Roboto Mono",
-			data: await monoFontBold.arrayBuffer(),
-			weight: 700,
-			style: "normal",
-		},
-	],
+  width: 1200,
+  height: 630,
+  // debug: true,
+  embedFont: true,
+  fonts: [
+    {
+      name: "Roboto Mono",
+      data: await monoFontReg.arrayBuffer(),
+      weight: 400,
+      style: "normal",
+    },
+    {
+      name: "Roboto Mono",
+      data: await monoFontBold.arrayBuffer(),
+      weight: 700,
+      style: "normal",
+    },
+  ],
 };
 
 const markup = (title: string, pubDate: string, description: string) => html`<div
-	tw="flex flex-col w-full h-full bg-[#141617] text-[#ddc7a1]"
+	tw="flex flex-col w-full h-full bg-[#191724] text-[#e0def4]"
 >
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>
@@ -45,43 +45,31 @@ const markup = (title: string, pubDate: string, description: string) => html`<di
 	</div>
 	<div tw="flex items-center justify-between w-full p-10 border-t border-[#7c6f64] text-xl">
 		<div tw="flex items-center">
-			<svg height="60" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-				<path
-					d="M20.1465 448.094H479L350.926 226.37L311.281 258.273L275.108 232.751L249.573 258.273L215.528 232.751L193.185 258.273L151.291 221.053L20.1465 448.094Z"
-					fill="#7c6f64"
-				/>
-				<path
-					d="M249.573 50.9053L151.291 221.053L193.185 258.273L215.528 232.751L249.573 258.273L275.108 232.751L311.281 258.273L350.926 226.37L249.573 50.9053Z"
-					fill="#a89984"
-				/>
-				<path
-					d="M151.291 221.053L20.1465 448.094H479L350.926 226.37M151.291 221.053L249.573 50.9053L350.926 226.37M151.291 221.053L193.185 258.273L215.528 232.751L249.573 258.273L275.108 232.751L311.281 258.273L350.926 226.37"
-					stroke="black"
-					stroke-width="7"
-				/>
-				<line x1="265.341" y1="167.541" x2="294.587" y2="218.169" stroke="black" stroke-width="5" />
-			</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" height="60">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+      </svg>
 			<p tw="ml-3 font-semibold text-3xl">${siteConfig.title}</p>
 		</div>
 	</div>
 </div>`;
 
 export async function get({ params: { slug } }: APIContext) {
-	const post = await getEntryBySlug("post", slug!);
-	const title = post?.data.title ?? siteConfig.title;
-	const postDate = getFormattedDate(post?.data.publishDate ?? Date.now(), {
-		weekday: "long",
-	});
-	const description = post?.data.description ?? siteConfig.title;
-	const svg = await satori(markup(title, postDate, description), ogOptions);
-	const png = new Resvg(svg).render().asPng();
-	return {
-		body: png,
-		encoding: "binary",
-	};
+  const post = await getEntryBySlug("post", slug!);
+  const title = post?.data.title ?? siteConfig.title;
+  const postDate = getFormattedDate(post?.data.publishDate ?? Date.now(), {
+    weekday: "long",
+  });
+  const description = post?.data.description ?? siteConfig.title;
+  const svg = await satori(markup(title, postDate, description), ogOptions);
+  const png = new Resvg(svg).render().asPng();
+  return {
+    body: png,
+    encoding: "binary",
+  };
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-	const posts = await getCollection("post");
-	return posts.filter(({ data }) => !data.ogImage).map(({ slug }) => ({ params: { slug } }));
+  const posts = await getCollection("post");
+  return posts.filter(({ data }) => !data.ogImage).map(({ slug }) => ({ params: { slug } }));
 }
