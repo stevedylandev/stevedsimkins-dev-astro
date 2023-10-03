@@ -3,11 +3,11 @@
   "version": "2.1.0",
   "private": false,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "bunx --bun astro dev",
+    "start": "bunx --bun astro dev",
     "sync": "astro sync",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "bunx --bun astro preview",
     "format": "prettier -w ./src ./src/**/*.astro"
   },
   "devDependencies": {
