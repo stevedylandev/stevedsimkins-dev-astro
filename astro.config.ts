@@ -39,7 +39,4 @@ export default defineConfig({
   adapter: vercel({
     analytics: true
   }),
-  experimental: {
-    viewTransitions: true,
-  },
 });
