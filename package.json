@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^5.48.0",
     "astro-eslint-parser": "^0.11.0",
     "autoprefixer": "^10.4.13",
+    "bun-types": "^1.0.4-canary.20231003T140149",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.2",
