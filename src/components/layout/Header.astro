@@ -29,9 +29,20 @@ const url = new URL(Astro.request.url);
 			aria-current={url.pathname === "/" ? "page" : false}
       >
 
-      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-3 h-10 w-6 sm:absolute sm:left-[-4.5rem] sm:mr-0 sm:h-20 sm:w-12">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
-      </svg>
+      <svg
+  key="0"
+  class="mr-3 h-10 w-6 pb-4 sm:absolute sm:left-[-4.5rem] sm:mr-0 sm:h-20 sm:w-12"
+  fill="none"
+  stroke="currentColor"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  strokeWidth="2"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+</svg>
+
 
 			<span class="text-xl font-bold sm:text-2xl">Steve Simkins</span>
 		</a>
@@ -54,7 +65,6 @@ const url = new URL(Astro.request.url);
 			}
 		</nav>
 	</div>
-	<ThemeToggle />
 	<button
 		id="toggle-navigation-menu"
 		class="group relative ml-8 h-7 w-7 sm:invisible sm:hidden"
