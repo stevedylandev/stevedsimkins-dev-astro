@@ -23,5 +23,6 @@ export const SOCIAL_LINKS = {
   twitter: "https://twitter.com/stevedylandev",
   youtube: "https://youtube.com/@stevedylandev",
   ethereum: "https://rainbow.me/stevedylandev.eth",
-  medium: "https://medium.com/@stevedylandev",
+  farcaster: "https://warpcast.com/stevedylandev.eth",
+  medium: "https://medium.com/@stevedylandev"
 };

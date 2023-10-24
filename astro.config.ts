@@ -16,7 +16,7 @@ export default defineConfig({
   site: "https://stevedylan.dev",
   markdown: {
     shikiConfig: {
-      theme: 'rose-pine-moon',
+      theme: 'poimandres',
       wrap: true
     }
   },
