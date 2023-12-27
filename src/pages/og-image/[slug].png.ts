@@ -19,13 +19,13 @@ const ogOptions: SatoriOptions = {
   fonts: [
     {
       name: "Roboto Mono",
-      data: await monoFontReg.buffer(),
+      data: await monoFontReg,
       weight: 400,
       style: "normal",
     },
     {
       name: "Roboto Mono",
-      data: await monoFontBold.buffer(),
+      data: await monoFontBold,
       weight: 700,
       style: "normal",
     },
