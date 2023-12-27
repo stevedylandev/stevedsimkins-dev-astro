@@ -7,9 +7,9 @@ import siteConfig from "@/site-config";
 import { getFormattedDate } from "@/utils";
 import fs from "fs";
 
-const monoFontReg = await fs.readFile("/CommitMono-400-Regular.otf")
+const monoFontReg = await fs.readFileSync("/CommitMono-400-Regular.otf")
 
-const monoFontBold = await fs.readFile("/CommitMono-700-Regular.otf")
+const monoFontBold = await fs.readFileSync("/CommitMono-700-Regular.otf")
 
 const ogOptions: SatoriOptions = {
   width: 1200,
