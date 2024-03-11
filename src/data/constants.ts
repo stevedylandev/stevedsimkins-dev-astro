@@ -26,5 +26,6 @@ export const SOCIAL_LINKS = {
   ethereum: "https://rainbow.me/stevedylandev.eth",
   farcaster: "https://warpcast.com/stevedylandev.eth",
   medium: "https://medium.com/@stevedylandev",
-  linkedin: "https://www.linkedin.com/in/steve-simkins/"
+  linkedin: "https://www.linkedin.com/in/steve-simkins/",
+  website: "/"
 };
