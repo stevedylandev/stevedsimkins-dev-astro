@@ -27,5 +27,6 @@ export const SOCIAL_LINKS = {
   farcaster: "https://warpcast.com/stevedylandev.eth",
   medium: "https://medium.com/@stevedylandev",
   linkedin: "https://www.linkedin.com/in/steve-simkins/",
+  photos: "https://photos.stevedylan.dev",
   website: "/"
 };
