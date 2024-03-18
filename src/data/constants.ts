@@ -15,6 +15,10 @@ export const MENU_LINKS = [
     title: "Videos",
     path: "/videos",
   },
+  {
+    title: "Photos",
+    path: "https://photos.stevedylan.dev"
+  }
 ];
 
 // ! Remember to add your own socials
