@@ -1,7 +1,7 @@
 const siteMeta = {
 	author: "Steve Simkins",
 	title: "Steve Simkins",
-	description: "Developer and Technical Writer",
+	description: "Fullstack Developer | Technical Writer",
 	lang: "en-GB",
 	ogLocale: "en_GB",
 	githubUrl: "https://github.com/stevedsimkins/stevedsimkins-dev-astro",
