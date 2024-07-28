@@ -1,0 +1,21 @@
+---
+const { content } = Astro.props;
+---
+
+<div
+	style={{ borderWidth: "1px" }}
+	class="flex max-w-[500px] cursor-pointer flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-accent-2 transition-all ease-in-out hover:border-accent"
+>
+	<a href={content.link} target="_blank">
+		<img src={content.image} alt="prject image" />
+		<div class="flex flex-col gap-2 p-4">
+			<h2 class="text-2xl font-bold">{content.title}</h2>
+			<p class="">
+				{content.description}
+			</p>
+			<div class="flex gap-2">
+				{content.tags.map((tag) => <p>#{tag}</p>)}
+			</div>
+		</div>
+	</a>
+</div>

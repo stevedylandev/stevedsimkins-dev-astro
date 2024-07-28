@@ -1,6 +1,8 @@
 ---
 import PageLayout from "@/layouts/Base";
 import { SOCIAL_LINKS } from "@/data/constants";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
 
 const meta = {
 	title: "Projects",
@@ -9,21 +11,7 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<div class="flex min-h-screen flex-col items-start justify-start">
-		<div
-			style={{ borderWidth: "1px" }}
-			class="flex max-w-[500px] flex-col items-start justify-start gap-4 overflow-hidden rounded-lg border-accent-2"
-		>
-			<img
-				src="https://opengraph.githubassets.com/bea224ceb63f864db79b28ade01103b5dc537e69003ddcb9664cc50e6dda52c0/PinataCloud/pinata-go-cli"
-				alt="prject image"
-			/>
-			<h2 class="p-2 text-2xl font-bold">Title</h2>
-			<p class="p-2">
-				Description Mollit ea mollit ut velit veniam ut elit non consequat anim officia eiusmod.
-				Nisi dolore dolore officia non exercitation occaecat esse enim anim cillum sit aliquip ea
-				reprehenderit officia.
-			</p>
-		</div>
+	<div class="flex min-h-screen flex-col items-start justify-start gap-6">
+		{projects.map((project) => <ProjectCard content={project} />)}
 	</div>
 </PageLayout>
