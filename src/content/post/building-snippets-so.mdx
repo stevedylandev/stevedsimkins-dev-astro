@@ -16,21 +16,21 @@ import { Image } from "@astrojs/image/components";
 
 "I don't know why this isn't working" is a question I get often, and I usually respond with "could you share your code with me?" Next thing you know I get a cell phone image of someone's fingerprint covered laptop screen with a blur of code on it. I wish this wasn't the first time, and I certainly hope it's the last, but to be honest there was a problem.
 
-I continue to find myself needing to share a code snippet with a user, or needing them to share one with me. Of course there is Pastebin, perhaps the most popular, but its littered with ads and bloat that I hated to use or point people to. There's also Gists, which generally are great, but only if you want them to stick to your Github profile (which I usually don't). On the other side of the spectrum there's [Ray.so](https://ray.so), a beautiful app built by the team at Raycast that generates the best looking images of code you can get. Unfortunately that doesn't always help me if I need to copy and paste the code somewhere.
+I continue to find myself needing to share a code snippet with a user, or needing them to share one with me. Of course there is Pastebin, perhaps the most popular, but it's littered with ads and bloat that I hated to use or point people to. There's also Gists, which generally are great, but only if you want them to stick to your Github profile (which I usually don't). On the other side of the spectrum there's [Ray.so](https://ray.so), a beautiful app built by the team at Raycast that generates the best looking images of code you can get. Unfortunately that doesn't always help me if I need to copy and paste the code somewhere.
 
 This is what led me to build [Snippets.so](https://snippets.so), my take on a cleaner and more efficient way to share code. I wanted the style and ease of Ray.so with the simplicity of Pastebin, and I'm happy with the ground I found in the middle. I decided to take a few moments to share how it was built and some of the unique stack choices I made in hopes that you may find it beneficial, or perhaps use Snippets.so for your own code sharing needs.
 
 ## The Stack
 
-For this app I took a few obvious choices for the stack, but others that might puzzle the majority of developers out there. Let's start right of the bat with the weird one ;)
+For this app I took a few obvious choices for the stack, but others that might puzzle the majority of developers out there. Let's start right off the bat with the weird one ;)
 
 ### IPFS
 
-If you're not familiar the InterPlanetary File System (IPFS), it’s a unique distribute file sharing protocol commonly used along side blockchains. In the app I use it to store JSON files that contain everything I need for each snippet, and its convenient that the CID (Content Identifier) or address to the file works as a unique identifier as well which we'll cover soon. However there are some other benefits I wanted to outline as well.
+If you're not familiar the InterPlanetary File System (IPFS), it’s a unique distribute file sharing protocol commonly used alongside blockchains. In the app I use it to store JSON files that contain everything I need for each snippet, and it's convenient that the CID (Content Identifier) or address to the file works as a unique identifier as well which we'll cover soon. However there are some other benefits I wanted to outline as well.
 
-One of the main reasons blockchain developers use IPFS for their offchain storage is due to it's files being immutable. Once something is on the network it cannot change, and in our case that's very useful. People generally don't need to update a snippet once they share it, and it makes the content ideal for a CDN for high cache hit rates. Once a snippet is loaded at least once, the other requests will be very speedy.
+One of the main reasons blockchain developers use IPFS for their offchain storage is due to immutability. Once something is on the network it cannot change, and in our case that's very useful. People generally don't need to update a snippet once they share it, and it makes the content ideal for a CDN for high cache hit rates. Once a snippet is loaded at least once, the other requests will be very speedy.
 
-Since CIDs are cryptographically determined by the content of the file, uploading the same content will give you the same CID. This prevents any possibility of duplicate storage and taking up unwanted space. Additionally CIDs work both as a content hash and the address to the content. Its a publicly accessible network where anyone can take a CID and access the content through a gateway, which adds a nice layer of interoperability.
+Since CIDs are cryptographically determined by the content of the file, uploading the same content will give you the same CID. This prevents any possibility of duplicate storage and taking up unwanted space. Additionally CIDs work both as a content hash and the address to the content. It's a publicly accessible network where anyone can take a CID and access the content through a gateway, which adds a nice layer of interoperability.
 
 ### Next.js
 
@@ -42,7 +42,7 @@ Undoubtedly the best component library out there, I love every chance I get to u
 
 ## Building the Editor
 
-When it comes to enabling writing in an app beyond just a text area there are lots of library choices out there. For Snippets I went with `@uiw/codemirror` for several reasons. For starters it was pretty easy to use and setup, had it running in no time.
+When it comes to enabling writing in an app beyond just a text area there are many library choices out there. For Snippets I went with `@uiw/codemirror` for several reasons. For starters it was pretty easy to use and setup, had it running in no time.
 
 ```typescript
 import React from 'react';
@@ -100,7 +100,7 @@ export function CodeForm({ readOnly, content }: any) {
 }
 ```
 
-While this library does have several themes to choose from I decided to stick with a light theme (blasphemy I know haha). A simple GitHub light theme with reduced opacity actually does a decent job. Definitely looked into trying to customize it a bit more but the way it handles syntax highlighting isn't as good as something like shiki. Might be something I look into down the road.
+While this library does have several themes to choose from I decided to stick with a light theme (blasphemy I know haha). A simple GitHub light theme with reduced opacity actually does a decent job. Definitely looked into trying to customize it a bit more but the way it handles syntax highlighting isn't as good as something like shiki. This might be something I look into down the road.
 
 <Image
 	src="https://res.cloudinary.com/df9dofjus/image/upload/v1722565204/Screenshot-Arc-08-01-2024-22-17_2x_ad4w7s.png"
@@ -310,4 +310,4 @@ snip helloWorld.ts
 
 ## Wrapping Up
 
-Even though this was a relatively simply project I love how it turned out. I started with the goal of making a better tool that I would use and I did just that. A smile creeps on my face every time I have the chance to use it when helping another developer, and its from the satisfaction of programming away a problem. I truly believe that the most meaningful pieces of code we write are the ones that make our lives just a little bit better, and I can't wait to keep doing just that.
+Even though this was a relatively simply project I love how it turned out. I started with the goal of making a better tool that I would use and I did just that. A smile creeps onto my face every time I have the chance to use it when helping another developer, and its from the satisfaction of programming away a problem. I truly believe that the most meaningful pieces of code we write are the ones that make our lives just a little bit better, and I can't wait to keep doing just that.
