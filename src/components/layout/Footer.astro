@@ -14,17 +14,26 @@ const year = new Date().getFullYear();
 	</div>
 	<nav
 		aria-label="More on this site"
-		class="flex gap-x-1 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+		class="flex gap-x-1 sm:gap-x-0 sm:divide-x sm:divide-gray-500 flex-wrap"
 	>
-		{
-			MENU_LINKS.map((link) => (
-				<a
-					href={link.path}
-					class="sm:hover:text-textColor px-4 py-2 sm:py-0 sm:px-2 sm:hover:underline"
-				>
-					{link.title}
-				</a>
-			))
-		}
+	<a
+		href="/"
+		class="sm:hover:text-textColor px-4 py-2 sm:py-0 sm:px-2 sm:hover:underline"
+	>
+	Home
+	</a>
+	<a
+		href="/blog"
+		class="sm:hover:text-textColor px-4 py-2 sm:py-0 sm:px-2 sm:hover:underline"
+	>
+	Blog
+	</a>
+	<a
+		href="/about"
+		class="sm:hover:text-textColor px-4 py-2 sm:py-0 sm:px-2 sm:hover:underline"
+	>
+	About
+	</a>
+
 	</nav>
 </footer>
