@@ -6,8 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
-
-// https://astro.build/config
 import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
@@ -15,7 +13,7 @@ export default defineConfig({
 	site: "https://stevedylan.dev",
 	markdown: {
 		shikiConfig: {
-			theme: "min-dark",
+			theme: "vitesse-dark",
 			wrap: true,
 		},
 	},
