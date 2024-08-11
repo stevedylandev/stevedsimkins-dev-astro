@@ -44,7 +44,7 @@ export const projects: ProjectItem[] = [
 	{
 		title: "Photocaster",
 		description:
-			"IPFS can unlock for decentralized social media, and Photocaster was built to demonstrate just that. Using the Farcaster protocol the app allows users to scroll through a feed of just images from select photo centered channels, sign in with their account, and upload photos via IPFS. What makes it special is the photo’s full resolution is on IPFS, but a resized copy is put on the Farcaster network. This keeps apps light, but allows anyone on Photocaster to see the full resolution image.",
+			"IPFS can unlock content for decentralized social media, and Photocaster was built to demonstrate just that. Using the Farcaster protocol the app allows users to scroll through a feed of just images from select photo centered channels, sign in with their account, and upload photos via IPFS. What makes it special is the photo’s full resolution is on IPFS, but a resized copy is put on the Farcaster network. This keeps apps light, but allows anyone on Photocaster to see the full resolution image.",
 		image: "https://www.photocaster.xyz/og.png",
 		link: "https://photocaster.xyz",
 		tags: ["farcaster", "ipfs"],
