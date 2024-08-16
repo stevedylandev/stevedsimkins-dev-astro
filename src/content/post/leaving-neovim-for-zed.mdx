@@ -1,0 +1,209 @@
+---
+title: "Leaving Neovim for Zed"
+publishDate: "16 Aug 2024"
+description: "A journey through text editors and how I landed on Zed after years of Neovim"
+tags: ["programming", "developer tools", "neovim", "zed"]
+---
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmSaTFKCoJdjhfebDkUcYDc7NVC3oqxhCzCng9mkJoiqip" alt="cover-image" />
+
+I think every developer has their own text editor journey and how they landed on the tool they use today. Perhaps I'm a geek but I love those stories. I have a great appreciation for developer tools and the work that goes into them. This post is for the other geeks out there that also care, and I hope my journey and perspective can prompt others to experiment and try developer tools outside their comfort zones. You never know what you might land on and how much you might enjoy it!
+
+My text editor journey starts with a faint memory of Atom. I was learning the true fundamentals of HTML CSS and Javascript, and I honestly can't tell you how I landed on Atom as a text editor. I do remember using it for a few weeks, and I kept seeing other people use or mention VSCode, so of course I gave it a shot and used it for a while. However this didn't last long. At the time my wife needed my laptop for her photo editing job, so I used my brother's old Macbook that was holding on for dear life. VSCode's Electron build started taking a noticeable toll on performance, and by chance I also discovered Vim around the same time.
+
+Immediately I was mesmerized by the speed and powers demonstrated by The Primeagen's early videos. I was already a keyboard maximalist from [previous jobs](posts/why-i-learned-vim) where I learned speed = productivity, so it was a no brainer that I had to learn it. Started with the basic motions and Vim tutor, and I had the advantage that I was just learning programming on the side instead of doing it full time. Within a few weeks I was in Vim consistently, writing and learning to code. The tweaking of my Vim RC eventually led to discovering Neovim thanks to [chris@machine](https://www.youtube.com/@chrisatmachine) and his early videos.
+
+For the next several years I stuck with Neovim and I loved it, and I owe a mass amount of my productivity to it. There were countless hours spent configuring it like many of us do. I eventually got to a point where I didn't adjust my config much, but that soon didn't matter.
+## What Changed
+
+Every now and then I would update a plugin in Neovim and everything would break, and I would have to spend time fixing it instead of getting work done. This resulted in slimming down my config more and more, but there was still so much that went into making all the basics work. I stuck with it because it was still better than using VSCode, which I did try for a two week sprint to see if it could be any better. It was also key to a [terminal based workflow](/posts/a-terminal-based-workflow) that other editors couldn't really match.
+
+The sentiment started to shift again not too long ago as I started working in some really large code bases, and boy Neovim was struggling. I would have random hang ups, frozen screens, stuff that just drove me nuts when productivity was king. I tried switching to other terminal emulators too such as Alacritty and Wezterm but it didn’t help much.
+
+This is when Zed came back into my sights. I heard about it months before and even gave it a shot back then, but didn't stick with it because it wasn't a terminal workflow. However it boasted as being fast, and I decided it was worth another shot. Two months later and I've been daily driving it since. I wasn't sure if it would really hold up, but I can say now it has been an amazing experience and I don't see myself going back.
+
+## My Experience with Zed
+
+In order to understand why I eventually settled on Zed we'll look at my general experience with it so far and how I made it work for me.
+
+### It Just Works
+
+One of the biggest things that has stood out to me using Zed so far is how “everything just works.” There are so many features of an IDE or text editor that people take for granted until they have to set it up themselves in something lower level like Neovim. LSP (language server protocol) is certainly one of them. If you’re not familiar it’s the hints or errors that show up while you’re writing up your code, giving you deep insights to your repo on a language level. When you setup LSP in Neovim it’s a lot of work, and sometimes it can be a bit harder to figure out why it might be bugging out. However it does give you way more control and the option to do a lot of customization. With Zed LSP just works. There are configurations you can make to edit some things, but as a whole it just zips out of the box. There are already keybindings for things like “show definition”, “go to definition”, or even code actions. The only downside is outside of an extension you can’t use your own LSP that’s installed on your machine, but there’s always a pretty large language support that I haven’t had this issue yet.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmcHSCCY3jehq2PaZfSR3o3R4qQojb5db1WpmYtJftEGbw" alt="image of LSP" />
+
+Another piece that’s related to LSP is completions. This is when you’re typing some code and get  suggestions for auto completions that quickly fill the rest of the code out. LSPs usually have great auto-completion because they’re aware of the patterns used in that language. Just to be clear we’re not talking about Copilot yet, this is just completions for snippets and LSP. Once again with Zed it just works out of the box, unlike Neovim which ends up requiring several plugins to make it work right.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmXC7XgUQKKejaXba6qRqM5qi1D4gVHMMZuLURJexyjinA" alt="gif of lsp completion" />
+
+Finally there’s Git integrations. What normally required multiple plugins in Neovim is again ready out of the box with Zed, including feature like toggling Git Blame, viewing diffs, and gutter symbols showing the status of edited lines.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmTieQqgCXDRzKUynQwi5tvRBQf6dRkBJVafp69DJPVzYs" alt="git features gif" />
+
+If I had to make a crude comparison, it’s similar to Linux and Apple. Linux will give you far more control over every piece of your software and hardware at the cost of spending time to configure it. Apple will give you less control but it will likely run smoother.
+
+### Speed
+
+Of course one of the biggest reasons I gave Zed a shot was speed, and boy it was worth it. It is noticeably snappy, handles larger codebases like a champ, and I haven’t experienced any lag so far. Normally I wouldn’t recommend building most things in Rust, but this app kinda makes me reconsider. There are so many developer tools written in Rust and perhaps that’s one of its biggest boasts. The team at Zed have really outdone themselves as this app; its truly a work of art.
+
+Could I possibly make neovim faster by adjusting my config? Perhaps, but in the end it’s more time down the drain that I could have used writing code and being productive. For productivity nerds like me I believe there is a delicate scale: how much time I spend automating a task vs how much time the task would have taken without automation. In this case the benefits aren’t worth the cost when there’s a tool like Zed that will do just fine.
+
+### Vim Mode
+
+While in the middle of my time with Neovim I came across other frustrated Neovim users that found themselves spending too much time fixing issues in Neovim to the point they switched to VSCode. Of course I had a few moments like this myself and I wondered if I had missed something. At this point I had a much faster computer, so I figured I would give it another shot. Of course I downloaded the Vim plugin as the Vim keybindings are worth learning no matter what text editor you use, and it was incredibly disappointing. Nothing had every felt so buggy and jagged, and it remained one of the big reasons I couldn't stick with VSCode. I was back in Neovim within a week or two.
+
+When I was considering Zed again I read [a blog post](https://registerspill.thorstenball.com/p/from-vim-to-zed) about the custom Vim mode built into Zed. This was not a third party plugin; this was a labor of love from the developers building Zed. They've made it clear that they don't plan to port absolutely everything to Zed, but they have done a fantastic job supporting the important stuff that makes the editor an S-tier experience.
+
+I'll likely get into this further into the post, but the way you can structure keybindings for Vim mode in Zed is fantastic. The structure allows for your typical VScode style config, but with the ability to scope a keybinding to a Vim mode is such a huge win for Neovim users. For instance, I can cheat my way into using a leader key when in normal mode and get things like `space d` to see diagnostics, or `space t` to open a full window terminal. It's a pattern many Vim users will appreciate and I wish there was more docs for it as I've had to figure some of it out myself.
+
+Beyond keybindings all the other stuff you would expect in Vim motions are here, with of course a few obscure ones slowly being added release by release. Some of them take a unique approach by using some of Zed’s built in features as a replacement for what Vim would normally use, like search and replace for example. Generally you would have to do a Vim command to search for a word and replace it, and those commands still do what you expect, but it brings up Zed’s Multibuffer view when doing a project wide search. You get Vim mode but it’s still Zed and it’s unique feature set.
+
+### AI Stuff
+
+When it comes to AI features I think Zed provides some great built in tools. I will disclose that I'm not a big user of AI within the text editor (a topic for another blog post), so there might be things you're looking for compared to Cursor that I can't speak to. With that said it does have Copilot built in which is probably what most people want to know.
+
+Zed also features an assistant panel where you can access several AI models via API, including OpenAI, Ollama, and Anthropic. Just requires a few lines of config to get started.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmNQPCbUtH4wBpREkxFUtS66f24UVAYHukf6zVzprRZzyv" alt="gif of ai panel" />
+
+One feature that I think is particularly nice is the inline assistant, where you can select some lines of code and use `ctrl-enter` to trigger a request to be made to your code via the AI assistance configuration mentioned previously. If you like the results then you can confirm and keep coding.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmYTVLrH7M2cHF8v26fwoA3FUHF5NRAwNJMWMFiw7jnNcx" alt="gif of inline assist" />
+
+### Zed ≠ Neovim
+
+You can probably gather so far that I’m a huge Zed fan, however I will say it’s not a 1/1 replacement to Neovim. What makes Neovim so special is that it’s native to the terminal. Whenever I need to edit a configuration file for an app or just edit something really quickly while I’m already navigating in a terminal, nothing beats the convenience of whipping out Neovim. Opening Zed for every single file like that would get exhausting, but for longer term sessions or projects it’s perfect. If you compare to motorcycles, Neovim is my dirt bike and Zed is my cruiser.
+
+## Making Zed Work for A Neovim User
+
+While Zed can't truly be a drop in replacement of Neovim, there are a lot of small configurations that really help improve the experience and make it familiar to a Neovim/Vim user.
+
+### Vim Mode & Keybindings
+
+First one is obvious, turn on Vim mode. Zed has a great [docs page](https://zed.dev/docs/vim) with loads of extra info, some default Vim bindings, and some extra configs available to make it work for you. By far my favorite piece that I mentioned earlier is the ability to do key bindings based on Vim modes. Here's some examples:
+
+```json keymap.json
+[
+	{
+		"context": "Editor && VimControl && !VimWaiting && !menu",
+		"bindings": {
+			"space b": "editor::ToggleGitBlame",
+			"shift-k": "editor::Hover",
+			"space l f": "editor::Format",
+			"space d": "diagnostics::Deploy",
+			"space f f": "file_finder::Toggle",
+			"space o": "tab_switcher::Toggle",
+			"space e": "workspace::ToggleLeftDock",
+			"space /": "workspace::NewSearch",
+			"n": "search::SelectNextMatch",
+			"shift-n": "search::SelectPrevMatch",
+			"space t": "workspace::NewCenterTerminal",
+			"g b": "editor::ToggleComments",
+			"+ +": "workspace::Save",
+			"space c": "pane::CloseActiveItem"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+		"bindings": {
+			"shift-j": "editor::MoveLineDown",
+			"shift-k": "editor::MoveLineUp"
+		}
+	},
+]
+```
+
+Most of these are pretty self explanatory, but the key is that the first set is in "Normal" mode, while the next set is "Visual." There's also small improvements or shortcuts they provide in the docs like this set of key bindings that allows you to switch panes similar to how most people have Neovim setup.
+
+```json keymap.json
+[
+	{
+		"context": "Dock || Terminal || Editor",
+		"bindings": {
+			"ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+			"ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+			"ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+			"ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+		}
+	},
+]
+```
+
+Something else I would recommend to anyone who is trying to migrate from Vim/Neovim to Zed is checking out the [default Vim keymap](https://github.com/zed-industries/zed/blob/340a1d145ed15e39a4a27afc5a189851308fb91d/assets/keymaps/vim.json#L4). There's so much there that acts as a helpful reference of what's supported and what you may want to adjust!
+
+### Reduced UI
+Zed already has a pretty nice minimal UI, but I prefer something closer to my Neovim setup. Thankfully Zed offers these options, such as disabling the tab bar, scroll bar, reduced toolbar, and relative line numbers
+
+```json settings.json
+{
+	"cursor_blink": false,
+	"relative_line_numbers": true,
+	"scrollbar": {
+		"show": "never"
+	},
+	"vertical_scroll_margin": 0,
+	"tab_bar": {
+		"show": false
+	},
+	"toolbar": {
+	    "breadcrumbs": true,
+	    "quick_actions": false
+	},
+}
+```
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmXKbJt7K3DtLmHZGjEUryQxh1scESAh2w5qyc4nZLZVg1?img-quality=60" alt="reduced UI" />
+
+### Plugin Replacements
+
+Since I don't use the tab bar I wanted something similar to Telescope to navigate between buffers or files, and thankfully there is an option for that! This key binding will show currently open all buffers, which is separate from the file finder.
+
+```json keymap.json
+{
+	"context": "Editor && VimControl && !VimWaiting && !menu",
+	"bindings": {
+		"space o": "tab_switcher::Toggle",
+	}
+}
+```
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmVvhBcJ5bx2ZW2z86dEvMtcgWeN6Lx7FWqMCfjwmWCejK" alt="gif of tab switcher" />
+
+Speaking of Telescope, one big replacement is project wide search. While Zed doesn't have a fuzzy find feature, the project wide search is excellent. It will show all results in a multibuffer view which is pretty slick, and allows you to jump between that view and the buffer itself pretty easily.
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmSKTuKLBPjcqyZ5yY6AAubiGspQ7osmusSHYkqUX76Qom" alt="multibuffer gif" />
+
+The terminal toggle is pretty similar to something like VSCode but there are some other hidden ways to get a better terminal experience. One of them is a shortcut to toggle the bottom terminal to be full screen, but even better is opening a terminal as a buffer in the main editing view.
+
+```json
+{
+	"context": "Editor && VimControl && !VimWaiting && !menu",
+	"bindings": {
+		"space t": "workspace::NewCenterTerminal",
+	}
+}
+```
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmQ4MV6JUigfEqeGcppjeomRtqahEHwh2re9DCScXj84Wy" alt="gif of terminal" />
+
+One of the big things I had to leave behind was Tmux and switching projects. While it isn't a perfect replacement, Zed has a "switch projects" feature which works really well and makes it pretty easy to switch contexts. You just won't get the exact same control and layout setup that you can get with Tmux
+
+```json
+{
+	"context": "Workspace",
+	"bindings": {
+		"cmd-k": [
+			"projects::OpenRecent",
+			{
+				"create_new_window": false
+			}
+		]
+	}
+}
+```
+
+<img src="https://dweb.mypinata.cloud/ipfs/QmVeeV8KQ48TriBSkE8wqVCiHxufFnpjqA6EsLu5YD7bEu" alt="project switching" />
+
+## Should You Use Zed?
+
+If you’re still on the fence of trying Zed I would say it’s at least worth giving it a shot for a few days. In my experience so far it’s a unique and capable text editor, but ultimately I vouch for anything that makes you more productive. That might end up being VS Code or Jetbrains or hell maybe even EMacs. Do what’s best for you, but don’t be too stubborn to try something new.
