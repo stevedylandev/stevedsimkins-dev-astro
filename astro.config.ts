@@ -11,7 +11,7 @@ import vercel from "@astrojs/vercel/static";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://stevedylan.dev",
-  outDir: './dist',
+  outDir: 'dist',
 	markdown: {
 		shikiConfig: {
 			theme: "vitesse-dark",
@@ -40,9 +40,6 @@ export default defineConfig({
 		},
 	},
 	output: "static",
-	adapter: vercel({
-		analytics: true,
-	}),
 	experimental: {
 		viewTransitions: true,
 	},
