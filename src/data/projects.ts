@@ -8,6 +8,23 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
 	{
+		title: "Pi-Widget",
+		description:
+			"A small server written in Go that you can run on your Raspberry Pi to display vitals in real time. For my particular Pi it displays IPFS repo stats and system stats, with more updates on the way",
+		image: "https://stevedylan.dev/pi.png",
+		link: "https://pi.stevedylan.dev",
+		tags: ["hardware", "ipfs", "raspberry pi"],
+	},
+	{
+		title: "Radicalize",
+		description:
+			"A CLI written in Go that can help migrate existing local or remote git repos to Radicle.xyz",
+		image:
+			"https://dweb.mypinata.cloud/ipfs/QmUFwBiweWHtGBxftQ7xNpiS5xSBHJyZJgsHXXGRy2qyLH?img-format=webp",
+		link: "https://github.com/stevedylandev/radicalize",
+		tags: ["developer tools", "radicle", "git"],
+	},
+	{
 		title: "Snippets",
 		description:
 			"I was tired of poor code sharing experiences like Pastebin that were littered with ads, and I really loved the experience of Ray.so for images. This led to the creation of Snippets.so, an open sourced and extensible code sharing solution that’s minimal and clean.",
