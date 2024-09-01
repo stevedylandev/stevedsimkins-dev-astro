@@ -11,10 +11,10 @@ import vercel from "@astrojs/vercel/static";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://stevedylan.dev",
-  outDir: 'dist',
+	outDir: "dist",
 	markdown: {
 		shikiConfig: {
-			theme: "vitesse-dark",
+			theme: "css-variables",
 			wrap: true,
 		},
 	},

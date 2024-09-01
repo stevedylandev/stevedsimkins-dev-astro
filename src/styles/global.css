@@ -16,24 +16,24 @@
 @layer base {
 	:root {
 		color-scheme: light;
-		--theme-bg: #121212;
-		--theme-link: #E78A52;
-		--theme-text: #C1C1C1;
-		--theme-accent: #FBCB96;
-		--theme-accent-2: #C1C1C1;
-		--theme-quote: #FBCB96;
-		--theme-menu-bg: rgb(40, 40, 40 / 0.85);
+		--theme-bg: #000000;
+		--theme-link: #FFFFFF;
+		--theme-text: #FFFFFF;
+		--theme-accent: #FFFFFF;
+		--theme-accent-2: #FFFFFF;
+		--theme-quote: #FFFFFF;
+		--theme-menu-bg: rgb(0, 0, 0 / 0.85);
 	}
 
 	:root.dark {
 		color-scheme: dark;
-		--theme-bg: #121212;
-		--theme-link: #E78A52;
-		--theme-text: #C1C1C1;
-		--theme-accent: #FBCB96;
-		--theme-accent-2: #C1C1C1;
-		--theme-quote: #FBCB96;
-		--theme-menu-bg: rgb(40, 40, 40 / 0.85);
+		--theme-bg: #000000;
+		--theme-link: #FFFFFF;
+		--theme-text: #FFFFFF;
+		--theme-accent: #FFFFFF;
+		--theme-accent-2: #FFFFFF;
+		--theme-quote: #FFFFFF;
+		--theme-menu-bg: rgb(0, 0, 0 / 0.85);
 	}
 
 	html {
