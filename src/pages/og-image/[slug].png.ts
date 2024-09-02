@@ -48,7 +48,7 @@ const markup = (title: string, pubDate: string, description: string) => html`<di
 			<svg height="60" viewBox="0 0 467 433" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path
 					d="M146.75 29L233.917 203.333L342.875 94.375L451.833 421.25H16L146.75 29Z"
-					stroke="#C1C1C1"
+					stroke="#ffffff"
 					stroke-width="21.7917"
 				/>
 			</svg>
