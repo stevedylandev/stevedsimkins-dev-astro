@@ -36,14 +36,14 @@ const ogOptions: SatoriOptions = {
 };
 
 const markup = (title: string, pubDate: string, description: string) => html`<div
-	tw="flex flex-col w-full h-full bg-[#121212] text-[#C1C1C1]"
+	tw="flex flex-col w-full h-full bg-[#000000] text-[#ffffff]"
 >
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>
 		<h1 tw="text-6xl font-bold leading-snug text-white">${title}</h1>
 		<h2 tw="text-2xl font-bold leading-snug text-white">${description}</h2>
 	</div>
-	<div tw="flex items-center justify-between w-full p-10 border-t border-[#FBCB96] text-xl">
+	<div tw="flex items-center justify-between w-full p-10 border-t border-[#ffffff] text-xl">
 		<div tw="flex items-center">
 			<svg height="60" viewBox="0 0 467 433" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path
