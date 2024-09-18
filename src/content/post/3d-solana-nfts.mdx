@@ -6,7 +6,7 @@ tags: ["web3", "nfts", "tutorials", "web development"]
 ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*5vzpNGiQSZqe1EX6ghDINg.png"
 ---
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import medium from "../../assets/medium.png";
 import OutLinkButton from "../../components/OutLinkButton.astro";
 
@@ -82,6 +82,7 @@ Once viewing it in the web browser, we can download the model by clicking “exp
 <Image
 	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Olex5OAd3sMaugwF_iWGig.png"
 	alt="screenshot of room capture"
+	height={1080}
 	width={1920}
 	aspectRatio={16 / 9}
 />
@@ -91,6 +92,7 @@ From there we want to select the GLTF format and start the download!
 <Image
 	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*0z9cGRbGbAWoflqk7rU0yw.png"
 	alt="screenshot of aerial export screen"
+	height={1080}
 	width={1920}
 	aspectRatio={16 / 9}
 />
@@ -140,6 +142,7 @@ Let’s log into Pinata and upload our file. Really simple, just click on the up
 <Image
 	src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*v-x8ltZQ0ep6vlmqoPn2WA.png"
 	alt="uploading screen at pinata"
+	height={1080}
 	width={1920}
 	aspectRatio={16 / 9}
 />

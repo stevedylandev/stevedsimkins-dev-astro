@@ -6,7 +6,7 @@ tags: ["tech philosophy", "web3", "ipfs", "nfts"]
 ogImage: "https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fd1b0820188c4271c6f5ac_Thumbnail1.png"
 ---
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import bueno from "../../assets/bueno.png";
 import OutLinkButton from "../../components/OutLinkButton.astro";
 
@@ -38,6 +38,7 @@ The traditional way of sharing files over the internet is through centralized se
 	src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4cfc48a5e05d952dd2c2_IPFS.png"
 	alt="bueno graphic"
 	width={1920}
+	height={1080}
 	aspectRatio={9 / 16}
 />
 
@@ -46,6 +47,7 @@ Rather than straight up and down, IPFS is up, down, and side to side. IPFS is a 
 <Image
 	src="https://assets-global.website-files.com/6171adb6a942ed69f5e6b5ee/62fe4d182d482c2b9c29f199_IPFS-1.png"
 	alt="ipfs node graphic"
+	height={1080}
 	width={1920}
 	aspectRatio={16 / 9}
 />

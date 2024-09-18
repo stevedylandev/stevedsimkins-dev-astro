@@ -6,7 +6,7 @@ tags: ["web3", "nfts", "tutorials", "web development"]
 ogImage: "https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/6410b6848afd85df8fe0a193_2023-01-10_How-to-Create_blog-img-tiny.png"
 ---
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import pinnie from "../../assets/pinnie.png";
 import OutLinkButton from "../../components/OutLinkButton.astro";
 
@@ -15,8 +15,6 @@ import OutLinkButton from "../../components/OutLinkButton.astro";
 Despite the current market conditions, web3 jobs are still on the rise. But competition is at an all-time high. Sure you can build a portfolio of projects to help display your skills, but that’s what everyone else is doing too. What can you do to stand out among the crowds of developers out there like yourself? How are you thinking outside the box?
 
 Rather than another LinkedIn resume or eye-glazing PDF, what if a potential employer opened up their crypto wallet and saw an interactive resume NFT with your name on it? It would demonstrate not only your ability to make NFTs, but [App NFTs](https://medium.com/pinata/how-to-build-an-app-nft-7c57b51698e7)—this concept that a full blown and functional application can be an NFT. You think that might crank things up a bit?
-
-https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/63bd95ce8503f7e7478918e7_Untitled.gif
 
 This dynamic resume app NFT would show an ability to make anything an NFT, like an interactive comic book or even a small game. And you’d better believe it would get that employer intrigued enough to set up some time to chat with the power of simply dropping your resume into their wallet.
 
@@ -46,6 +44,7 @@ As said in Justin’s tutorial, you can use a free Pinata account to do all of t
 <Image
 	src="https://global-uploads.webflow.com/629e4fe96456f8219203e7f1/63bd95503c654e14fc1b3b00_Slide%2016_9%20-%203.png"
 	alt="Screenshot of web app"
+	height={1080}
 	width={1920}
 	aspectRatio={1 / 1}
 	class="sm:hidden"

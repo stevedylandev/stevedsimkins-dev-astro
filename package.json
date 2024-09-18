@@ -11,12 +11,9 @@
 		"format": "prettier -w ./src ./src/**/*.astro"
 	},
 	"devDependencies": {
-		"@astro-community/astro-embed-youtube": "^0.2.2",
-		"@astrojs/image": "^0.13.0",
-		"@astrojs/mdx": "^0.18.4",
-		"@astrojs/sitemap": "^1.0.0",
-		"@astrojs/tailwind": "3.0.0",
-		"@resvg/resvg-js": "^2.2.0",
+		"@astrojs/mdx": "^3.1.6",
+		"@astrojs/sitemap": "^3.1.6",
+		"@astrojs/tailwind": "5.1.1",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/line-clamp": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.8",
@@ -46,15 +43,12 @@
 		"typescript": "^4.9.4"
 	},
 	"dependencies": {
-		"@astrojs/partytown": "^1.0.3",
-		"@astrojs/prefetch": "^0.1.1",
-		"@astrojs/rss": "^2.0.0",
-		"@astrojs/vercel": "^3.2.4",
+		"@astrojs/partytown": "^2.1.2",
+		"@astrojs/prefetch": "^0.4.1",
+		"@astrojs/rss": "^4.0.7",
 		"@vercel/analytics": "^0.1.10",
-		"astro": "^2.10.13",
+		"astro": "^4.15.7",
 		"astro-google-analytics": "^1.0.3",
-		"satori": "0.10.0",
-		"satori-html": "^0.3.2",
 		"sharp": "^0.33.1"
 	}
 }

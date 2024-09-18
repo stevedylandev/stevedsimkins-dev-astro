@@ -6,11 +6,12 @@ tags: ["programming", "vim", "neovim"]
 ogImage: "https://res.cloudinary.com/df9dofjus/image/upload/v1704512309/Screenshot-Alacritty-01-05-2024-22-16_2x_hdiy9a.png"
 ---
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 <Image
 	src="https://res.cloudinary.com/df9dofjus/image/upload/v1704512309/Screenshot-Alacritty-01-05-2024-22-16_2x_hdiy9a.png"
 	alt="header image"
+	height={600}
 	width={800}
 	aspectRatio={3 / 2}
 />
