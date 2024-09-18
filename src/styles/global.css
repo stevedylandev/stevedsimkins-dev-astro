@@ -1,38 +1,38 @@
 @font-face {
-  font-family: 'Commit Mono';
-  src: url("/CommitMono-400-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Commit Mono";
+	src: url("/CommitMono-400-Regular.otf") format("opentype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-  font-family: 'Commit Mono';
-  src: url("/CommitMono-700-Regular.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Commit Mono";
+	src: url("/CommitMono-700-Regular.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
 @tailwind base;
 @layer base {
 	:root {
 		color-scheme: light;
 		--theme-bg: #000000;
-		--theme-link: #FFFFFF;
-		--theme-text: #FFFFFF;
-		--theme-accent: #FFFFFF;
-		--theme-accent-2: #FFFFFF;
-		--theme-quote: #FFFFFF;
+		--theme-link: #ffffff;
+		--theme-text: #ffffff;
+		--theme-accent: #ffffff;
+		--theme-accent-2: #ffffff;
+		--theme-quote: #ffffff;
 		--theme-menu-bg: rgb(0, 0, 0 / 0.85);
 	}
 
 	:root.dark {
 		color-scheme: dark;
 		--theme-bg: #000000;
-		--theme-link: #FFFFFF;
-		--theme-text: #FFFFFF;
-		--theme-accent: #FFFFFF;
-		--theme-accent-2: #FFFFFF;
-		--theme-quote: #FFFFFF;
+		--theme-link: #ffffff;
+		--theme-text: #ffffff;
+		--theme-accent: #ffffff;
+		--theme-accent-2: #ffffff;
+		--theme-quote: #ffffff;
 		--theme-menu-bg: rgb(0, 0, 0 / 0.85);
 	}
 

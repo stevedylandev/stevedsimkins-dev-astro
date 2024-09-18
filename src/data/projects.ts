@@ -53,8 +53,7 @@ export const projects: ProjectItem[] = [
 		title: "Raycaster Extension",
 		description:
 			"The fastest way to send a cast on Farcaster. A Raycast extension that allows you to sign into your Farcaster account and send casts with optional images via IPFS. ",
-		image:
-			"https://dweb.mypinata.cloud/ipfs/QmSsY6QnhdwbWunrgzTDkpvRd7oWx5nUp8v7UiMeGRFeZ1",
+		image: "https://dweb.mypinata.cloud/ipfs/QmSsY6QnhdwbWunrgzTDkpvRd7oWx5nUp8v7UiMeGRFeZ1",
 		link: "https://www.raycast.com/stevedylandev/raycaster",
 		tags: ["raycast", "developer tools", "productivity"],
 	},
@@ -79,8 +78,7 @@ export const projects: ProjectItem[] = [
 		title: "Pinata-go-cli",
 		description:
 			"A Go rewrite of the Node.js CLI for Pinata, allows fast and extensive uploads to Pinata. Also includes helpful features for listing files and other API functionalities. ",
-		image:
-			"https://dweb.mypinata.cloud/ipfs/QmasHAZJ2kb9k3AqkQP4yzYbZn8zxFGsrygNv6HBdMn1uE",
+		image: "https://dweb.mypinata.cloud/ipfs/QmasHAZJ2kb9k3AqkQP4yzYbZn8zxFGsrygNv6HBdMn1uE",
 		link: "https://github.com/PinataCloud/pinata-go-cli",
 		tags: ["developer tools", "ipfs"],
 	},

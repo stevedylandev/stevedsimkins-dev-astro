@@ -23,6 +23,7 @@ My text editor journey starts with a faint memory of Atom. I was learning the tr
 Immediately I was mesmerized by the speed and powers demonstrated by The Primeagen's early videos. I was already a keyboard maximalist from [previous jobs](/posts/why-i-learned-vim) where I learned speed = productivity, so it was a no brainer that I had to learn it. Started with the basic motions and Vim tutor, and I had the advantage that I was just learning programming on the side instead of doing it full time. Within a few weeks I was in Vim consistently, writing and learning to code. The tweaking of my Vim RC eventually led to discovering Neovim thanks to [chris@machine](https://www.youtube.com/@chrisatmachine) and his early videos.
 
 For the next several years I stuck with Neovim and I loved it, and I owe a mass amount of my productivity to it. There were countless hours spent configuring it like many of us do. I eventually got to a point where I didn't adjust my config much, but that soon didn't matter.
+
 ## What Changed
 
 Every now and then I would update a plugin in Neovim and everything would break, and I would have to spend time fixing it instead of getting work done. This resulted in slimming down my config more and more, but there was still so much that went into making all the basics work. I stuck with it because it was still better than using VSCode, which I did try for a two week sprint to see if it could be any better. It was also key to a [terminal based workflow](/posts/a-terminal-based-workflow) that other editors couldn't really match.
@@ -39,7 +40,6 @@ In order to understand why I eventually settled on Zed we'll look at my general 
 
 One of the biggest things that has stood out to me using Zed so far is how “everything just works.” There are so many features of an IDE or text editor that people take for granted until they have to set it up themselves in something lower level like Neovim. LSP (language server protocol) is certainly one of them. If you’re not familiar it’s the hints or errors that show up while you’re writing up your code, giving you deep insights to your repo on a language level. When you setup LSP in Neovim it’s a lot of work, and sometimes it can be a bit harder to figure out why it might be bugging out. However it does give you way more control and the option to do a lot of customization. With Zed LSP just works. There are configurations you can make to edit some things, but as a whole it just zips out of the box. There are already keybindings for things like “show definition”, “go to definition”, or even code actions. The only downside is outside of an extension you can’t use your own LSP that’s installed on your machine, but there’s always a pretty large language support that I haven’t had this issue yet.
 
-
 <Image
 	src="https://dweb.mypinata.cloud/ipfs/QmNkysZ5Roy723sphUST8abmHakKR86K2YHXeeVTU22ASH"
 	alt="header image"
@@ -48,26 +48,26 @@ One of the biggest things that has stood out to me using Zed so far is how “ev
 	aspectRatio={9 / 16}
 />
 
-Another piece that’s related to LSP is completions. This is when you’re typing some code and get  suggestions for auto completions that quickly fill the rest of the code out. LSPs usually have great auto-completion because they’re aware of the patterns used in that language. Just to be clear we’re not talking about Copilot yet, this is just completions for snippets and LSP. Once again with Zed it just works out of the box, unlike Neovim which ends up requiring several plugins to make it work right.
+Another piece that’s related to LSP is completions. This is when you’re typing some code and get suggestions for auto completions that quickly fill the rest of the code out. LSPs usually have great auto-completion because they’re aware of the patterns used in that language. Just to be clear we’re not talking about Copilot yet, this is just completions for snippets and LSP. Once again with Zed it just works out of the box, unlike Neovim which ends up requiring several plugins to make it work right.
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmVEqwPxAoWgDwCLM3PrVxseLtLjCDK8LMxxz6DyD5fjxz"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmVEqwPxAoWgDwCLM3PrVxseLtLjCDK8LMxxz6DyD5fjxz"
 ></video>
 
 Finally there’s Git integrations. What normally required multiple plugins in Neovim is again ready out of the box with Zed, including feature like toggling Git Blame, viewing diffs, and gutter symbols showing the status of edited lines.
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/Qmcqv6kXnHHVbX8RxWpK6coPZHyNcPU7bxPfZ2Zwbsm6bz"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/Qmcqv6kXnHHVbX8RxWpK6coPZHyNcPU7bxPfZ2Zwbsm6bz"
 ></video>
 
 If I had to make a crude comparison, it’s similar to Linux and Apple. Linux will give you far more control over every piece of your software and hardware at the cost of spending time to configure it. Apple will give you less control but it will likely run smoother.
@@ -95,23 +95,23 @@ When it comes to AI features I think Zed provides some great built in tools. I w
 Zed also features an assistant panel where you can access several AI models via API, including OpenAI, Ollama, and Anthropic. Just requires a few lines of config to get started.
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmPo8nXP8w9hJfxnhCpggrGKP89VbtiV1Rf3mFRHj9fUqA"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmPo8nXP8w9hJfxnhCpggrGKP89VbtiV1Rf3mFRHj9fUqA"
 ></video>
 
 One feature that I think is particularly nice is the inline assistant, where you can select some lines of code and use `ctrl-enter` to trigger a request to be made to your code via the AI assistance configuration mentioned previously. If you like the results then you can confirm and keep coding.
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmTTGznMRr64oqJG7hXFiCrqrTqXiY3kaPuQnhWbCCSAaL"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmTTGznMRr64oqJG7hXFiCrqrTqXiY3kaPuQnhWbCCSAaL"
 ></video>
 
 ### Zed ≠ Neovim
@@ -153,7 +153,7 @@ First one is obvious, turn on Vim mode. Zed has a great [docs page](https://zed.
 			"shift-j": "editor::MoveLineDown",
 			"shift-k": "editor::MoveLineUp"
 		}
-	},
+	}
 ]
 ```
 
@@ -169,13 +169,14 @@ Most of these are pretty self explanatory, but the key is that the first set is 
 			"ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
 			"ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
 		}
-	},
+	}
 ]
 ```
 
 Something else I would recommend to anyone who is trying to migrate from Vim/Neovim to Zed is checking out the [default Vim keymap](https://github.com/zed-industries/zed/blob/340a1d145ed15e39a4a27afc5a189851308fb91d/assets/keymaps/vim.json#L4). There's so much there that acts as a helpful reference of what's supported and what you may want to adjust!
 
 ### Reduced UI
+
 Zed already has a pretty nice minimal UI, but I prefer something closer to my Neovim setup. Thankfully Zed offers these options, such as disabling the tab bar, scroll bar, reduced toolbar, and relative line numbers
 
 ```json settings.json
@@ -190,9 +191,9 @@ Zed already has a pretty nice minimal UI, but I prefer something closer to my Ne
 		"show": false
 	},
 	"toolbar": {
-	    "breadcrumbs": true,
-	    "quick_actions": false
-	},
+		"breadcrumbs": true,
+		"quick_actions": false
+	}
 }
 ```
 
@@ -212,29 +213,29 @@ Since I don't use the tab bar I wanted something similar to Telescope to navigat
 {
 	"context": "Editor && VimControl && !VimWaiting && !menu",
 	"bindings": {
-		"space o": "tab_switcher::Toggle",
+		"space o": "tab_switcher::Toggle"
 	}
 }
 ```
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmQntcJQkJKoh2bmreRYun4BfDuLb8rXry6ZFmiVYPaeRx"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmQntcJQkJKoh2bmreRYun4BfDuLb8rXry6ZFmiVYPaeRx"
 ></video>
 
 Speaking of Telescope, one big replacement is project wide search. While Zed doesn't have a fuzzy find feature, the project wide search is excellent. It will show all results in a multibuffer view which is pretty slick, and allows you to jump between that view and the buffer itself pretty easily.
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmY2Cs7zBk7bEa7skNLBcA5dFnSmTS7CotFjftcMA2r3m1"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmY2Cs7zBk7bEa7skNLBcA5dFnSmTS7CotFjftcMA2r3m1"
 ></video>
 
 The terminal toggle is pretty similar to something like VSCode but there are some other hidden ways to get a better terminal experience. One of them is a shortcut to toggle the bottom terminal to be full screen, but even better is opening a terminal as a buffer in the main editing view.
@@ -243,18 +244,18 @@ The terminal toggle is pretty similar to something like VSCode but there are som
 {
 	"context": "Editor && VimControl && !VimWaiting && !menu",
 	"bindings": {
-		"space t": "workspace::NewCenterTerminal",
+		"space t": "workspace::NewCenterTerminal"
 	}
 }
 ```
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmYGcEqane6cpVPJj9H7qjgYmV75GPhmy7hkKob6YPVscY"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmYGcEqane6cpVPJj9H7qjgYmV75GPhmy7hkKob6YPVscY"
 ></video>
 
 One of the big things I had to leave behind was Tmux and switching projects. While it isn't a perfect replacement, Zed has a "switch projects" feature which works really well and makes it pretty easy to switch contexts. You just won't get the exact same control and layout setup that you can get with Tmux
@@ -274,12 +275,12 @@ One of the big things I had to leave behind was Tmux and switching projects. Whi
 ```
 
 <video
-  autoPlay
-  muted
-  loop
-  playsinline
-  className="w-full aspect-video"
-  src="https://dweb.mypinata.cloud/ipfs/QmXh5mDRJyQRSCfmHNeZ5DDwnzPr3uo5mqCMQN1mLzGh6T"
+	autoPlay
+	muted
+	loop
+	playsinline
+	className="aspect-video w-full"
+	src="https://dweb.mypinata.cloud/ipfs/QmXh5mDRJyQRSCfmHNeZ5DDwnzPr3uo5mqCMQN1mLzGh6T"
 ></video>
 
 ## Should You Use Zed?

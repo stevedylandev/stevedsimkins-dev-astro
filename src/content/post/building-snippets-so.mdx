@@ -46,17 +46,24 @@ Undoubtedly the best component library out there, I love every chance I get to u
 When it comes to enabling writing in an app beyond just a text area there are many library choices out there. For Snippets I went with `@uiw/codemirror` for several reasons. For starters it was pretty easy to use and setup, had it running in no time.
 
 ```typescript
-import React from 'react';
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
+import React from "react";
+import CodeMirror from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
 
 function App() {
-  const [value, setValue] = React.useState("console.log('hello world!');");
-  const onChange = React.useCallback((val, viewUpdate) => {
-    console.log('val:', val);
-    setValue(val);
-  }, []);
-  return <CodeMirror value={value} height="200px" extensions={[javascript({ jsx: true })]} onChange={onChange} />;
+	const [value, setValue] = React.useState("console.log('hello world!');");
+	const onChange = React.useCallback((val, viewUpdate) => {
+		console.log("val:", val);
+		setValue(val);
+	}, []);
+	return (
+		<CodeMirror
+			value={value}
+			height="200px"
+			extensions={[javascript({ jsx: true })]}
+			onChange={onChange}
+		/>
+	);
 }
 export default App;
 ```
@@ -218,9 +225,7 @@ import { ReadOnlyEditor } from "@/components/read-only-editor";
 
 async function fetchData(cid: string) {
 	try {
-		const req = await fetch(
-			`https://${process.env.GATEWAY_DOMAIN}/ipfs/${cid}`,
-		);
+		const req = await fetch(`https://${process.env.GATEWAY_DOMAIN}/ipfs/${cid}`);
 		const res = await req.json();
 		return res;
 	} catch (error) {
@@ -233,14 +238,9 @@ export default async function Page({ params }: { params: { cid: string } }) {
 	const cid = params.cid;
 	const data = await fetchData(cid);
 	return (
-		<main className="flex min-h-screen flex-col items-center sm:justify-center justify-start">
+		<main className="flex min-h-screen flex-col items-center justify-start sm:justify-center">
 			<Header />
-			<ReadOnlyEditor
-				content={data.content}
-				name={data.name}
-				cid={cid}
-				lang={data.lang}
-			/>
+			<ReadOnlyEditor content={data.content} name={data.name} cid={cid} lang={data.lang} />
 			<Footer />
 		</main>
 	);
@@ -253,7 +253,7 @@ With our `cid`, `name`, `content`, and `lang` we can rebuild what the editor saw
 
 ```typescript
 <CodeMirror
-	className="text-md opacity-75 p-2 sm:w-[600px] sm:h-[700px] w-[350px] h-[450px] font-commitMono"
+	className="text-md font-commitMono h-[450px] w-[350px] p-2 opacity-75 sm:h-[700px] sm:w-[600px]"
 	height="100%"
 	width="100%"
 	value={content}
@@ -273,12 +273,12 @@ Along with viewing the content we can also enable some fun stuff like copying it
 
 ![gif of share page](https://res.cloudinary.com/df9dofjus/image/upload/v1722565319/Screenshot-Arc-08-01-2024-22-24_muxrrg.gif)
 
-
 ## API + CLI
 
 Since there isn't really any authentication in this app and anyone can upload snippets as much as they want, I figured "why not make the API accessible?" Anyone can make an API request to the app to make a snippet and use the data returned to make the link!
 
 Request:
+
 ```bash
 curl --location 'https://www.snippets.so/api/upload' \
           --header 'Content-Type: application/json' \
@@ -290,16 +290,18 @@ curl --location 'https://www.snippets.so/api/upload' \
 ```
 
 Returns:
+
 ```json
 {
-  "IpfsHash": "bafkreiccdt64k6d4wjgz5ebqee4rvmkauoiygc5egwtssl2zqq3o74zlti",
-  "PinSize": 81,
-  "Timestamp": "2024-07-10T02:25:51.052Z",
-  "isDuplicate": true
+	"IpfsHash": "bafkreiccdt64k6d4wjgz5ebqee4rvmkauoiygc5egwtssl2zqq3o74zlti",
+	"PinSize": 81,
+	"Timestamp": "2024-07-10T02:25:51.052Z",
+	"isDuplicate": true
 }
 ```
 
 Link:
+
 ```
 https://snippets.so/snip/bafkreiccdt64k6d4wjgz5ebqee4rvmkauoiygc5egwtssl2zqq3o74zlti
 ```

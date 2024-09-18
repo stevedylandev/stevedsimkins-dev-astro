@@ -13,18 +13,20 @@ const videoIds = ["lhJwEckGi4U", "kMALubK72Q8", "GlpfIherX7U", "KpwCP1Xil-Q"];
 	<div class="space-y-6">
 		<h1 class="title">Videos</h1>
 		<p>Here are some samples of video content I've produced to help users!</p>
-	{videoIds.map((id) => (
-	<div class="relative w-full" style="padding-bottom: 73.17%;">
-  	<iframe
-  		class="absolute top-0 left-0 w-full h-full"
-  		src={`https://www.youtube.com/embed/${id}`}
-  		title="YouTube video player"
-  		frameborder="0"
-  		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  		referrerpolicy="strict-origin-when-cross-origin"
-  		allowfullscreen
-  	></iframe>
-	</div>
-	))}
+		{
+			videoIds.map((id) => (
+				<div class="relative w-full" style="padding-bottom: 73.17%;">
+					<iframe
+						class="absolute left-0 top-0 h-full w-full"
+						src={`https://www.youtube.com/embed/${id}`}
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					/>
+				</div>
+			))
+		}
 	</div>
 </PageLayout>
