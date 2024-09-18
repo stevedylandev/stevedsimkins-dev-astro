@@ -28,7 +28,7 @@ module.exports = {
 			},
 			fontFamily: {
 				// Add any custom fonts here
-				sans: ['Commit Mono',...fontFamily.sans],
+				sans: ["Commit Mono", ...fontFamily.sans],
 				serif: [...fontFamily.serif],
 			},
 			transitionProperty: {
@@ -94,7 +94,6 @@ module.exports = {
 	},
 	plugins: [
 		require("@tailwindcss/typography"),
-		require("@tailwindcss/line-clamp"),
 		require("@tailwindcss/aspect-ratio"),
 		plugin(function ({ addComponents }) {
 			addComponents({
