@@ -5,16 +5,26 @@ const meta = {
 	title: "Videos",
 	description: "Video content made by Steve Simkins",
 };
+
+const videoIds = ["lhJwEckGi4U", "kMALubK72Q8", "GlpfIherX7U", "KpwCP1Xil-Q"];
 ---
 
 <PageLayout meta={meta}>
 	<div class="space-y-6">
 		<h1 class="title">Videos</h1>
 		<p>Here are some samples of video content I've produced to help users!</p>
-		<p id="GlpfIherX7U"> </p>
-		<p id="lhJwEckGi4U"> </p>
-    <p id="hlfVoTNUPWU"> </p>
-    <p id="TaJzw_2hEJI"> </p>
-    <p id="sUVkr_lhE2g"> </p>
+	{videoIds.map((id) => (
+	<div class="relative w-full" style="padding-bottom: 73.17%;">
+  	<iframe
+  		class="absolute top-0 left-0 w-full h-full"
+  		src={`https://www.youtube.com/embed/${id}`}
+  		title="YouTube video player"
+  		frameborder="0"
+  		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  		referrerpolicy="strict-origin-when-cross-origin"
+  		allowfullscreen
+  	></iframe>
+	</div>
+	))}
 	</div>
 </PageLayout>
