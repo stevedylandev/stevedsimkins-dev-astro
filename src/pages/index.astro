@@ -4,6 +4,7 @@ import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
+import { Image } from "astro:assets";
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
@@ -46,7 +47,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 				target="_blank"
 				rel="noopener noreferrer"
 				class="cactus-link inline-block"
-				><img src="https://api.iconify.design/cib:raspberry-pi.svg?color=%23888888" class="w-4 h-4 inline-block" alt="rasp pi logo"/> Steve's Pi
+				><Image src="https://api.iconify.design/cib:raspberry-pi.svg?color=%23888888" class="w-4 h-4 inline-block" height="100" width="100" alt="rasp pi logo"/> Steve's Pi
 			</a>:
 			<p class="inline-block sm:mt-2">See a live view of the Raspberry Pi on my desk</p>
 		</li>
@@ -56,7 +57,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 					target="_blank"
 					rel="noopener noreferrer"
 					class="cactus-link inline-block"
-					><img src="https://api.iconify.design/ph:cowboy-hat-fill.svg?color=%23888888" class="w-4 h-4 inline-block" alt="cowboy logo"/> Cosmic Cowboys
+					><Image height="100" width="100" src="https://api.iconify.design/ph:cowboy-hat-fill.svg?color=%23888888" class="w-4 h-4 inline-block" alt="cowboy logo"/> Cosmic Cowboys
 				</a>:
 				<p class="inline-block sm:mt-2">EthGlobal 2023 hackathon winning project</p>
 			</li>
@@ -66,7 +67,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 					target="_blank"
 					rel="noopener noreferrer"
 					class="cactus-link inline-block"
-					><img src="https://api.iconify.design/material-symbols:photo-camera.svg?color=%23888888" class="h-4 w-4 inline-block" alt="camera icon" /> Photos
+					><Image height="100" width="100" src="https://api.iconify.design/material-symbols:photo-camera.svg?color=%23888888" class="h-4 w-4 inline-block" alt="camera icon" /> Photos
 				</a>:
 				<p class="inline-block sm:mt-2">My personal photography portfolio</p>
 			</li>
@@ -76,7 +77,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 					target="_blank"
 					rel="noopener noreferrer"
 					class="cactus-link inline-block"
-					><img src="https://dweb.mypinata.cloud/ipfs/QmXexbA6Raw4sq79NfXNrLesXNwXYpHUVNRSccF59ArGfo" class="w-4 h-4 inline-block" alt="pinata logo" /> Pinata
+					><Image height="100" width="100" src="https://dweb.mypinata.cloud/ipfs/QmXexbA6Raw4sq79NfXNrLesXNwXYpHUVNRSccF59ArGfo" class="w-4 h-4 inline-block" alt="pinata logo" /> Pinata
 				</a>:
 				<p class="inline-block sm:mt-2">
 					Where I'm currently working as Head of Developer Relations
