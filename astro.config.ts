@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
@@ -8,6 +8,9 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
 	site: "https://stevedylan.dev",
 	outDir: "dist",
+	image: {
+		service: passthroughImageService(),
+	},
 	markdown: {
 		shikiConfig: {
 			theme: "css-variables",
@@ -29,8 +32,6 @@ export default defineConfig({
 			"process.env.NODE_ENV": `'${process.env.NODE_ENV}'`,
 		},
 	},
-	output: "hybrid",
-	adapter: cloudflare({
-		imageService: "cloudflare",
-	}),
+	output: "server",
+	adapter: cloudflare(),
 });
