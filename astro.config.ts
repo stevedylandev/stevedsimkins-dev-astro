@@ -29,6 +29,8 @@ export default defineConfig({
 			"process.env.NODE_ENV": `'${process.env.NODE_ENV}'`,
 		},
 	},
-	output: "server",
-	adapter: cloudflare(),
+	output: "hybrid",
+	adapter: cloudflare({
+		imageService: "cloudflare",
+	}),
 });
