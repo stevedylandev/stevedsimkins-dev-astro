@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,5 +29,6 @@ export default defineConfig({
 			"process.env.NODE_ENV": `'${process.env.NODE_ENV}'`,
 		},
 	},
-	output: "static",
+	output: "server",
+	adapter: cloudflare(),
 });
