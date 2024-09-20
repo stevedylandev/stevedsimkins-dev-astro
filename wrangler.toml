@@ -1,3 +1,6 @@
+name = "stevedsimkins-dev-astro"
+pages_build_output_dir = "./dist"
+
 [vars]
 
 PUBLIC_SUPABASE_URL = "https://rbhamoqatlwbdxlydlcw.supabase.co"
