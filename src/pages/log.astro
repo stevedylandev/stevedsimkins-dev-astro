@@ -9,9 +9,11 @@ const meta = {
 };
 
 const supabaseUrl =
-	env.PUBLIC_SUPABASE_URL || import.meta.env.PUBLIC_SUPABASE_URL;
+	env.PUBLIC_SUPABASE_URL || import.meta.env.PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey =
-	env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+	env.PUBLIC_SUPABASE_ANON_KEY ||
+	import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+	"";
 ---
 
 <PageLayout meta={meta}>
