@@ -33,7 +33,6 @@ export default defineConfig({
 	vite: {
 		define: {
 			"process.env.NODE_ENV": `'${process.env.NODE_ENV}'`,
-			"process.env": process.env,
 		},
 	},
 	output: "hybrid",

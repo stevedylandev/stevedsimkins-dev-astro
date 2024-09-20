@@ -1,16 +1,24 @@
 ---
 import PageLayout from "@/layouts/Base";
 import { SignInButton } from "src/components/SignInButton";
+const { env } = Astro.locals.runtime;
 
 const meta = {
 	title: "Log",
 	description: "Public Log",
 };
+
+const supabaseUrl =
+	env.PUBLIC_SUPABASE_URL || import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseAnonKey =
+	env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 ---
 
 <PageLayout meta={meta}>
 	<div class="space-y-6">
   	<SignInButton
+   supabaseUrl={supabaseUrl}
+   supabaseAnonKey={supabaseAnonKey}
       client:load />
 	</div>
 </PageLayout>
