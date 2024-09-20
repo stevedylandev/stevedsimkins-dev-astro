@@ -1,15 +1,17 @@
 import { createServerClient, parseCookieHeader } from "@supabase/ssr";
 import type { APIRoute } from "astro";
+import { getRuntime } from "@astrojs/cloudflare/runtime";
 
 export const GET: APIRoute = async ({ request, redirect }) => {
 	const requestUrl = new URL(request.url);
 	const code = requestUrl.searchParams.get("code");
 	const next = requestUrl.searchParams.get("next") || "/";
+	const { env } = getRuntime(request);
 
 	if (code) {
 		const supabase = createServerClient(
-			import.meta.env.PUBLIC_SUPABASE_URL,
-			import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+			env.PUBLIC_SUPABASE_URL,
+			env.PUBLIC_SUPABASE_ANON_KEY,
 			{
 				cookies: {
 					getAll() {
