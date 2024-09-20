@@ -5,7 +5,7 @@ export function SignInButton() {
 		await supabase.auth.signInWithOAuth({
 			provider: "github",
 			options: {
-				redirectTo: "https://stevedylan.dev/auth/callback",
+				redirectTo: "https://stevedylan.dev/api/auth/callback",
 			},
 		});
 	}
