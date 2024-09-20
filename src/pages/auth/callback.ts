@@ -1,5 +1,6 @@
 import { createServerClient, parseCookieHeader } from "@supabase/ssr";
 import { type APIRoute } from "astro";
+export const prerender = false;
 
 export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 	const requestUrl = new URL(request.url);
@@ -13,11 +14,11 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 			{
 				cookies: {
 					getAll() {
-						return parseCookieHeader(Astro.request.headers.get("Cookie") ?? "");
+						return parseCookieHeader(request.headers.get("Cookie") ?? "");
 					},
 					setAll(cookiesToSet) {
 						cookiesToSet.forEach(({ name, value, options }) =>
-							Astro.cookies.set(name, value, options),
+							cookies.set(name, value, options),
 						);
 					},
 				},
