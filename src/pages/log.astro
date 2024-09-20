@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/Base";
+import { SignInButton } from "src/components/SignInButton";
 
 const meta = {
 	title: "Log",
@@ -7,29 +8,8 @@ const meta = {
 };
 ---
 
-<script>
-  import { createClient } from '@supabase/supabase-js';
-
-  const supabase = createClient(
-    Astro.locals.runtime.env.PUBLIC_SUPABASE_URL,
-    Astro.locals.runtime.env.PUBLIC_SUPABASE_ANON_KEY
-  );
-
-  async function signInWithGithub() {
-    await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: "https://stevedylan.dev/auth/callback",
-      },
-    });
-  }
-
-  document.getElementById('signInButton').addEventListener('click', signInWithGithub);
-</script>
-
-
 <PageLayout meta={meta}>
 	<div class="space-y-6">
-	<button type="button" id="signInButton">Sign In</button>
+	<SignInButton />
 	</div>
 </PageLayout>
