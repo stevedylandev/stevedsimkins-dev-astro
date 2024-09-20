@@ -1,5 +1,6 @@
 import { createServerClient, parseCookieHeader } from "@supabase/ssr";
 import type { APIRoute } from "astro";
+const { env } = Astro.locals.runtime;
 
 export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 	const requestUrl = new URL(request.url);
@@ -8,8 +9,8 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 
 	if (code) {
 		const supabase = createServerClient(
-			import.meta.env.PUBLIC_SUPABASE_URL,
-			import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+			env.PUBLIC_SUPABASE_URL,
+			env.PUBLIC_SUPABASE_ANON_KEY,
 			{
 				cookies: {
 					getAll() {

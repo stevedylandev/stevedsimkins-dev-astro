@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+const { env } = Astro.locals.runtime;
 
 export const supabase = createClient(
-	import.meta.env.PUBLIC_SUPABASE_URL,
-	import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+	env.PUBLIC_SUPABASE_URL,
+	env.PUBLIC_SUPABASE_ANON_KEY,
 );
