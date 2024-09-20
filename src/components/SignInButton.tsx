@@ -2,13 +2,12 @@ import { supabase } from "src/lib/supabase";
 
 export function SignInButton() {
 	async function signInWithGithub() {
-		const { data, error } = await supabase.auth.signInWithOAuth({
+		await supabase.auth.signInWithOAuth({
 			provider: "github",
+			options: {
+				redirectTo: "https://stevedylan.dev/auth/callback",
+			},
 		});
-		if (error) {
-			alert(error);
-		}
-		console.log(data);
 	}
 
 	return (

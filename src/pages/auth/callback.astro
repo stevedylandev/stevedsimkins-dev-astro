@@ -1,3 +1,4 @@
+---
 import { createServerClient, parseCookieHeader } from "@supabase/ssr";
 import { type APIRoute } from "astro";
 
@@ -34,3 +35,9 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 	// return the user to an error page with instructions
 	return redirect("/auth/auth-code-error");
 };
+---
+
+<script>
+  // This script will run on the client side to handle the redirect
+  window.location.href = new URL(window.location.href).searchParams.get("next") || "/";
+</script>
