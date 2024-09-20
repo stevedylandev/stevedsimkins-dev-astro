@@ -1,0 +1,15 @@
+---
+import PageLayout from "@/layouts/Base";
+import { SignInButton } from "src/components/SignInButton";
+
+const meta = {
+	title: "Log",
+	description: "Public Log",
+};
+---
+
+<PageLayout meta={meta}>
+	<div class="space-y-6">
+  	<SignInButton client:load />
+	</div>
+</PageLayout>

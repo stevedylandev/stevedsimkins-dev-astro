@@ -45,11 +45,18 @@
 	"dependencies": {
 		"@astrojs/cloudflare": "^11.0.5",
 		"@astrojs/partytown": "^2.1.2",
+		"@astrojs/react": "^3.6.2",
 		"@astrojs/rss": "^4.0.7",
 		"@astrojs/ts-plugin": "^1.10.2",
+		"@supabase/ssr": "^0.5.1",
+		"@supabase/supabase-js": "^2.45.4",
+		"@types/react": "^18.3.8",
+		"@types/react-dom": "^18.3.0",
 		"@vercel/analytics": "^0.1.10",
 		"astro": "^4.15.7",
 		"astro-google-analytics": "^1.0.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
 		"sharp": "^0.33.1"
 	}
 }
