@@ -1,6 +1,8 @@
-import { supabase } from "src/lib/supabase";
+import { createClient } from "@supabase/supabase-js";
 
-export function SignInButton() {
+export function SignInButton({ supabaseUrl, supabaseKey }) {
+	const supabase = createClient(supabaseUrl, supabaseKey);
+
 	async function signInWithGithub() {
 		await supabase.auth.signInWithOAuth({
 			provider: "github",
