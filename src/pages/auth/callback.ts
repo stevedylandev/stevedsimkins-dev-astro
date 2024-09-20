@@ -1,7 +1,7 @@
 import { createServerClient, parseCookieHeader } from "@supabase/ssr";
-import type { APIRoute } from "astro";
+import { type APIRoute } from "astro";
 
-export const GET: APIRoute = async ({ request, redirect }) => {
+export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 	const requestUrl = new URL(request.url);
 	const code = requestUrl.searchParams.get("code");
 	const next = requestUrl.searchParams.get("next") || "/";
