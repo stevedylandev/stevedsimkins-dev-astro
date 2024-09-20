@@ -5,7 +5,7 @@ export function SignInButton() {
 		await supabase.auth.signInWithOAuth({
 			provider: "github",
 			options: {
-				redirectTo: "http://localhost:4321/auth/callback",
+				redirectTo: "https://stevedylan.dev/auth/callback",
 			},
 		});
 	}
