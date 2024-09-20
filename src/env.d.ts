@@ -2,11 +2,10 @@
 // <reference path="../.astro/types.d.ts" />
 /// <reference types="@astrojs/image/client" />
 
-interface ImportMetaEnv {
-	readonly PUBLIC_SUPABASE_URL: string;
-	readonly PUBLIC_SUPABASE_ANON_KEY: string;
-}
+type Runtime = import("@astrojs/cloudflare").Runtime<Env>;
 
-interface ImportMeta {
-	readonly env: ImportMetaEnv;
+declare namespace App {
+	interface Locals extends Runtime {
+		cfVar: string;
+	}
 }
