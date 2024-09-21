@@ -1,7 +1,2 @@
 name = "stevedsimkins-dev-astro"
 pages_build_output_dir = "./dist"
-
-[vars]
-
-PUBLIC_CLERK_PUBLISHABLE_KEY = "pk_test_c3RyaWtpbmctc3RhcmZpc2gtMjMuY2xlcmsuYWNjb3VudHMuZGV2JA"
-CLERK_SECRET_KEY = "sk_test_aNSnbdD6kXWpspHwdBRkEkbo01x26uXiZeJ0ZARObF"
