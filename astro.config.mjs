@@ -33,6 +33,9 @@ export default defineConfig({
 		react(),
 	],
 	vite: {
+		ssr: {
+			external: ["node:async_hooks"],
+		},
 		define: {
 			"process.env": process.env,
 		},
