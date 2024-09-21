@@ -3,6 +3,7 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
+import clerk from "@clerk/astro";
 
 import react from "@astrojs/react";
 
@@ -21,6 +22,7 @@ export default defineConfig({
 	},
 	prefetch: true,
 	integrations: [
+		clerk(),
 		mdx({}),
 		tailwind({
 			config: {
