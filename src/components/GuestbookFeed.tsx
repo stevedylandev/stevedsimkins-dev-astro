@@ -15,6 +15,7 @@ type Message = {
 	author: string;
 	user_id: string;
 	pfp_url: string;
+	username: string;
 };
 
 export function GuestbookFeed() {
@@ -129,11 +130,13 @@ export function GuestbookFeed() {
 					{messages.map((note: Message) => (
 						<div className="flex flex-row justify-between" key={note.id}>
 							<div className="flex flex-row gap-2 items-center">
-								<img
-									className="h-7 w-7 rounded-full"
-									src={note.pfp_url}
-									alt={note.author}
-								/>
+								<a href={`https://github.com/${note.username}`} target="_blank">
+									<img
+										className="h-7 w-7 rounded-full"
+										src={note.pfp_url}
+										alt={note.author}
+									/>
+								</a>
 								<div className="flex flex-col justify-between">
 									<p className="font-bold text-gray-400">{note.author}</p>
 									<p>{note.note}</p>
