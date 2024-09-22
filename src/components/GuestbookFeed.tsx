@@ -5,7 +5,8 @@ import {
 	SignedIn,
 	SignedOut,
 	UserButton,
-	SignInButton,
+	SignUpButton,
+	SignUp,
 } from "@clerk/astro/react";
 
 type Message = {
@@ -91,13 +92,14 @@ export function GuestbookFeed() {
 		<div className="flex flex-col gap-6">
 			<div className="">
 				<SignedOut>
-					<SignInButton
+					<SignUpButton
+						signInFallbackRedirectUrl="/log"
 						as="button"
 						mode="modal"
 						className="border-2 border-current rounded-md p-1 cursor-pointer"
 					>
 						Sign in with Github
-					</SignInButton>
+					</SignUpButton>
 				</SignedOut>
 				<SignedIn>
 					<div className="flex items-center gap-4 w-full">
