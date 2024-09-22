@@ -135,7 +135,7 @@ export function GuestbookFeed() {
 									<p>{note.note}</p>
 								</div>
 							</div>
-							{user.id === note.user_id && (
+							{user && user.id === note.user_id && (
 								<button
 									onClick={async () => deleteMessage(note.id)}
 									type="button"
