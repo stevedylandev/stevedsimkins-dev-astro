@@ -103,7 +103,7 @@ export function GuestbookFeed() {
 				</SignedOut>
 				<SignedIn>
 					<div className="flex items-center gap-4 w-full">
-						<UserButton />
+						<UserButton afterSignOutUrl="/log" />
 						<input
 							className="p-1 border-current border-2 rounded-md w-96"
 							type="text"
