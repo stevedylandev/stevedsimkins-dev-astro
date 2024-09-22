@@ -26,7 +26,9 @@ export function GuestbookFeed() {
 	async function fetchMessages() {
 		setIsLoading(true);
 		try {
-			const req = await fetch(`${process.env.PUBLIC_API_URL}/messages`);
+			const req = await fetch(
+				"https://guestbook-db-production.up.railway.app/messages",
+			);
 			const res = await req.json();
 			console.log(res);
 			setMessages(res);
@@ -43,13 +45,16 @@ export function GuestbookFeed() {
 
 	async function sendMessage() {
 		try {
-			const req = await fetch(`${process.env.PUBLIC_API_URL}/messages`, {
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${await session.getToken()}`,
+			const req = await fetch(
+				"https://guestbook-db-production.up.railway.app/messages",
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${await session.getToken()}`,
+					},
+					body: JSON.stringify({ note: inputText }),
 				},
-				body: JSON.stringify({ note: inputText }),
-			});
+			);
 			const res = await req.json();
 			console.log(res);
 			setInputText("");
@@ -62,7 +67,7 @@ export function GuestbookFeed() {
 	async function deleteMessage(id: number) {
 		try {
 			const req = await fetch(
-				`${import.meta.env.PUBLIC_API_URL}/messages/${id}`,
+				`https://guestbook-db-production.up.railway.app/messages/${id}`,
 				{
 					method: "DELETE",
 					headers: {
