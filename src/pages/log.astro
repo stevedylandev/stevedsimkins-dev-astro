@@ -1,12 +1,7 @@
 ---
 export const prerender = false;
 import PageLayout from "@/layouts/Base";
-import {
-	SignedIn,
-	SignedOut,
-	UserButton,
-	SignInButton,
-} from "@clerk/astro/components";
+import { GuestbookFeed } from "src/components/GuestbookFeed";
 
 const meta = {
 	title: "Log",
@@ -15,11 +10,10 @@ const meta = {
 ---
 <PageLayout meta={meta}>
   <div class="space-y-6">
-    <SignedOut isStatic={false}>
-      <SignInButton path="/log" as="button" mode="modal" class="border-2 border-current rounded-md p-2 cursor-pointer">Sign in with Github</SignInButton>
-    </SignedOut>
-    <SignedIn isStatic={false}>
-      <UserButton />
-    </SignedIn>
+  <div class="flex flex-col gap-2 mb-6">
+    <h1 class="font-bold text-2xl">Guest Log</h1>
+    <p>Come say hello!</p>
+    </div>
+    <GuestbookFeed client:load />
   </div>
 </PageLayout>
