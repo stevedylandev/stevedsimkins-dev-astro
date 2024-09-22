@@ -93,7 +93,9 @@ export function GuestbookFeed() {
 			<div className="">
 				<SignedOut>
 					<SignUpButton
+						signInForceRedirectUrl="/log"
 						signInFallbackRedirectUrl="/log"
+						forceRedirectUrl="/log"
 						as="button"
 						mode="modal"
 						className="border-2 border-current rounded-md p-1 cursor-pointer"
