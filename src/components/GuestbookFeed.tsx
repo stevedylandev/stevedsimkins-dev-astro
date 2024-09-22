@@ -6,7 +6,6 @@ import {
 	SignedOut,
 	UserButton,
 	SignUpButton,
-	SignUp,
 } from "@clerk/astro/react";
 
 type Message = {
@@ -18,9 +17,12 @@ type Message = {
 	username: string;
 };
 
+const API_URL = "https://guestbook-db-production.up.railway.app";
+
 export function GuestbookFeed() {
 	const [messages, setMessages] = useState<Message[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isSending, setIsSending] = useState(false);
 	const [inputText, setInputText] = useState("");
 	const session = useStore($sessionStore);
 	const user = useStore($userStore);
@@ -28,9 +30,7 @@ export function GuestbookFeed() {
 	async function fetchMessages() {
 		setIsLoading(true);
 		try {
-			const req = await fetch(
-				"https://guestbook-db-production.up.railway.app/messages",
-			);
+			const req = await fetch(`${API_URL}/messages`);
 			const res = await req.json();
 			console.log(res);
 			setMessages(res);
@@ -46,37 +46,34 @@ export function GuestbookFeed() {
 	}
 
 	async function sendMessage() {
+		setIsSending(true);
 		try {
-			const req = await fetch(
-				"https://guestbook-db-production.up.railway.app/messages",
-				{
-					method: "POST",
-					headers: {
-						Authorization: `Bearer ${await session.getToken()}`,
-					},
-					body: JSON.stringify({ note: inputText }),
+			const req = await fetch(`${API_URL}/messages`, {
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
 				},
-			);
+				body: JSON.stringify({ note: inputText }),
+			});
 			const res = await req.json();
 			console.log(res);
 			setInputText("");
+			setIsSending(false);
 			await fetchMessages();
 		} catch (error) {
 			console.log(error);
+			setIsSending(false);
 		}
 	}
 
 	async function deleteMessage(id: number) {
 		try {
-			const req = await fetch(
-				`https://guestbook-db-production.up.railway.app/messages/${id}`,
-				{
-					method: "DELETE",
-					headers: {
-						Authorization: `Bearer ${await session.getToken()}`,
-					},
+			const req = await fetch(`${API_URL}/messages/${id}`, {
+				method: "DELETE",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
 				},
-			);
+			});
 			const res = await req.json();
 			console.log(res);
 			await fetchMessages();
@@ -105,10 +102,10 @@ export function GuestbookFeed() {
 					</SignUpButton>
 				</SignedOut>
 				<SignedIn>
-					<div className="flex items-center gap-4 w-full">
+					<div className="flex items-start gap-4 w-full">
 						<UserButton afterSignOutUrl="/log" />
 						<input
-							className="p-1 border-current border-2 rounded-md w-96"
+							className="p-1 bg-bgColor border-current border-2 rounded-md w-96"
 							type="text"
 							onChange={inputHandeler}
 							value={inputText}
@@ -118,7 +115,7 @@ export function GuestbookFeed() {
 							onClick={sendMessage}
 							type="button"
 						>
-							Send
+							{isSending ? "Posting..." : "Post"}
 						</button>
 					</div>
 				</SignedIn>
@@ -128,18 +125,26 @@ export function GuestbookFeed() {
 			) : (
 				<div className="flex flex-col gap-6">
 					{messages.map((note: Message) => (
-						<div className="flex flex-row justify-between" key={note.id}>
-							<div className="flex flex-row gap-2 items-center">
-								<a href={`https://github.com/${note.username}`} target="_blank">
+						<div
+							className="flex flex-row justify-between items-start"
+							key={note.id}
+						>
+							<div className="flex flex-row gap-2 items-start">
+								<a
+									className="flex-shrink-0 h-7 w-7"
+									href={`https://github.com/${note.username}`}
+									target="_blank"
+									rel="noreferrer"
+								>
 									<img
-										className="h-7 w-7 rounded-full"
+										className="h-full w-full rounded-full object-cover"
 										src={note.pfp_url}
 										alt={note.author}
 									/>
 								</a>
 								<div className="flex flex-col justify-between">
 									<p className="font-bold text-gray-400">{note.author}</p>
-									<p>{note.note}</p>
+									<p className="break-words">{note.note}</p>
 								</div>
 							</div>
 							{user && user.id === note.user_id && (
