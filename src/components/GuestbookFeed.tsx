@@ -26,7 +26,7 @@ export function GuestbookFeed() {
 	async function fetchMessages() {
 		setIsLoading(true);
 		try {
-			const req = await fetch(`${import.meta.env.PUBLIC_API_URL}/messages`);
+			const req = await fetch(`${process.env.PUBLIC_API_URL}/messages`);
 			const res = await req.json();
 			console.log(res);
 			setMessages(res);
@@ -43,7 +43,7 @@ export function GuestbookFeed() {
 
 	async function sendMessage() {
 		try {
-			const req = await fetch(`${import.meta.env.PUBLIC_API_URL}/messages`, {
+			const req = await fetch(`${process.env.PUBLIC_API_URL}/messages`, {
 				method: "POST",
 				headers: {
 					Authorization: `Bearer ${await session.getToken()}`,
