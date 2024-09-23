@@ -1,6 +1,6 @@
 {
-	"name": "astro-cactus",
-	"version": "2.1.0",
+	"name": "stevedylan.dev",
+	"version": "1.0.0",
 	"private": false,
 	"scripts": {
 		"dev": "astro dev",
