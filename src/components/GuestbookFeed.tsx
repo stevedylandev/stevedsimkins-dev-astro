@@ -17,8 +17,8 @@ type Message = {
 	username: string;
 };
 
-// const API_URL = "https://guestbook-db-production.up.railway.app";
-const API_URL = "http://localhost:3000";
+const API_URL = "https://guestbook-db-production.up.railway.app";
+// const API_URL = "http://localhost:3000";
 
 export default function GuestbookFeed() {
 	const [messages, setMessages] = useState<Message[]>([]);
