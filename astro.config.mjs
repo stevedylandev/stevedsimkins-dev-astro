@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
 import clerk from "@clerk/astro";
-
+import { dark } from "@clerk/themes";
 import react from "@astrojs/react";
 
 // https://astro.build/config
@@ -22,7 +22,14 @@ export default defineConfig({
 	},
 	prefetch: true,
 	integrations: [
-		clerk(),
+		clerk({
+			appearance: {
+				baseTheme: dark,
+				layout: {
+					animations: false,
+				},
+			},
+		}),
 		mdx({}),
 		tailwind({
 			config: {

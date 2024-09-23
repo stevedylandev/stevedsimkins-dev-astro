@@ -103,7 +103,14 @@ export default function GuestbookFeed() {
 				</SignedOut>
 				<SignedIn>
 					<div className="flex items-start gap-4 w-full">
-						<UserButton afterSignOutUrl="/guestbook" />
+						<UserButton
+							appearance={{
+								layout: {
+									animations: false,
+								},
+							}}
+							afterSignOutUrl="/guestbook"
+						/>
 						<input
 							className="p-1 bg-bgColor border-current border-2 rounded-md w-96"
 							type="text"
