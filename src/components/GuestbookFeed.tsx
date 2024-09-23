@@ -17,9 +17,10 @@ type Message = {
 	username: string;
 };
 
-const API_URL = "https://guestbook-db-production.up.railway.app";
+// const API_URL = "https://guestbook-db-production.up.railway.app";
+const API_URL = "http://localhost:3000";
 
-export function GuestbookFeed() {
+export default function GuestbookFeed() {
 	const [messages, setMessages] = useState<Message[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSending, setIsSending] = useState(false);
@@ -91,19 +92,18 @@ export function GuestbookFeed() {
 			<div className="">
 				<SignedOut>
 					<SignUpButton
-						signInForceRedirectUrl="/log"
-						signInFallbackRedirectUrl="/log"
-						forceRedirectUrl="/log"
-						as="button"
+						signInForceRedirectUrl="/guestbook"
+						signInFallbackRedirectUrl="/guestbook"
+						forceRedirectUrl="/guestbook"
 						mode="modal"
-						className="border-2 border-current rounded-md p-1 cursor-pointer"
+						className="border-2 border-current rounded-md py-1 px-2 cursor-pointer"
 					>
 						Sign in with Github
 					</SignUpButton>
 				</SignedOut>
 				<SignedIn>
 					<div className="flex items-start gap-4 w-full">
-						<UserButton afterSignOutUrl="/log" />
+						<UserButton afterSignOutUrl="/guestbook" />
 						<input
 							className="p-1 bg-bgColor border-current border-2 rounded-md w-96"
 							type="text"
@@ -143,7 +143,14 @@ export function GuestbookFeed() {
 									/>
 								</a>
 								<div className="flex flex-col justify-between">
-									<p className="font-bold text-gray-400">{note.author}</p>
+									<a
+										href={`https://github.com/${note.username}`}
+										className="font-bold text-gray-400"
+										target="_blank"
+										rel="noreferrer"
+									>
+										{note.author}
+									</a>
 									<p className="break-words">{note.note}</p>
 								</div>
 							</div>

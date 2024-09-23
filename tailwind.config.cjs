@@ -51,7 +51,7 @@ module.exports = {
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply cactus-link no-underline": "",
+							"@apply style-link no-underline": "",
 						},
 						strong: {
 							fontWeight: "700",
@@ -97,7 +97,7 @@ module.exports = {
 		require("@tailwindcss/aspect-ratio"),
 		plugin(function ({ addComponents }) {
 			addComponents({
-				".cactus-link": {
+				".style-link": {
 					"@apply bg-[size:100%_6px] bg-bottom bg-repeat-x": {},
 					backgroundImage:
 						"linear-gradient(transparent,transparent 5px,var(--theme-text) 5px,var(--theme-text))",
