@@ -3,3 +3,7 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-09-20"
 
 compatibility_flags = ["nodejs_als"]
+
+[vars]
+
+PUBLIC_API_URL = "https://guestbook-db-production.up.railway.app"
