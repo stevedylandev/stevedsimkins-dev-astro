@@ -16,8 +16,8 @@ export default defineConfig({
 	},
 	markdown: {
 		shikiConfig: {
-			theme: "css-variables",
-			wrap: true,
+			theme: "vesper",
+			wrap: false,
 		},
 	},
 	prefetch: true,

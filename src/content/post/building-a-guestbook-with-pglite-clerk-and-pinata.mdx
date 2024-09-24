@@ -1,0 +1,716 @@
+---
+title: "Building a Guestbook with PGlite, Clerk, and Pinata"
+publishDate: "24 Sep 2024"
+description: "A quick walkthough of how I built a guestbook for my website"
+tags: ["programming", "developer tools", "pinata"]
+ogImage: "https://dweb.mypinata.cloud/ipfs/QmU4XNzvRej9soBFdShhSb3KiTpN45hziDCbzdc5hBW1Nk?img-format=webp"
+---
+
+When I was first getting started in web development I remember seeing someone's website and was immediately impressed by one thing: a guestbook. You could sing in with Github and leave a message, similar to someone's Facebook wall back in the day. I thought that was the coolest thing but had no idea how to build it. Fast forward to this weekend, I was reminded how cool that was and I decided to build it for my own website.
+
+Normally I would use Supabase DB + Auth for something like this for the ease of use, but I wanted to take a slightly different route. I've been playing with PGlite quite a bit in the last few weeks and decided it would be fun to see if I can host it as a server. My coworker Justin recently had a [post about building a CRUD app with Deno, SQLite and Pinata](https://pinata.cloud/blog/how-to-build-a-persistent-crud-app-using-sqlite-and-deno-js/) to handle backups, and it seemed like the perfect setup to pair with PGlite.
+
+With a weekend to spare I built this out and you can check it out now with [this link](/guestbook)! In this post I'll show you how I built the server, integrated Clerk auth into both the server and the backend, and finally rendering it out into a UI for people to use.
+
+## Setup
+
+When it came to setting up this project there were several moving pieces that had to work together.
+
+### Pinata
+
+Naturally since I work for Pinata I already have an account ready to go for this project, but if you haven't tried it yet then you really should! Creating your account, getting your API key, and firing up the SDK takes just minutes to add file uploads to your account. It was actually the easiest piece of this project, so don't be shy and try it out [here](https://app.pinata.cloud/register).
+
+### Clerk
+
+Since I wasn't going to use Supabase for this project I decided to try out [Clerk](https://clerk.com). I've heard nothing but good things, and there's a reason for that. This platform truly understands how to make auth easy while also giving you loads of control if you want it. Setting it up for my website and the server was super simple, just followed the quick start guide when I onboarded and it was done. Since I'm using Github as my login method I also followed [this guide](https://clerk.com/docs/authentication/social-connections/github) to set that piece up.
+
+### Server
+
+There are so many options out there for building a server/API, so by all means use what feels best for your needs, but I personally love using Hono via Bun. Starting up the project was simple as the command below:
+
+```
+bun create hono guestbook-db
+```
+
+Once the repo was created and initialized I installed a few other packages I would need.
+
+```
+bun add pinata @clerk/backend @hono/clerk-auth @electric-sql/pglite croner
+```
+
+With everything installed I did some initial setup for the project. In the `index.ts` file I imported my dependencies, setup some of the middleware like Clerk and CORS, and just have an entry point setup.
+
+```typescript
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { PGlite } from "@electric-sql/pglite";
+import { pinata } from "./pinata";
+import { Cron } from "croner";
+import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
+
+const app = new Hono();
+
+app.use("/*", cors());
+app.use("*", clerkMiddleware());
+
+app.get("/", (c) => {
+	return c.text("Welcome!");
+});
+
+export default app;
+```
+
+The only other file I needed to add was in the same `src` folder called `pinata.ts` with a quick export of the Pinata SDK instance.
+
+```typescript pinata.ts
+import { PinataSDK } from "pinata";
+
+export const pinata = new PinataSDK({
+	pinataJwt: process.env.PINATA_JWT,
+	pinataGateway: process.env.GATEWAY_URL,
+});
+```
+
+Finally we have a simple `.env` to handle our secrets and vars.
+
+```
+PINATA_JWT= # The primary Pinata API key
+GATEWAY_URL= # Your Pinata gateway domain e.g. example.mypinata.cloud
+GROUP_ID= # Group ID where we will store backups
+CLERK_PUBLISHABLE_KEY= # Clerk public key
+CLERK_SECRET_KEY= # Clerk private key
+ADMIN_KEY= # optional key for your own overrides
+```
+
+## Backend
+
+With the database server setup it was time to work on adding in the database itself. PGlite is unique in that it runs on WASM, making it lightweight and operable in a browser. For this project I took advantage of the size by creating a backup and restore feature into the server. Instead of relying on a local disk setup, the server will routinely backup copies of the database to Pinata, and if at any point it needs to restart it will reboot from the last backup. Depending on how your database library works you could also add it writing to disk as well for extra security.
+
+To setup this workflow I created the following `initDb` function and call it using an immediately invoked function expression.
+
+```typescript
+async function initDb(): Promise<string> {
+	try {
+		const files = await pinata.files
+			.list()
+			.group(process.env.GROUP_ID!)
+			.order("DESC");
+		if (files.files) {
+			const dbFile = await pinata.gateways.get(files.files[0].cid);
+			const file = dbFile.data as Blob;
+			db = new PGlite({ loadDataDir: file });
+			return files.files[0].created_at;
+		}
+		db = new PGlite("./guestbook");
+		await db.exec(`
+	       CREATE TABLE IF NOT EXISTS messages (
+	         id SERIAL PRIMARY KEY,
+	         note TEXT,
+	         author TEXT,
+	         user_id TEXT,
+	         pfp_url TEXT,
+	         username TEXT
+	       );
+     `);
+		return "New DB Created";
+	} catch (error) {
+		console.log(error);
+		throw error;
+	}
+}
+
+(async () => {
+	try {
+		const status = await initDb();
+		console.log("Database initialized. Snapshot:", status);
+	} catch (error) {
+		console.log("Failed to initialize database:", error);
+	}
+})();
+```
+
+This initialization function will first check if there is a backup file using Pinata. We keep the files organized by creating a `group`, and this allows us to filter our files by said group and order them by date. This group was created beforehand, and you could use a script like the following to do so.
+
+```typescript
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const group = await pinata.groups.create({
+	name: "My New Group"
+});
+```
+
+If there is a database backup in the group, then we download it as a file using the SDK once more with `pinata.gateways.get`. Then we simply create and load up a new instance of the database using `new PGPlite({ loadDataDir: file })`. However if there isn't a database backup on Pinata, the function will create a new instance of DB locally and create the default table. Then it's just a matter of calling the function as soon as the server starts!
+
+With the database setup and ready to go it was time to start building some endpoints. The first one would be a simple `GET /messages` to fetch all current rows in the database and return them as JSON. Additionally we structured the query to reverse the feed results so the most recent would be at the top.
+
+```typescript
+app.get("/messages", async (c) => {
+	if (db) {
+		const ret = await db.query(`
+		SELECT * FROM messages ORDER BY id DESC LIMIT 50;
+  `);
+		return c.json(ret.rows);
+	}
+	return c.text("Restore database first");
+});
+```
+
+Of course we'll need an endpoint to actually add messages to the database and we'll use that with the same route `/messages` but as a `POST` method.
+
+```typescript
+interface Message {
+	note: string;
+	author: string;
+	user_id: string;
+	username: string;
+}
+
+app.post("/messages", async (c) => {
+	const body = (await c.req.json()) as Message;
+
+	const auth = getAuth(c);
+	const clerkClient = c.get("clerk");
+
+	if (!auth?.userId) {
+		return c.json(
+			{
+				message: "You are not logged in.",
+			},
+			401,
+		);
+	}
+
+	if (!body.note || typeof body.note !== "string") {
+		return c.json({ error: "Invalid note" }, 400);
+	}
+
+	const user = await clerkClient.users.getUser(auth?.userId);
+
+	try {
+		if (db && auth) {
+			const res = await db.query(
+				"INSERT INTO messages (note, author, user_id, pfp_url, username) VALUES ($1, $2, $3, $4, $5)",
+				[body.note, user.firstName, auth?.userId, user.imageUrl, user.username],
+			);
+
+			return c.json(res.rows);
+		}
+	} catch (error) {
+		console.error("Error creating message:", error);
+		return c.json({ error: "Failed to create message" }, 500);
+	}
+});
+```
+
+Here is where things start to get good. Instead of having the client send a full JSON payload, we can use Clerk to securely fetch some of that information for us as we use Github OAuth as the only authentication method. In the database we have the `note`, `author` or name of the writer, `user_id` from Clerk which we'll get into later, and the `username` for link to the writer's Github profile. All we have to do is use the Clerk Hono middleware to get the `auth` object and verify the user is logged in, otherwise we send a 401. We also make sure that the `note` attached from the client is a string. Finally we can get a `user` object from Clerk using the `userId` and getting all the information we need! Then we just insert a row into the table and return it back to the client.
+
+In the event that someone mistyped something and wanted to delete their message, or if someone left something unkind, we will want a method to delete it. This time we'll use `DELETE /messages/:id` and get the `id` of a message using the path param.
+
+```typescript
+app.delete("/messages/:id", async (c) => {
+	const id = c.req.param("id");
+	const auth = getAuth(c);
+	const admin = c.req.header("Authorization");
+
+	if (!auth?.userId && admin !== process.env.ADMIN_KEY) {
+		return c.json(
+			{
+				message: "You are not logged in.",
+			},
+			401,
+		);
+	}
+
+	try {
+		if (db) {
+			const checkQuery = await db.query<MessageRow>(
+				"SELECT user_id FROM messages WHERE id = $1",
+				[id],
+			);
+
+			if (checkQuery.rows.length === 0) {
+				return c.json({ error: "Message not found" }, 404);
+			}
+
+			const messageUserId = checkQuery.rows[0].user_id;
+
+			if (admin !== process.env.ADMIN_KEY && auth?.userId !== messageUserId) {
+				return c.json(
+					{ error: "You are not authorized to delete this message" },
+					403,
+				);
+			}
+
+			const res = await db.query("DELETE FROM messages WHERE id = $1", [id]);
+
+			if (res.affectedRows === 0) {
+				return c.json({ error: "Message not found" }, 404);
+			}
+			return c.text("Ok");
+		}
+	} catch (error) {
+		console.error("Error deleting message:", error);
+		return c.json({ error: "Failed to delete message" }, 500);
+	}
+});
+```
+
+With this endpoint we have to check a few things. First we need to grab the `id` of the target note. Then we need to do a general auth check to see if the requester is a user or the admin (me). If they pass that then we do a query of the messages for that note `id`, and then we do a check if the requester is either the admin or the author of the note. If they pass then we delete the row from the table and send back an `Ok` message.
+
+That really covers the majority of what I wanted in the guestbook, but if we wanted to we could easily add a `PUT` message as well to enable editing old messages. There are a few things left to do though, including our `/restore` and `/backup` routes.
+
+```typescript
+app.post("/restore", async (c) => {
+	const admin = c.req.header("Authorization");
+
+	if (admin !== process.env.ADMIN_KEY) {
+		return c.json(
+			{
+				message: "You are not logged in.",
+			},
+			401,
+		);
+	}
+
+	try {
+		await initDb();
+		return c.text("Ok");
+	} catch (error) {
+		console.error("Error restoring database:", error);
+		return c.json({ error: "Failed to restore database." }, 500);
+	}
+});
+
+app.post("/backup", async (c) => {
+	const admin = c.req.header("Authorization");
+
+	if (admin !== process.env.ADMIN_KEY) {
+		return c.json(
+			{
+				message: "You are not logged in.",
+			},
+			401,
+		);
+	}
+
+	try {
+		if (db) {
+			const dbFile = (await db.dumpDataDir("auto")) as File;
+			const upload = await pinata.upload
+				.file(dbFile)
+				.group(process.env.GROUP_ID ?? "");
+			return c.json(upload);
+		}
+	} catch (error) {
+		console.error("Error backing up database:", error);
+		return c.json({ error: "Failed to backup database" }, 500);
+	}
+});
+```
+
+These are really simple routes but play an important role in our database. The `/restore` route is a manual reset without restarting the server, where it runs our `initDb()` function from the beginning. `/backup` will dump our current database state as a compact zip file into our Pinata group using the best upload experience: `pinata.upload.file` *chef's kiss*. We'll use the same logic in our cron job to regularly backup the database.
+
+```typescript
+const job = Cron("0 0 * * *", async () => {
+	if (db) {
+		const dbFile = (await db.dumpDataDir("auto")) as File;
+		const upload = await pinata.upload
+			.file(dbFile)
+			.group(process.env.GROUP_ID ?? "");
+		console.log(upload);
+	}
+});
+```
+
+Just like that our server is ready!
+
+## Front End
+
+Now the fun part, pulling everything together in the app 😎 To start I needed to install and setup Clerk for Astro using [this guide](https://clerk.com/docs/quickstarts/astro). To stay somewhat in my comfort zone I used the React plugin for Astro so I could make a component that handles everything, and once again Clerk [made that easy too](https://clerk.com/docs/references/astro/react).
+
+I made a new component called `GuestbookFeed.tsx` and slowly built out the following:
+
+```typescript
+import { useStore } from "@nanostores/react";
+import { $sessionStore, $userStore } from "@clerk/astro/client";
+import { useState, useEffect } from "react";
+import {
+	SignedIn,
+	SignedOut,
+	UserButton,
+	SignUpButton,
+} from "@clerk/astro/react";
+
+type Message = {
+	id: number;
+	note: string;
+	author: string;
+	user_id: string;
+	pfp_url: string;
+	username: string;
+};
+
+const API_URL = import.meta.PUBLIC_API_ENDPOINT
+
+export default function GuestbookFeed() {
+	const [messages, setMessages] = useState<Message[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [isSending, setIsSending] = useState(false);
+	const [inputText, setInputText] = useState("");
+	const session = useStore($sessionStore);
+	const user = useStore($userStore);
+
+	async function fetchMessages() {
+		setIsLoading(true);
+		try {
+			const req = await fetch(`${API_URL}/messages`);
+			const res = await req.json();
+			console.log(res);
+			setMessages(res);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+		}
+	}
+
+	function inputHandeler(e) {
+		setInputText(e.target.value);
+	}
+
+	async function sendMessage() {
+		setIsSending(true);
+		try {
+			const req = await fetch(`${API_URL}/messages`, {
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
+				},
+				body: JSON.stringify({ note: inputText }),
+			});
+			const res = await req.json();
+			console.log(res);
+			setInputText("");
+			setIsSending(false);
+			await fetchMessages();
+		} catch (error) {
+			console.log(error);
+			setIsSending(false);
+		}
+	}
+
+	async function deleteMessage(id: number) {
+		try {
+			const req = await fetch(`${API_URL}/messages/${id}`, {
+				method: "DELETE",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
+				},
+			});
+			const res = await req.json();
+			console.log(res);
+			await fetchMessages();
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	useEffect(() => {
+		fetchMessages();
+	}, []);
+
+	return (
+		<div className="flex flex-col gap-6">
+			<div className="">
+				<SignedOut>
+					<SignUpButton
+						signInForceRedirectUrl="/guestbook"
+						signInFallbackRedirectUrl="/guestbook"
+						forceRedirectUrl="/guestbook"
+						mode="modal"
+						className="border-2 border-current rounded-md py-1 px-2 cursor-pointer"
+					>
+						Sign in with Github
+					</SignUpButton>
+				</SignedOut>
+				<SignedIn>
+					<div className="flex items-start gap-4 w-full">
+						<UserButton
+							appearance={{
+								layout: {
+									animations: false,
+								},
+							}}
+							afterSignOutUrl="/guestbook"
+						/>
+						<input
+							className="p-1 bg-bgColor border-current border-2 rounded-md w-96"
+							type="text"
+							onChange={inputHandeler}
+							value={inputText}
+						/>
+						<button
+							className="border-2 border-current rounded-md py-1 px-2 cursor-pointer"
+							onClick={sendMessage}
+							type="button"
+						>
+							{isSending ? "Posting..." : "Post"}
+						</button>
+					</div>
+				</SignedIn>
+			</div>
+			{isLoading ? (
+				<p>Loading...</p>
+			) : (
+				<div className="flex flex-col gap-6">
+					{messages.map((note: Message) => (
+						<div
+							className="flex flex-row justify-between items-start"
+							key={note.id}
+						>
+							<div className="flex flex-row gap-2 items-start">
+								<a
+									className="flex-shrink-0 h-7 w-7"
+									href={`https://github.com/${note.username}`}
+									target="_blank"
+									rel="noreferrer"
+								>
+									<img
+										className="h-full w-full rounded-full object-cover"
+										src={note.pfp_url}
+										alt={note.author}
+									/>
+								</a>
+								<div className="flex flex-col justify-between">
+									<a
+										href={`https://github.com/${note.username}`}
+										className="font-bold text-gray-400"
+										target="_blank"
+										rel="noreferrer"
+									>
+										{note.author}
+									</a>
+									<p className="break-words">{note.note}</p>
+								</div>
+							</div>
+							{user && user.id === note.user_id && (
+								<button
+									onClick={async () => deleteMessage(note.id)}
+									type="button"
+								>
+									x
+								</button>
+							)}
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	);
+}
+```
+
+It's a lot of code to look at, but when you break it down it's pretty easy to understand, so let's do that now. To start we have our main imports at the top.
+
+```typescript
+import { $sessionStore, $userStore } from "@clerk/astro/client";
+import { useState, useEffect } from "react";
+import {
+	SignedIn,
+	SignedOut,
+	UserButton,
+	SignUpButton,
+} from "@clerk/astro/react";
+
+type Message = {
+	id: number;
+	note: string;
+	author: string;
+	user_id: string;
+	pfp_url: string;
+	username: string;
+};
+
+const API_URL = import.meta.env.PUBLIC_API_URL
+
+export default function GuestbookFeed() {
+	const [messages, setMessages] = useState<Message[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [isSending, setIsSending] = useState(false);
+	const [inputText, setInputText] = useState("");
+	const session = useStore($sessionStore);
+	const user = useStore($userStore);
+//...
+```
+
+Here we have some simple yet important pieces to our component. The first is our stores like `$sessionStore` and `$userStore`. These are provided by the Clerk middleware and will give us access to the logged in user's session tokens to authorize requests. We also have some neat components from Clerk which we'll get into shortly. Finally we have a slew of state from React to handle inputs and loading states, as well as the `useStore` for our auth stores.
+
+Below that we have just a few primary functions.
+
+```typescript
+	async function fetchMessages() {
+		setIsLoading(true);
+		try {
+			const req = await fetch(`${API_URL}/messages`);
+			const res = await req.json();
+			console.log(res);
+			setMessages(res);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+		}
+	}
+
+	function inputHandeler(e) {
+		setInputText(e.target.value);
+	}
+
+	async function sendMessage() {
+		setIsSending(true);
+		try {
+			const req = await fetch(`${API_URL}/messages`, {
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
+				},
+				body: JSON.stringify({ note: inputText }),
+			});
+			const res = await req.json();
+			console.log(res);
+			setInputText("");
+			setIsSending(false);
+			await fetchMessages();
+		} catch (error) {
+			console.log(error);
+			setIsSending(false);
+		}
+	}
+
+	async function deleteMessage(id: number) {
+		try {
+			const req = await fetch(`${API_URL}/messages/${id}`, {
+				method: "DELETE",
+				headers: {
+					Authorization: `Bearer ${await session.getToken()}`,
+				},
+			});
+			const res = await req.json();
+			console.log(res);
+			await fetchMessages();
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	useEffect(() => {
+		fetchMessages();
+	}, []);
+```
+
+At the top we have our function to fetch messages from our API. We made this a public endpoint so we don't have to authorize it at all, and we just store the array of messages from the database into our `Message` array. Next we have our `inputHandler` as well as our `sendMessage` function, which again just takes the input state and sends it as an API request. What's special here is the `Authorization` header where we use the `await session.getToken()` so that our API can authenticate the request. Simple, clean, and effective. If successful we'll clear the input and refetch the messages. We also have a `deleteMessage` function so the author can delete a note from the site if they want to, and finally we have a simple `useEffect` to load our messages when the page loads.
+
+Now all that's left is rendering our UI:
+
+```typescript
+	return (
+		<div className="flex flex-col gap-6">
+			<div className="">
+				<SignedOut>
+					<SignUpButton
+						signInForceRedirectUrl="/guestbook"
+						signInFallbackRedirectUrl="/guestbook"
+						forceRedirectUrl="/guestbook"
+						mode="modal"
+						className="border-2 border-current rounded-md py-1 px-2 cursor-pointer"
+					>
+						Sign in with Github
+					</SignUpButton>
+				</SignedOut>
+				<SignedIn>
+					<div className="flex items-start gap-4 w-full">
+						<UserButton
+							appearance={{
+								layout: {
+									animations: false,
+								},
+							}}
+							afterSignOutUrl="/guestbook"
+						/>
+						<input
+							className="p-1 bg-bgColor border-current border-2 rounded-md w-96"
+							type="text"
+							onChange={inputHandeler}
+							value={inputText}
+						/>
+						<button
+							className="border-2 border-current rounded-md py-1 px-2 cursor-pointer"
+							onClick={sendMessage}
+							type="button"
+						>
+							{isSending ? "Posting..." : "Post"}
+						</button>
+					</div>
+				</SignedIn>
+			</div>
+			{isLoading ? (
+				<p>Loading...</p>
+			) : (
+				<div className="flex flex-col gap-6">
+					{messages.map((note: Message) => (
+						<div
+							className="flex flex-row justify-between items-start"
+							key={note.id}
+						>
+							<div className="flex flex-row gap-2 items-start">
+								<a
+									className="flex-shrink-0 h-7 w-7"
+									href={`https://github.com/${note.username}`}
+									target="_blank"
+									rel="noreferrer"
+								>
+									<img
+										className="h-full w-full rounded-full object-cover"
+										src={note.pfp_url}
+										alt={note.author}
+									/>
+								</a>
+								<div className="flex flex-col justify-between">
+									<a
+										href={`https://github.com/${note.username}`}
+										className="font-bold text-gray-400"
+										target="_blank"
+										rel="noreferrer"
+									>
+										{note.author}
+									</a>
+									<p className="break-words">{note.note}</p>
+								</div>
+							</div>
+							{user && user.id === note.user_id && (
+								<button
+									onClick={async () => deleteMessage(note.id)}
+									type="button"
+								>
+									x
+								</button>
+							)}
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	);
+
+```
+
+Again, a lot of code, but overall not too complicated. At the top we have our Clerk components that determine what a user sees based on their login state. If they're not logged in then we have a `<SignUpButton />`, and once they do sign in we show them a profile button with `<UserButton />`, and input to put a message in, and a button to [send it](https://youtu.be/RSuLFvalhnQ). Below our Clerk components we have the actual message feed which renders our `messages` array, and includes things like their pfp, name, message, and even an `<a />` tag to link to their Github profile. Finally we also have a little button that will appear for that specific user if they want to delete one of their messages, but not anyone else's.
+
+## Wrapping Up
+
+Overall this was a really great little project to build and it touches some of the key pieces of the web: uploads/storage, databases, backend APIs, and front end UIs. It gives you a great feel and stretches your understanding of how all of these pieces work together and how the space is moving. Using tools like Pinata or Clerk really give you the best of both worlds when building tools, which is a great developer experience and a solid finished product. Be sure to [drop a message](https://stevedylan.dev/guestbook) there now if you haven't already, and thanks for reading! :)
