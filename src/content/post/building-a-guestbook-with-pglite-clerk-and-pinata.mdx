@@ -6,6 +6,16 @@ tags: ["programming", "developer tools", "pinata"]
 ogImage: "https://dweb.mypinata.cloud/ipfs/QmU4XNzvRej9soBFdShhSb3KiTpN45hziDCbzdc5hBW1Nk?img-format=webp"
 ---
 
+import { Image } from "astro:assets";
+
+<Image
+	src="https://dweb.mypinata.cloud/ipfs/QmU4XNzvRej9soBFdShhSb3KiTpN45hziDCbzdc5hBW1Nk?img-format=webp"
+	alt="header image"
+	height={1080}
+	width={1920}
+	aspectRatio={9 / 16}
+/>
+
 When I was first getting started in web development I remember seeing someone's website and was immediately impressed by one thing: a guestbook. You could sing in with Github and leave a message, similar to someone's Facebook wall back in the day. I thought that was the coolest thing but had no idea how to build it. Fast forward to this weekend, I was reminded how cool that was and I decided to build it for my own website.
 
 Normally I would use Supabase DB + Auth for something like this for the ease of use, but I wanted to take a slightly different route. I've been playing with PGlite quite a bit in the last few weeks and decided it would be fun to see if I can host it as a server. My coworker Justin recently had a [post about building a CRUD app with Deno, SQLite and Pinata](https://pinata.cloud/blog/how-to-build-a-persistent-crud-app-using-sqlite-and-deno-js/) to handle backups, and it seemed like the perfect setup to pair with PGlite.
