@@ -19,7 +19,7 @@ import { Image } from "astro:assets";
 
 The chances are that if you are a modern developer or if you're starting out, you probably don't know what `jq` is, and that's why I'm writing this post. It won't take long to explain what `jq` is, so let's just get that out of the way.
 
-`jq` could be labeled a command line tool, but in truth it‘s a very “high-level lexically scoped functional programming language” (at least according to Wikipedia) that’s has been around for over a decade. The whole thing is based around JSON and helping you manipulate it in the terminal quickly, which may seem dull or not very useful to the untrained, but let me **show you** why this goes so hard.
+`jq` could be labeled a command line tool, but in truth it‘s a very “high-level lexically scoped functional programming language” (at least according to Wikipedia) that has been around for over a decade. The whole thing is based around JSON and helping you manipulate it in the terminal quickly, which may seem dull or not very useful to the untrained, but let me **show you** why this goes so hard.
 
 A great way to experience `jq` yourself is to follow their [short tutorial](https://jqlang.github.io/jq/tutorial/) but I wanted to give a more personal example. Recently I built a [CLI](https://cli.pinata.cloud) for Pinata that lets you upload, access, and manage your files from the terminal. One simple command you can run is `pinata files list -a 5` to display a list of your most recent uploads (limiting the amount to 5 items for now), and the output looks like this.
 
