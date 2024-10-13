@@ -120,7 +120,7 @@ What if I can to pipe that `cid` into another command, perhaps open it in the br
 pinata files list -n pinnie | jq .files[0].cid | xargs pinata gateways open
 ```
 
-You might have noticed we slipped on extra tool in here called `xargs` and while it’s outside the scope of this post I would highly recommend learning that tool as well. Back to `jq`, let’s try something else. What if I need the file names for not just the last 5 results but 50 or 100. How do we go outside just one index of an array? Just a little change in our syntax.
+You might have noticed we slipped an extra tool in here called `xargs` and while it’s outside the scope of this post I would highly recommend learning that tool as well. Back to `jq`, let’s try something else. What if I need the file names for not just the last 5 results but 50 or 100. How do we go outside just one index of an array? Just a little change in our syntax.
 
 ```
 pinata files list | jq [.files[].name]
