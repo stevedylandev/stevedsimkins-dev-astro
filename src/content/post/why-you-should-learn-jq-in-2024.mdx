@@ -6,6 +6,17 @@ tags: ["programming", "developer tools", "jq"]
 ogImage: "https://dweb.mypinata.cloud/ipfs/QmUGj2igxo7mjc9FRrm5LWcDpDmbFohxXFmQisS49auAkq?img-format=webp"
 ---
 
+import { Image } from "astro:assets";
+
+<Image
+	src="https://dweb.mypinata.cloud/ipfs/QmUGj2igxo7mjc9FRrm5LWcDpDmbFohxXFmQisS49auAkq?img-format=webp"
+	alt="header image"
+	height={1080}
+	width={1920}
+	aspectRatio={9 / 16}
+/>
+
+
 The chances are that if you are a modern developer or if you're starting out, you probably don't know what `jq` is, and that's why I'm writing this post. It won't take long to explain what `jq` is, so let's just get that out of the way.
 
 `jq` could be labeled a command line tool, but in truth it‘s a very “high-level lexically scoped functional programming language” (at least according to Wikipedia) that’s has been around for over a decade. The whole thing is based around JSON and helping you manipulate it in the terminal quickly, which may seem dull or not very useful to the untrained, but let me **show you** why this goes so hard.
