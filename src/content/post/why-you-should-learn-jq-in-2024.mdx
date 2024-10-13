@@ -86,7 +86,7 @@ A great way to experience `jq` yourself is to follow their [short tutorial](http
 
 Trying to view this in the terminal can be pretty rough; there's a lot to look at here. That's the case with most APIs, and this one isn't even that complicated. If you were trying to fetch data from the Google books API, it will be almost impossible to navigate. That's where `jq` comes in.
 
-Let's say I just wanted the first item in the `files[]` array? I can do that with `jq` by [piping](https://www.geeksforgeeks.org/piping-in-unix-or-linux/) the results of the previous command into `jq` like so:
+Let's say I just wanted the first item in the `files[]` array; I can do that with `jq` by [piping](https://www.geeksforgeeks.org/piping-in-unix-or-linux/) the results of the previous command into `jq` like so:
 
 ```
 pinata files list -a 5 | jq .files[0]
