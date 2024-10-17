@@ -38,4 +38,5 @@ export const SOCIAL_LINKS = {
 	photos: "https://photos.stevedylan.dev",
 	threads: "https://threads.net/stevedylandev",
 	website: "/",
+	coffee: "https://buymeacoffee.com/stevedylandev",
 };
