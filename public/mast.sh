@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GITHUB_REPO="https://github.com/stevedylandev/cast-cli"
-CLI_NAME="cast"
+GITHUB_REPO="https://github.com/stevedylandev/mast-cli"
+CLI_NAME="mast"
 
 INSTALL_DIR="$HOME/.local/share"
-BIN_DIR="$INSTALL_DIR/cast"
+BIN_DIR="$INSTALL_DIR/mast"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -62,7 +62,7 @@ detect_platform() {
 # Download and install the CLI
 install_cli() {
     local platform=$1
-    local download_url="${GITHUB_REPO}/releases/latest/download/cast-cli_${platform}.tar.gz"
+    local download_url="${GITHUB_REPO}/releases/latest/download/mast-cli_${platform}.tar.gz"
     local temp_dir=$(mktemp -d)
 
     echo "Downloading ${CLI_NAME}..."
