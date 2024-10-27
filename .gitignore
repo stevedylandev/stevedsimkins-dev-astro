@@ -25,3 +25,4 @@ pnpm-debug.log*
 .cache
 .astro
 .vercel
+.replit
