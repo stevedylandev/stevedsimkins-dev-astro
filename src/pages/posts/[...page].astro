@@ -9,7 +9,8 @@ import { getUniqueTags, sortMDByDate } from "@/utils";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const allPosts = await getCollection("post");
-	const allPostsByDate = sortMDByDate(allPosts);
+	const visiblePosts = allPosts.filter((post) => !post.data.hidden);
+	const allPostsByDate = sortMDByDate(visiblePosts);
 	const uniqueTags = getUniqueTags(allPosts);
 	return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: 10 });
 }
