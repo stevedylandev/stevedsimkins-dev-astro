@@ -64,17 +64,140 @@ Once you've gotten everything setup, let's do a quick walkthrough of the project
 - `lib` - This directory has some helper structs that we'll use in the program for deserializing data.
 - `elf` - The `elf` directory holds a special ELF (Executable and Linkable Format) file that is used to make our program and script programs talk to each other.
 
+Let's take a quick look at the program we'll be generating a proof for:
 
-Now let's start testing. Run `cd program` to move into the program directory, and then run:
+```rust
+// These two lines are necessary for the program to properly compile.
+//
+// Under the hood, we wrap your main function with some extra code so that it behaves properly
+// inside the zkVM.
+#![no_main]
+sp1_zkvm::entrypoint!(main);
+
+use alloy_sol_types::{private::FixedBytes, SolType};
+use precompiles_demo::PublicValuesStruct;
+use tiny_keccak::{Hasher, Keccak};
+//use patched_tiny_keccak::{Hasher, Keccak};
+
+pub fn main() {
+    // Read an input to the program.
+    //
+    // Behind the scenes, this compiles down to a custom system call which handles reading inputs
+    // from the prover.
+    let input = sp1_zkvm::io::read::<String>();
+
+    // Compute a keccak hash form the input
+    let mut hasher = Keccak::v256();
+    hasher.update(input.as_bytes());
+    let mut hash_bytes = [0u8; 32];
+    hasher.finalize(&mut hash_bytes);
+
+    let hash_fixed = FixedBytes::<32>(hash_bytes);
+
+    // Encode the public values of the program.
+    let bytes = PublicValuesStruct::abi_encode(&PublicValuesStruct {
+        input,
+        hash: hash_fixed,
+    });
+
+    // Commit to the public values of the program. The final proof will have a commitment to all the
+    // bytes that were committed to.
+    sp1_zkvm::io::commit_slice(&bytes);
+}
+```
+
+At the top of our file we have an `entrypoint` for the `sp1_zkvm` which is needed to run inside SP1. Outside of that we have some basic Rust code that takes an input, creates a hash, and returns the input and the resulting hash. SP1 provides some utilities to handle things like `io` to read inputs as well as commiting them.
+
+Now let's start testing. If you haven't already run `cd program` to move into the program directory, and then run:
 
 ```
 cargo prove build
 ```
 
-This will build our program using SP1 and prepare it for the next step, execution. Once the build is finished run the following command:
+This will build our program using SP1 and prepare it for the next step, execution.
+
+Inside our `script` folder we have a `/bin/main.rs` file that will run the program through SP1:
+
+```rust
+use alloy_sol_types::SolType;
+use clap::Parser;
+use precompiles_demo::PublicValuesStruct;
+use sp1_sdk::{ProverClient, SP1Stdin};
+
+/// The ELF (executable and linkable format) file for the Succinct RISC-V zkVM.
+pub const ELF: &[u8] = include_bytes!("../../../elf/riscv32im-succinct-zkvm-elf");
+
+/// The arguments for the command.
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+    #[clap(long)]
+    execute: bool,
+
+    #[clap(long)]
+    prove: bool,
+
+    #[clap(long, default_value = "Hello World from SP1!")]
+    n: String,
+}
+
+fn main() {
+    // Setup the logger.
+    sp1_sdk::utils::setup_logger();
+
+    // Parse the command line arguments.
+    let args = Args::parse();
+
+    if args.execute == args.prove {
+        eprintln!("Error: You must specify either --execute or --prove");
+        std::process::exit(1);
+    }
+
+    // Setup the prover client.
+    let client = ProverClient::new();
+
+    // Setup the inputs.
+    let mut stdin = SP1Stdin::new();
+    stdin.write(&args.n);
+
+    println!("n: {}", args.n);
+
+    if args.execute {
+        // Execute the program
+        let (output, report) = client.execute(ELF, stdin).run().unwrap();
+        println!("Program executed successfully.");
+
+        // Read the output.
+        let decoded = PublicValuesStruct::abi_decode(output.as_slice(), true).unwrap();
+        let PublicValuesStruct { input, hash } = decoded;
+        println!("Input: {}", input);
+        println!("Hash: 0x{}", hex::encode(hash.0)); // Convert bytes to hex string
+
+        // Record the number of cycles executed.
+        println!("Number of cycles: {}", report.total_instruction_count());
+    } else {
+        // Setup the program for proving.
+        let (pk, vk) = client.setup(ELF);
+
+        // Generate the proof
+        let proof = client
+            .prove(&pk, stdin)
+            .run()
+            .expect("failed to generate proof");
+
+        println!("Successfully generated proof!");
+
+        // Verify the proof.
+        client.verify(&proof, &vk).expect("failed to verify proof");
+        println!("Successfully verified proof!");
+    }
+}
+```
+
+This will look for arguments during `cargo run` to determin if it should only run an execution or if it should generate a proof. Executions are great for testing the code and will take less time and computation power than proofs. Once we have the arguments we can create an instance of the `ProverClient` to run our program and get the committed values back. Now lets try it out with the following command, making sure we have run `cd ../script` first to be in this directory instead of program:
 
 ```
-cd ../script && cargo run --release -- --execute
+cargo run --release -- --execute
 ```
 
 This will start the bin command and will take a little time to run. Once complete you should see an output like this one:
