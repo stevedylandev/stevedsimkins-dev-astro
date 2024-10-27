@@ -8,6 +8,23 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
 	{
+		title: "Mast",
+		description:
+			"A simple TUI used for sending casts on Farcaster written in Go. I wanted a project to try out the Bubbletea TUI framework from Charm.sh and this fit the bill perfectly. It's authorized using your own custody signers (can be created through castkeys.xyz) and allows the user to set their own Farcaster hub.",
+		image:
+			"https://cdn.stevedylan.dev/files/bafkreigqnynyjfax3loj5maiwnvv3qqxotpoajiq4p6r6glmt6pjmowjke",
+		link: "https://github.com/stevedylandev/mast-cli",
+		tags: ["farcaster", "developer tools"],
+	},
+	{
+		title: "Cast Keys",
+		description:
+			"A tool and example for Farcaster developers that need to create signers for their account. Signers are ED25519 keypair that are signed by the primary wallet of a user, and they operate like API keys that can be revoked down the road. They are crucial to the Farcaster ecosystem as they allow users to 'sign-in' to other Farcaster apps and interact with the protocol. This small web app makes it easy to generate a signer for your account, but the code is also FOSS as an educational tool for new Farcaster devs.",
+		image: "https://castkeys.xyz/og.png",
+		link: "https://castkeys.xyz",
+		tags: ["farcaster", "developer tools"],
+	},
+	{
 		title: "Pi-Widget",
 		description:
 			"A small server written in Go that you can run on your Raspberry Pi to display vitals in real time. For my particular Pi it displays IPFS repo stats and system stats, with more updates on the way",
@@ -53,7 +70,8 @@ export const projects: ProjectItem[] = [
 		title: "Raycaster Extension",
 		description:
 			"The fastest way to send a cast on Farcaster. A Raycast extension that allows you to sign into your Farcaster account and send casts with optional images via IPFS. ",
-		image: "https://dweb.mypinata.cloud/ipfs/QmSsY6QnhdwbWunrgzTDkpvRd7oWx5nUp8v7UiMeGRFeZ1",
+		image:
+			"https://dweb.mypinata.cloud/ipfs/QmSsY6QnhdwbWunrgzTDkpvRd7oWx5nUp8v7UiMeGRFeZ1",
 		link: "https://www.raycast.com/stevedylandev/raycaster",
 		tags: ["raycast", "developer tools", "productivity"],
 	},
@@ -78,7 +96,8 @@ export const projects: ProjectItem[] = [
 		title: "Pinata-go-cli",
 		description:
 			"A Go rewrite of the Node.js CLI for Pinata, allows fast and extensive uploads to Pinata. Also includes helpful features for listing files and other API functionalities. ",
-		image: "https://dweb.mypinata.cloud/ipfs/QmasHAZJ2kb9k3AqkQP4yzYbZn8zxFGsrygNv6HBdMn1uE",
+		image:
+			"https://dweb.mypinata.cloud/ipfs/QmasHAZJ2kb9k3AqkQP4yzYbZn8zxFGsrygNv6HBdMn1uE",
 		link: "https://github.com/PinataCloud/pinata-go-cli",
 		tags: ["developer tools", "ipfs"],
 	},
