@@ -14,6 +14,21 @@ const socialImageURL = new URL(
 	ogImage ? ogImage : "/social-card.png",
 	Astro.url,
 ).href;
+
+const frameEmbed = JSON.stringify({
+	version: "next",
+	imageUrl: "https://stevedylan.dev/social-card.png",
+	button: {
+		title: "Open",
+		action: {
+			type: "launch_frame",
+			name: "stevedylan.dev",
+			url: "https://stevedylan.dev",
+			splashImageUrl: "https://www.stevedylan.dev/512x512.png",
+			splashBackgroundColor: "#000000",
+		},
+	},
+});
 ---
 
 <meta charset="utf-8" />
@@ -64,3 +79,5 @@ const socialImageURL = new URL(
 
 <!-- RSS auto-discovery -->
 <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href="/rss.xml" />
+
+<meta name="fc:frame" content={frameEmbed} />
