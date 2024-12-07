@@ -22,8 +22,8 @@ export default function GuestbookFeed({ API_URL }: { API_URL: string }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSending, setIsSending] = useState(false);
 	const [inputText, setInputText] = useState("");
-	const session = useStore($sessionStore);
-	const user = useStore($userStore);
+	//const session = useStore($sessionStore);
+	//const user = useStore($userStore);
 
 	async function fetchMessages() {
 		setIsLoading(true);
