@@ -13,6 +13,6 @@ const meta = {
     <h1 class="font-bold text-2xl">Guestbook</h1>
     <p>Welcome to my little digital guestbook! I built this using PGlite, Railway, Clerk, and <a href="https://pinata.cloud" class="style-link" target="_blank" rel="noreferrer">Pinata</a>, and you can <a href="/posts/building-a-guestbook-with-pglite-clerk-and-pinata" class="style-link">read about it here</a>. Login with your Github account to leave a message!</p>
     </div>
-    <GuestbookFeed API_URL={import.meta.env.PUBLIC_API_URL} client:load />
+    <GuestbookFeed API_URL={import.meta.env.PUBLIC_API_URL} client:only="react" />
   </div>
 </PageLayout>
