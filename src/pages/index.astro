@@ -5,6 +5,7 @@ import PostPreview from "@/components/blog/PostPreview";
 import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
 import { Image } from "astro:assets";
+import { DecryptingText } from "src/components/DecryptingText";
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
@@ -14,7 +15,7 @@ const allPostsByDate = sortMDByDate(visiblePosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-		<h1 class="title mb-6">Hey there!</h1>
+   <DecryptingText text="Hey There!" className="title mb-6" client:only="react" />
 		<p class="mb-4">
 			My name is Steve. I'm a DX Engineer and creator with a desire to
 			help build the future of the web. My latest project is <a
