@@ -5,8 +5,9 @@ import PostPreview from "@/components/blog/PostPreview";
 import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
 import { Image } from "astro:assets";
-//import { DecryptingText } from "src/components/DecryptingText";
 import DecryptingHeader from "@/components/DecryptingHeader";
+import ImageDither from "../components/ImageDither";
+import pinnie from "../assets/pinnie.png";
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
@@ -16,6 +17,7 @@ const allPostsByDate = sortMDByDate(visiblePosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
+	<ImageDither imageUrl="https://stevedylan.dev/512x512.png" client:only="react" />
    <DecryptingHeader text="Hey there!" className="title pb-6" />
 		<p class="mb-4">
 			My name is Steve. I'm a DX Engineer and creator with a desire to
