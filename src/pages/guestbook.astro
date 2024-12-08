@@ -1,4 +1,5 @@
 ---
+import DecryptingHeader from "@/components/DecryptingHeader";
 import PageLayout from "@/layouts/Base";
 import GuestbookFeed from "src/components/GuestbookFeed";
 
@@ -10,7 +11,7 @@ const meta = {
 <PageLayout meta={meta}>
   <div class="space-y-6">
   <div class="flex flex-col gap-2 mb-6">
-    <h1 class="font-bold text-2xl">Guestbook</h1>
+    <DecryptingHeader text="Guestbook" className="title mb-6" />
     <p>Welcome to my little digital guestbook! I built this using PGlite, Railway, Clerk, and <a href="https://pinata.cloud" class="style-link" target="_blank" rel="noreferrer">Pinata</a>, and you can <a href="/posts/building-a-guestbook-with-pglite-clerk-and-pinata" class="style-link">read about it here</a>. Login with your Github account to leave a message!</p>
     </div>
     <GuestbookFeed API_URL={import.meta.env.PUBLIC_API_URL} client:only="react" />
