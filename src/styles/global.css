@@ -37,7 +37,7 @@
 	}
 
 	html {
-		@apply h-full scroll-smooth border-t-2 border-textColor;
+		@apply h-full scroll-smooth border-t-2 border-textColor bg-bgColor;
 	}
 
 	html body {
