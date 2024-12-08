@@ -2,6 +2,7 @@
 import PageLayout from "@/layouts/Base";
 import { Image } from "astro:assets";
 import aboutImg from "../assets/pfp.png";
+import DecryptingHeader from "@/components/DecryptingHeader";
 
 const meta = {
 	title: "About",
@@ -11,7 +12,7 @@ const meta = {
 
 <PageLayout meta={meta}>
 	<div class="space-y-6">
-		<h1 class="title">About</h1>
+	 <DecryptingHeader text="About" className="title" />
 		<p>
 			Hey there! My name is Steve and I’m a DX engineer, creator, and tinkerer. I’m currently
 			working at

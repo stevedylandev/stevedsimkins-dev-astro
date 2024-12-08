@@ -1,5 +1,7 @@
 ---
+import DecryptingHeader from "@/components/DecryptingHeader";
 import PageLayout from "@/layouts/Base";
+import { DecryptingText } from "src/components/DecryptingText";
 
 const meta = {
 	title: "Videos",
@@ -11,7 +13,7 @@ const videoIds = ["lhJwEckGi4U", "kMALubK72Q8", "GlpfIherX7U", "KpwCP1Xil-Q"];
 
 <PageLayout meta={meta}>
 	<div class="space-y-6">
-		<h1 class="title">Videos</h1>
+	<DecryptingHeader text="Videos" className="title" />
 		<p>Here are some samples of video content I've produced to help users!</p>
 		{
 			videoIds.map((id) => (

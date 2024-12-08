@@ -2,6 +2,7 @@
 import PageLayout from "@/layouts/Base";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+import DecryptingHeader from "@/components/DecryptingHeader";
 
 const meta = {
 	title: "Projects",
@@ -11,6 +12,7 @@ const meta = {
 
 <PageLayout meta={meta}>
 	<div class="flex min-h-screen flex-col items-start justify-start gap-6">
+	<DecryptingHeader text="Projects" className="title" />
 		{projects.map((project) => <ProjectCard content={project} />)}
 	</div>
 </PageLayout>
