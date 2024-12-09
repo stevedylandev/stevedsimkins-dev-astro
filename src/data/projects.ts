@@ -8,6 +8,14 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
 	{
+		title: "HelloBase",
+		description:
+			"Blockchain is complicated, and learning everything there is to know just to start using it can be overwhelming. That's why I build HelloBase, a simple hello world for developers who are interesting in building on blockchain for the first time. It features basic knowledge as well as deploying and interacting with smart contracts on Base using Coinbase Smart Wallets.",
+		image: "https://www.hellobase.dev/og.png",
+		link: "https://hellobase.dev",
+		tags: ["blockchain", "developer tools"],
+	},
+	{
 		title: "Mast",
 		description:
 			"A simple TUI used for sending casts on Farcaster written in Go. I wanted a project to try out the Bubbletea TUI framework from Charm.sh and this fit the bill perfectly. It's authorized using your own custody signers (can be created through castkeys.xyz) and allows the user to set their own Farcaster hub.",
