@@ -7,9 +7,13 @@ interface Props {
 const { text, className = "" } = Astro.props;
 ---
 
+<div>
+
 <h1 class:list={[className]} data-decrypting-text data-text={text}>
   {text}
 </h1>
+<slot />
+</div>
 
 <script>
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";

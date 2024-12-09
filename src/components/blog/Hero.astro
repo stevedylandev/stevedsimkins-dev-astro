@@ -1,6 +1,7 @@
 ---
 import { getFormattedDate } from "@/utils";
 import type { CollectionEntry } from "astro:content";
+import DecryptingHeader from "../DecryptingHeader.astro";
 
 interface Props {
 	content: CollectionEntry<"post">;
@@ -12,7 +13,7 @@ const datetime = content.data.publishDate.toISOString();
 const postDate = getFormattedDate(content.data.publishDate);
 ---
 
-<h1 class="title mb-3 sm:mb-1">{content.data.title}</h1>
+<DecryptingHeader text={content.data.title} className="title mb-3 sm:mb-1">
 <time datetime={datetime}>{postDate}</time>
 {
 	!!content.data.tags?.length && (
@@ -49,4 +50,5 @@ const postDate = getFormattedDate(content.data.publishDate);
 		</div>
 	)
 }
+</DecryptingHeader>
 <p class="mt-8">{content.data.description}</p>

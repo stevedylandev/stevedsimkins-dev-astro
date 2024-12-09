@@ -26,6 +26,17 @@ module.exports = {
 				accent: "var(--theme-accent)",
 				"accent-2": "var(--theme-accent-2)",
 			},
+			keyframes: {
+				fadeIn: {
+					from: { opacity: 0 },
+					to: {
+						opacity: 1,
+					},
+				},
+			},
+			animation: {
+				"fade-in": "fadeIn 1s ease-in forwards",
+			},
 			fontFamily: {
 				// Add any custom fonts here
 				sans: ["Commit Mono", ...fontFamily.sans],
