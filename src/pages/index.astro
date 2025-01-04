@@ -15,15 +15,19 @@ const allPostsByDate = sortMDByDate(visiblePosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-   <DecryptingHeader text="Hey there!" className="title pb-6" />
+		<DecryptingHeader text="Hey there!" className="title pb-6" />
 		<p class="mb-4">
-			My name is Steve. I'm a DX Engineer and creator with a desire to
-			help build the future of the web. My latest project is <a
-				href="https://snippets.so"
+			My name is Steve. I'm a DX Engineer and creator with a desire to help build the future of the
+			web. My latest project is <a
+				href="https://orbiter.host"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="style-link">Snippets.so</a
-			>, a clean and simple code sharing tool. Take a look around and be sure to <a class="style-link" href="/guestbook" data-astro-reload>sign my guestbook</a>!
+				class="style-link">Orbiter</a
+			>, a simple yet open take on static site hosting. Take a look around and be sure to <a
+				class="style-link"
+				href="/guestbook"
+				data-astro-reload>sign my guestbook</a
+			>!
 		</p>
 		<SocialList />
 		<p>Or anywhere with my handle <span class="text-accent">@stevedylandev</span></p>
@@ -43,6 +47,23 @@ const allPostsByDate = sortMDByDate(visiblePosts).slice(0, MAX_POSTS);
 	<section class="mt-16">
 		<h2 class="title mb-4 text-xl">Extras</h2>
 		<ul class="space-y-4 sm:space-y-2">
+			<li>
+				<a
+					href="https://orbiter.host"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="style-link inline-block"
+					><Image
+						src="https://api.iconify.design/hugeicons:orbit-01.svg?color=%23888888"
+						class="inline-block h-4 w-4"
+						height="100"
+						width="100"
+						alt="rasp pi logo"
+					/> Orbiter
+				</a>:
+				<p class="inline-block sm:mt-2">A static site hosting project with Justin Hunter</p>
+			</li>
+
 			<li>
 				<a
 					href="https://pi.stevedylan.dev"
