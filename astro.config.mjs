@@ -9,44 +9,43 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://stevedylan.dev",
-	outDir: "dist",
-	image: {
-		service: passthroughImageService(),
-	},
-	markdown: {
-		shikiConfig: {
-			theme: "vesper",
-			wrap: false,
-		},
-	},
-	prefetch: true,
-	integrations: [
-		clerk({
-			appearance: {
-				baseTheme: dark,
-				layout: {
-					animations: false,
-				},
-			},
-		}),
-		mdx({}),
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
-		sitemap(),
-		react(),
-	],
-	vite: {
-		ssr: {
-			external: ["node:async_hooks"],
-		},
-		define: {
-			"process.env": process.env,
-		},
-	},
-	output: "hybrid",
-	adapter: cloudflare(),
+  site: "https://stevedylan.dev",
+  outDir: "dist",
+  image: {
+    service: passthroughImageService(),
+  },
+  markdown: {
+    shikiConfig: {
+      theme: "vesper",
+      wrap: false,
+    },
+  },
+  prefetch: true,
+  integrations: [
+    clerk({
+      appearance: {
+        baseTheme: dark,
+        layout: {
+          animations: false,
+        },
+      },
+    }),
+    mdx({}),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    sitemap(),
+    react(),
+  ],
+  vite: {
+    ssr: {
+      external: ["node:async_hooks"],
+    },
+    define: {
+      "process.env": process.env,
+    },
+  },
+  output: "static",
 });
