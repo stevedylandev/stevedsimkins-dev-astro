@@ -22,19 +22,18 @@ export const projects: ProjectItem[] = [
     tags: ["blockchain", "ipfs", "developer tools"]
   },
   {
-    title: "HelloBase",
-    description:
-      "Blockchain is complicated, and learning everything there is to know just to start using it can be overwhelming. That's why I build HelloBase, a simple hello world for developers who are interesting in building on blockchain for the first time. It features basic knowledge as well as deploying and interacting with smart contracts on Base using Coinbase Smart Wallets.",
-    image: "https://www.hellobase.dev/og.png",
-    link: "https://hellobase.dev",
-    tags: ["blockchain", "developer tools"],
+    title: "GitCast",
+    description: "A Farcaster Mini App that merges the GitHub event feed into the Farcaster social graph. Warpcast created an API that exposed the GitHub verifications made by all users and I thought it would be fun to see a feed GitHub events for all the people I follow that have the verification. Only problem was the number was in the 40K+ range which was too many to filter through. To solve this I built a fairly complex backend that indexes for each user that wants to see their feed and stores the users who have the verifications as well as their events. This was a great exercise in optimizing data pipelines and uses a mix of Cloudflare workers, KVs, D1 database, and queues.",
+    image: "https://gitcast.dev/og.png",
+    link: "https://gitcast.dev",
+    tags: ["farcaster", "social"]
   },
   {
     title: "Mast",
     description:
       "A simple TUI used for sending casts on Farcaster written in Go. I wanted a project to try out the Bubbletea TUI framework from Charm.sh and this fit the bill perfectly. It's authorized using your own custody signers (can be created through castkeys.xyz) and allows the user to set their own Farcaster hub.",
     image:
-      "https://cdn.stevedylan.dev/files/bafkreigqnynyjfax3loj5maiwnvv3qqxotpoajiq4p6r6glmt6pjmowjke",
+      "https://cdn.stevedylan.dev/files/bafkreicb5ravot4fg6cvjmasp7l4n3c5x26lpejefx5mx6byubcq4oib4y",
     link: "https://github.com/stevedylandev/mast-cli",
     tags: ["farcaster", "developer tools"],
   },
@@ -77,7 +76,7 @@ export const projects: ProjectItem[] = [
       "The original Pinata SDK was written for Node.js years ago, and as the developer ecosystem evolved a more flexible SDK was necessary. This project was a full typescript rewrite from scratch that includes a whole new developer experience that intuitive, with far more methods and capabilities than before.",
     image:
       "https://docs.mypinata.cloud/ipfs/bafkreidv5iptnieh6eijei7enqc4mdhxpte3ries23heqf7s2hu3gdu6ru",
-    link: "https://docs.pinata.cloud/ipfs-sdk",
+    link: "https://docs.pinata.cloud/pinata",
     tags: ["developer tools", "ipfs"],
   },
   {
@@ -102,7 +101,7 @@ export const projects: ProjectItem[] = [
     description:
       "IPFS can unlock content for decentralized social media, and Photocaster was built to demonstrate just that. Using the Farcaster protocol the app allows users to scroll through a feed of just images from select photo centered channels, sign in with their account, and upload photos via IPFS. What makes it special is the photo’s full resolution is on IPFS, but a resized copy is put on the Farcaster network. This keeps apps light, but allows anyone on Photocaster to see the full resolution image.",
     image: "https://www.photocaster.xyz/og.png",
-    link: "https://photocaster.xyz",
+    link: "https://github.com/PinataCloud/PhotoCaster",
     tags: ["farcaster", "ipfs"],
   },
   {
@@ -115,20 +114,12 @@ export const projects: ProjectItem[] = [
     tags: ["blockchain", "ai", "ipfs"],
   },
   {
-    title: "Pinata-go-cli",
+    title: "Pinata IPFS CLI",
     description:
       "A Go rewrite of the Node.js CLI for Pinata, allows fast and extensive uploads to Pinata. Also includes helpful features for listing files and other API functionalities. ",
     image:
-      "https://dweb.mypinata.cloud/ipfs/QmasHAZJ2kb9k3AqkQP4yzYbZn8zxFGsrygNv6HBdMn1uE",
-    link: "https://github.com/PinataCloud/pinata-go-cli",
+      "https://dweb.mypinata.cloud/ipfs/QmNcdx9t48z7RQUXUZZHmuc4zBfyBxKLjDfEgmfhiop7j7?img-format=webp",
+    link: "https://github.com/PinataCloud/ipfs-cli",
     tags: ["developer tools", "ipfs"],
-  },
-  {
-    title: "Diet-cast",
-    description:
-      "A minimal channel specific lite client for Farcaster. Change a few lines in the config file and have a fully functional client with the ability to view the channel feed and cast to it. ",
-    image: "https://www.dietcast.xyz/og.png",
-    link: "https://www.dietcast.xyz",
-    tags: ["farcaster", "ipfs"],
   },
 ];
